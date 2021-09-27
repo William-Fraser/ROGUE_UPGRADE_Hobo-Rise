@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public float speed;
+    public float baseSpeed;
+    public float baseJumpHeight;
     public PlayerDirection direction;
 
     private PlayerStats stats;
-
+    private Rigidbody2D rb;
+    private float modifiedSpeed;
     public enum PlayerDirection
     {
         Right,
@@ -15,10 +17,12 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         stats = this.gameObject.GetComponent<PlayerStats>();
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
         UpdateStats();
     }
     void Update()
     {
+        UpdateStats();
         if (Input.anyKey)
         {
             CheckInput();
@@ -31,7 +35,7 @@ public class CharacterController : MonoBehaviour
     }
     private void UpdateStats()
     {
-        speed = 1 * stats.speedModifier;
+        modifiedSpeed = baseSpeed * stats.speedModifier;
     }
     private void CheckInput()
     {
@@ -46,6 +50,14 @@ public class CharacterController : MonoBehaviour
                 Turn(PlayerDirection.Right);
             Move();
         }
+        
+        
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (rb.velocity.y != 0 && !rb.IsSleeping())
+                return;
+            rb.AddForce(new Vector2(0,baseJumpHeight), ForceMode2D.Impulse);
+        }
     }
     private void Turn(PlayerDirection directionToFace)
     {
@@ -55,11 +67,11 @@ public class CharacterController : MonoBehaviour
     {
         if(direction == PlayerDirection.Left)
         {
-            this.transform.Translate(new Vector3(-(speed * Time.deltaTime), 0, 0));
+            this.transform.Translate(new Vector3(-(modifiedSpeed * Time.deltaTime), 0, 0));
         }
         else if (direction == PlayerDirection.Right)
         {
-            this.transform.Translate(new Vector3((speed * Time.deltaTime), 0, 0));
+            this.transform.Translate(new Vector3((modifiedSpeed * Time.deltaTime), 0, 0));
         }
     }
 }
