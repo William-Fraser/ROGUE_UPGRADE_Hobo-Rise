@@ -25,10 +25,22 @@ public class Pickups : MonoBehaviour
                 player.GetComponent<PlayerStats>().ObtainCoins(value);
                 break;
             case PickupTypes.Food:
-
+                player.GetComponent<PlayerStats>().ObtainEnergy(value);
                 break;
             case PickupTypes.MysteryMeat:
-
+                RandomizeEffect();
+                break;
+        }
+    }
+    private void RandomizeEffect()
+    {
+        switch (Random.Range(0, 2)) {
+            case 0:
+                player.GetComponent<PlayerStats>().ObtainEnergy(value);
+                break;
+            case 1:
+                break;
+            case 2:
                 break;
         }
     }

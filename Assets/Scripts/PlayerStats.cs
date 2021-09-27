@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
         if (amountOfCoins < 0)
             amountOfCoins = 0;
     }
-    public void GainEnergy(int value)
+    public void ObtainEnergy(int value)
     {
         energyAmount += value;
     }
