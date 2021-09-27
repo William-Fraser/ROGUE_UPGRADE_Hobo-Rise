@@ -22,7 +22,7 @@ public class Pickups : MonoBehaviour
                 player.GetComponent<PlayerStats>().ObtainCoins(value);
                 break;
             case PickupTypes.Bill:
-
+                player.GetComponent<PlayerStats>().ObtainCoins(value);
                 break;
             case PickupTypes.Food:
 
