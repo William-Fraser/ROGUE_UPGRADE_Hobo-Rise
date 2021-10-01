@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5983672078689028683}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,3 +245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedModifier: 1
+  amountOfCoins: 0
+  collectedCoins: 0
+  displayedEnergy: 0
+  energyAmount: 0
+  health: 0
+  maxHealth: 0
