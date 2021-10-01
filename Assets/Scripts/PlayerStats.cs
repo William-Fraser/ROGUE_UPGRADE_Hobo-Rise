@@ -11,7 +11,16 @@ public class PlayerStats : MonoBehaviour
     public float energyAmount;
     public int health;
     public int maxHealth;
+    public bool alive = true;
 
+
+    private void Update()
+    {
+        if (health <= 0)
+            alive = false;
+    }
+
+    #region Set, Obtain, and Lose resources
     public void SetCoins(int value)
     {
         collectedCoins = value;
@@ -60,4 +69,5 @@ public class PlayerStats : MonoBehaviour
         if (health < 0)
             health = 0;
     }
+    #endregion
 }

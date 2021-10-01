@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (stats.alive == false)
+            return;
         UpdateStats();
         if (Input.anyKey)
         {
