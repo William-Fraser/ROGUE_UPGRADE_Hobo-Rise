@@ -8,7 +8,6 @@ public class Stats : MonoBehaviour
     public int maxHealth;
     public int health;
     public float speedModifier;
-    public int attackSpeed;
     public int maxEnergy;
     public float energy;
     public int displayedEnergy; // used to display in place of energy to show better looking scale

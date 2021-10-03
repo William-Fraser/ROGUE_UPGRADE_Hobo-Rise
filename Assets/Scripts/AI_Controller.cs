@@ -53,7 +53,9 @@ public class AI_Controller : MonoBehaviour
     public GameObject patrolPoint2;
 
     [Header("Attack")]
-    public float attackRange = 5f;
+    public float a_Range = 5f;
+    public float a_Speed = 2f;
+    public float a_CoolDown = 3f;
 
     [Space(20)]
     public GameObject weapon;
@@ -143,7 +145,7 @@ public class AI_Controller : MonoBehaviour
                     /// 
 
                     //enters attack range
-                    if (Vector2.Distance(this.transform.position, target.position) < attackRange)
+                    if (Vector2.Distance(this.transform.position, target.position) < a_Range)
                     { state = STATE.ATTACK; }
                 }
                 return;
@@ -279,7 +281,7 @@ public class AI_Controller : MonoBehaviour
                 attackRight = true;
         }
         
-        yield return new WaitForSeconds(stats.attackSpeed);
+        yield return new WaitForSeconds(a_Speed);
         
         //move weapon back
         if (attackLeft)
@@ -294,6 +296,7 @@ public class AI_Controller : MonoBehaviour
         }
         followEnabled = true;
 
+        yield return new WaitForSeconds(a_CoolDown);
         state = STATE.CHASE;
         attacking = false;
     }

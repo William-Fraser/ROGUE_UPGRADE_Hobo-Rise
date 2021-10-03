@@ -460,6 +460,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6876497117997633262}
     - target: {fileID: 6126056999949904338, guid: cdb33ded3f807fc4eb84ff5c1a157aac, type: 3}
+      propertyPath: a_Speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126056999949904338, guid: cdb33ded3f807fc4eb84ff5c1a157aac, type: 3}
       propertyPath: attackRange
       value: 4.3
       objectReference: {fileID: 0}
