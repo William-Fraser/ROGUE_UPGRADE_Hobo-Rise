@@ -38,7 +38,7 @@ public class AI_Controller : MonoBehaviour
     [Tooltip("How high the node needed to jump is \n(lower should cause enemy to jump more while chasing)")]
     public float jumpNodeHeightReqirement = 0.8f;
     public float jumpPower = 0.1f;
-    [Tooltip("????\ncheck to make sure is right")]
+    [Tooltip("how high the target node needs to be in order to jump\ncheck to make sure is right")]
     public float jumpCheckOffset = 0.7f;
 
     [Header("Custom Behaviour")]
@@ -74,7 +74,17 @@ public class AI_Controller : MonoBehaviour
     private Seeker seeker;
     private Rigidbody2D rb;
     //attacking
+    private bool canAttack = true;
+    private Vector2 direction;
     private bool attacking = false;
+    private bool attackLeft;
+    private bool attackRight;
+    private bool moveWeapon;
+    //timer
+    private bool attackingCountDown;
+    private bool canAttackCountDown;
+    private float attackingTimer;
+    private float canAttackTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +94,8 @@ public class AI_Controller : MonoBehaviour
         stats = GetComponentInChildren<Stats>();
         destination = GetComponent<AIDestinationSetter>();
 
+        canAttack = true;
+        followEnabled = true;
         state = STATE.CHASE;
 
         if (patrolling)
@@ -95,6 +107,26 @@ public class AI_Controller : MonoBehaviour
     {
         if (!stats.alive)
             return;
+
+        if (attackingCountDown && attackingTimer > 0)
+        {
+            attackingTimer -= Time.deltaTime;
+        }
+        else if (attackingCountDown)
+        {
+            attackingCountDown = false;
+            attacking = !attacking;
+        }
+        
+        if (canAttackCountDown && canAttackTimer > 0)
+        {
+            canAttackTimer -= Time.deltaTime;
+        }
+        else if (canAttackCountDown)
+        {
+            canAttackCountDown = false;
+            canAttack = !canAttack;
+        }
 
         if (TargetInDistance() && followEnabled)
         {
@@ -153,12 +185,85 @@ public class AI_Controller : MonoBehaviour
             case STATE.ATTACK:
                 {
                     /// stops upon reaching character and try's attacking
-                    if (!attacking)
+                    if (canAttack)
                     {
+                        canAttack = false;
+
+                        //directiong calc
+                        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                        attackLeft = false;
+                        attackRight = false;
+
                         attacking = true;
-                        StartCoroutine(AttackSequence());
+                        followEnabled = false;
+
+                        //attack on correct side
+                        if (direction.x > -0.1f)
+                        {
+                            Debug.Log("attack left");
+                            attackLeft = true;
+                        }
+                        else if (direction.x < 0.1f)
+                        {
+                            Debug.Log("attack right");
+                            attackRight = true;
+                        }
+                        moveWeapon = true;
                     }
-                        
+
+                    if (attackLeft)
+                    {
+                        if (attacking)
+                        {
+                            if (moveWeapon)
+                            {   
+                                weapon.transform.Translate(Vector3.left * 2);
+                                moveWeapon = false;
+                                attackingTimer = a_Speed;
+                                attackingCountDown = true;
+
+                            }
+                        }
+                        else if (!attacking)
+                        {
+                            if (!moveWeapon)
+                            { 
+                                weapon.transform.Translate(Vector3.right * 2);
+                                moveWeapon = true;
+                                attackLeft = false;
+                                followEnabled = true;
+                                canAttackTimer = a_CoolDown;
+                                canAttackCountDown = true;
+                            }
+                        }
+                    }
+                    else if (attackRight)
+                    {
+                        if (attacking)
+                        {
+                            if (moveWeapon)
+                            { 
+                                weapon.transform.Translate(Vector3.right * 2);
+                                moveWeapon = false;
+                                attackingTimer = a_Speed;
+                                attackingCountDown = true;
+                            }
+                        }
+                        else if (!attacking)
+                        {
+                            if (!moveWeapon)
+                            { 
+                                weapon.transform.Translate(Vector3.left * 2);
+                                moveWeapon = true;
+                                attackRight = false; 
+                                followEnabled = true;
+                                canAttackTimer = a_CoolDown;
+                                canAttackCountDown = true;
+                            }
+                        }
+                    }
+                    if (Vector2.Distance(this.transform.position, target.position) > a_Range)
+                    { state = STATE.CHASE; }
                 }
                 return;
 
@@ -257,48 +362,6 @@ public class AI_Controller : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
-    }
-    private IEnumerator AttackSequence()
-    {
-        //direction calc
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        bool attackLeft = false;
-        bool attackRight = false;
-        followEnabled = false;
-        Debug.Log("direction: "+direction);
-
-        //move weapon out
-        if (direction.x > -0.1f)
-        {
-            Debug.Log("attack left");
-            weapon.transform.Translate(Vector3.left * 2);
-                attackLeft = true;
-        }
-        else if (direction.x < 0.1f)
-        {
-                Debug.Log("attack right");
-                weapon.transform.Translate(Vector3.right * 2);
-                attackRight = true;
-        }
-        
-        yield return new WaitForSeconds(a_Speed);
-        
-        //move weapon back
-        if (attackLeft)
-        { 
-            attackLeft = false;
-            weapon.transform.Translate(Vector3.right * 2);
-        }
-        if (attackRight)
-        {
-            attackRight = false;
-            weapon.transform.Translate(Vector3.left * 2);
-        }
-        followEnabled = true;
-
-        yield return new WaitForSeconds(a_CoolDown);
-        state = STATE.CHASE;
-        attacking = false;
     }
 }
 [System.Serializable]
