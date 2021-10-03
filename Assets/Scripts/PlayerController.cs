@@ -2,13 +2,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float baseDamage;
+    public float baseAttackSpeed;
+    public float lengthOfAttack;
     public float baseSpeed;
     public float baseJumpHeight;
     public PlayerDirection direction;
+    public GameObject weapon;
 
-    private PlayerStats stats;
+    private Stats stats;
     private Rigidbody2D rb;
     private float modifiedSpeed;
+    private float modifiedDamage;
+    private float modifiedAttackSpeed;
+
+    private bool attacking = false;
+    private float timeSpentInAttack = 0f;
     public enum PlayerDirection
     {
         Right,
@@ -16,22 +25,43 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        stats = this.gameObject.GetComponent<PlayerStats>();
+        stats = this.gameObject.GetComponent<Stats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         UpdateStats();
     }
     void Update()
     {
+        if (stats.alive == false)
+        { return; }
         UpdateStats();
         if (Input.anyKey)
         {
             CheckInput();
         }
+        CheckTimes();
     }
     public void Reset()
     {
         UpdateStats();   
         direction = PlayerDirection.Right;
+    }
+    private void CheckTimes()
+    {
+        if (attacking)
+        {
+            if(timeSpentInAttack >= lengthOfAttack / baseAttackSpeed)
+            {
+                attacking = false;
+                timeSpentInAttack = 0;
+                if(direction == PlayerDirection.Right)
+                    weapon.transform.Translate(Vector3.left, Space.Self);
+                else
+                    weapon.transform.Translate(Vector3.right, Space.Self);
+            } else
+            {
+                timeSpentInAttack += Time.deltaTime;
+            }
+        }
     }
     private void UpdateStats()
     {
@@ -39,6 +69,8 @@ public class PlayerController : MonoBehaviour
     }
     private void CheckInput()
     {
+        if (attacking)
+            return;
         if (Input.GetKey(KeyCode.A))
         {
             if (direction != PlayerDirection.Left)
@@ -50,9 +82,14 @@ public class PlayerController : MonoBehaviour
                 Turn(PlayerDirection.Right);
             Move();
         }
-        
-        
-        if (Input.GetKey(KeyCode.Space))
+
+        if (Input.GetKey(KeyCode.L)) // attack
+        {
+            if (attacking)
+                return;
+            Attack();
+        }
+        if (Input.GetKey(KeyCode.W)) // jump
         {
             if (rb.velocity.y != 0 && !rb.IsSleeping())
                 return;
@@ -72,6 +109,19 @@ public class PlayerController : MonoBehaviour
         else if (direction == PlayerDirection.Right)
         {
             this.transform.Translate(new Vector3((modifiedSpeed * Time.deltaTime), 0, 0));
+        }
+    }
+
+    private void Attack()
+    {
+        if (direction == PlayerDirection.Right)
+        {
+            attacking = true;
+            weapon.transform.Translate(Vector3.right, Space.Self);
+        } else
+        {
+            attacking = true;
+            weapon.transform.Translate(Vector3.left, Space.Self);
         }
     }
 }

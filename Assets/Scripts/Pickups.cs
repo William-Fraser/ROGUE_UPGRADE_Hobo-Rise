@@ -17,13 +17,13 @@ public class Pickups : MonoBehaviour
     {
         switch (type) {
             case PickupTypes.Coin:
-                player.GetComponent<PlayerStats>().ObtainCoins(effectValue);
+                player.GetComponent<Stats>().ObtainCoins(effectValue);
                 break;
             case PickupTypes.Bill:
-                player.GetComponent<PlayerStats>().ObtainCoins(effectValue);
+                player.GetComponent<Stats>().ObtainCoins(effectValue);
                 break;
             case PickupTypes.Food:
-                player.GetComponent<PlayerStats>().ObtainEnergy(effectValue);
+                player.GetComponent<Stats>().ObtainEnergy(effectValue);
                 break;
             case PickupTypes.MysteryMeat:
                 RandomizeEffect();
@@ -36,13 +36,13 @@ public class Pickups : MonoBehaviour
     {
         switch (Random.Range(0, 2)) {
             case 0:
-                player.GetComponent<PlayerStats>().ObtainEnergy(effectValue);
+                player.GetComponent<Stats>().ObtainEnergy(effectValue);
                 break;
             case 1:
-                player.GetComponent<PlayerStats>().ObtainHealth(effectValue);
+                player.GetComponent<Stats>().ObtainHealth(effectValue);
                 break;
             case 2:
-                player.GetComponent<PlayerStats>().LoseHealth(effectValue);
+                player.GetComponent<Stats>().LoseHealth(effectValue);
                 break;
         }
     }
