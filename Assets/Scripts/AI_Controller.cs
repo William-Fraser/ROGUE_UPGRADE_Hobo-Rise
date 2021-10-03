@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+/// <summary>
+/// current err
+///     index failure in coroutine (after wait for seconds, unknown source)
+///     spacing issues, inspector needs tweaking
+///     when killing player, death is ungraceful and removes camera from scene
+///     
+/// </summary>
+
 public enum STATE
 { 
     IDLE,
@@ -14,6 +22,8 @@ public enum STATE
 }
 public class AI_Controller : MonoBehaviour
 {
+    public TagWhitelist[] tagWhitelist;
+    
     //public fields
     [Header("Pathfinding")]
     public Transform target;
@@ -42,13 +52,16 @@ public class AI_Controller : MonoBehaviour
     public GameObject patrolPoint1;
     public GameObject patrolPoint2;
 
+    [Header("Attack")]
+    public float attackRange = 5f;
+
     [Space(20)]
-    public TagWhitelist[] tagWhitelist;
     public GameObject weapon;
 
     //private fields
     private STATE state;
     private Stats stats;
+    private GameObject targetObject;
     private AIDestinationSetter destination;
     //patrol
     private GameObject patrolToPoint; // this field tells the other patrol points what to do
@@ -58,6 +71,8 @@ public class AI_Controller : MonoBehaviour
     private bool isGrounded = false;
     private Seeker seeker;
     private Rigidbody2D rb;
+    //attacking
+    private bool attacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -125,20 +140,22 @@ public class AI_Controller : MonoBehaviour
                 {
                     /// follows characters position
                     /// constantly sets target object transform to target
-                    if (Vector2.Distance(this.transform.position, target.position) < 10)
-                    { 
-                        
-                        state = STATE.ATTACK;
-                    
-                    }
+                    /// 
+
+                    //enters attack range
+                    if (Vector2.Distance(this.transform.position, target.position) < attackRange)
+                    { state = STATE.ATTACK; }
                 }
                 return;
 
             case STATE.ATTACK:
                 {
                     /// stops upon reaching character and try's attacking
-                    
-                    StartCoroutine(AttackSequence());
+                    if (!attacking)
+                    {
+                        attacking = true;
+                        StartCoroutine(AttackSequence());
+                    }
                         
                 }
                 return;
@@ -162,7 +179,7 @@ public class AI_Controller : MonoBehaviour
         { 
             if (tagWhitelist[i].Tag.Contains(collision.tag))
             {
-                destination.target = collision.gameObject.transform;
+                targetObject = collision.gameObject;
             }
         }
     }
@@ -170,6 +187,10 @@ public class AI_Controller : MonoBehaviour
     {
         if (followEnabled && TargetInDistance() && seeker.IsDone())
         {
+            if (targetObject != null)
+            { 
+                destination.target = targetObject.transform;
+            }
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
     }
@@ -237,14 +258,44 @@ public class AI_Controller : MonoBehaviour
     }
     private IEnumerator AttackSequence()
     {
-        // this isnt working
+        //direction calc
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        bool attackLeft = false;
+        bool attackRight = false;
         followEnabled = false;
-        weapon.transform.Translate(Vector3.left, Space.Self);
-        //Debug.Log("ENENMY ATTACK\nENENMY ATTACK\nENENMY ATTACK\nENENMY ATTACK");
+        Debug.Log("direction: "+direction);
+
+        //move weapon out
+        if (direction.x > -0.1f)
+        {
+            Debug.Log("attack left");
+            weapon.transform.Translate(Vector3.left * 2);
+                attackLeft = true;
+        }
+        else if (direction.x < 0.1f)
+        {
+                Debug.Log("attack right");
+                weapon.transform.Translate(Vector3.right * 2);
+                attackRight = true;
+        }
+        
         yield return new WaitForSeconds(stats.attackSpeed);
-        weapon.transform.Translate(Vector3.right, Space.Self);
+        
+        //move weapon back
+        if (attackLeft)
+        { 
+            attackLeft = false;
+            weapon.transform.Translate(Vector3.right * 2);
+        }
+        if (attackRight)
+        {
+            attackRight = false;
+            weapon.transform.Translate(Vector3.left * 2);
+        }
         followEnabled = true;
+
         state = STATE.CHASE;
+        attacking = false;
     }
 }
 [System.Serializable]
