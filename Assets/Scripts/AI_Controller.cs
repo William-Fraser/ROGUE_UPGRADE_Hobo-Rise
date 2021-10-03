@@ -17,35 +17,38 @@ public class AI_Controller : MonoBehaviour
     //public fields
     [Header("Pathfinding")]
     public Transform target;
-    public float triggerDistance = 50f;
+    public float triggerDistance = 15f;
     [Tooltip("in Seconds, \nHow often AI path updates")]
     public float pathUpdateRate = 1f;
 
     [Header("Physics")]
-    public float speed = 420f;
+    public float speed = 250f;
     [Tooltip("How far away the target needs to be \nbefore AI changes WayPoints")]
     public float nextWaypointDistance = 3f;
     [Tooltip("How high the node needed to jump is \n(lower should cause enemy to jump more while chasing)")]
     public float jumpNodeHeightReqirement = 0.8f;
-    public float jumpPower = 0.3f;
+    public float jumpPower = 0.1f;
     [Tooltip("????\ncheck to make sure is right")]
-    public float jumpCheckOffset = 0.1f;
+    public float jumpCheckOffset = 0.7f;
 
     [Header("Custom Behaviour")]
     public bool followEnabled = true;
     public bool jumpEnabled = true;
     [Tooltip("allows enemy to change direction \n(useful for animation control)")]
     public bool canTurnAround = true;
+    public bool patrolling = false;
 
-    [Header("Patrol Points")]
+    [Header("Patrol Points")] // replace these with auto generating class objects that are contained in a array or list
     public GameObject patrolPoint1;
-    public GameObject partolPoint2;
+    public GameObject patrolPoint2;
 
     [Space(20)]
     public TagWhitelist[] tagWhitelist;
+    public GameObject weapon;
 
     //private fields
     private STATE state;
+    private Stats stats;
     //patrol
     private GameObject patrolToPoint; // this field tells the other patrol points what to do
     //pathfinding
@@ -60,11 +63,20 @@ public class AI_Controller : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        stats = GetComponentInChildren<Stats>();
+
+        state = STATE.CHASE;
+
+        if (patrolling)
+        { target = patrolPoint1.transform; state = STATE.PATROL; }
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateRate); // repeats method on loop, checks in seconds on third parameter
     }
     private void FixedUpdate()
     {
+        if (!stats.alive)
+            return;
+
         if (TargetInDistance() && followEnabled)
         {
             PathFollow();
@@ -73,6 +85,8 @@ public class AI_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!stats.alive)
+            return;
 
         switch (state)
         {
@@ -87,29 +101,20 @@ public class AI_Controller : MonoBehaviour
 
             case STATE.PATROL:
                 {
-                    /*stateDisplaying = patrolling;
-                    if (patrolToStation == 1)
-                    {
-                        agent.SetDestination(station1.transform.position);
-                        if (Vector3.Distance(station1.transform.position, agent.transform.position) < 5)
-                        {
-                            patrolToStation = 2;
-                        }
-                    }
-                    else if (patrolToStation == 2)
-                    {
-                        agent.SetDestination(station2.transform.position);
-                        if (Vector3.Distance(station2.transform.position, agent.transform.position) < 5)
-                        {
-                            patrolToStation = 3;
-                        }
-                    }*/
                     /// moves between patrol points
 
                     // starts timer to start Idle
                     if (patrolToPoint == patrolPoint1)
-                    { 
-
+                    {
+                        target = patrolPoint1.transform;
+                        if (Vector2.Distance(patrolPoint1.transform.position, target.position) < 5)
+                        { patrolToPoint = patrolPoint2; }
+                    }
+                    else if (patrolToPoint == patrolPoint2)
+                    {
+                        target = patrolPoint2.transform;
+                        if (Vector2.Distance(patrolPoint2.transform.position, target.position) < 5)
+                        { patrolToPoint = patrolPoint1; }
                     }
                 }
                 return;
@@ -118,12 +123,18 @@ public class AI_Controller : MonoBehaviour
                 {
                     /// follows characters position
                     /// constantly sets target object transform to target
+                    if (Vector2.Distance(this.transform.position, target.position) < 10)
+                    { state = STATE.ATTACK; }
                 }
                 return;
 
             case STATE.ATTACK:
-                { 
-                    /// stops before reaching character and try's attacking
+                {
+                    /// stops upon reaching character and try's attacking
+                        Debug.Log("Enemy attack");
+                        
+                        StartCoroutine(AttackSequence());
+                        
                 }
                 return;
 
@@ -146,7 +157,7 @@ public class AI_Controller : MonoBehaviour
         { 
             if (tagWhitelist[i].Tag.Contains(collision.tag))
             {
-                //targetObject = collision.gameObject;
+                targetObject = collision.gameObject;
             }
         }
     }
@@ -218,6 +229,15 @@ public class AI_Controller : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
+    }
+    private IEnumerator AttackSequence()
+    {
+        // this isnt working
+        followEnabled = false;
+        weapon.transform.Translate(Vector3.left, Space.Self);
+        yield return new WaitForSeconds(stats.attackSpeed);
+        weapon.transform.Translate(Vector3.right, Space.Self);
+        followEnabled = true;
     }
 }
 [System.Serializable]

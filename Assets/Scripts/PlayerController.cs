@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public PlayerDirection direction;
     public GameObject weapon;
 
-    private PlayerStats stats;
+    private Stats stats;
     private Rigidbody2D rb;
     private float modifiedSpeed;
     private float modifiedDamage;
@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        stats = this.gameObject.GetComponent<PlayerStats>();
+        stats = this.gameObject.GetComponent<Stats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         UpdateStats();
     }
     void Update()
     {
         if (stats.alive == false)
-            return;
+        { return; }
         UpdateStats();
         if (Input.anyKey)
         {
@@ -83,13 +83,13 @@ public class PlayerController : MonoBehaviour
             Move();
         }
 
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKey(KeyCode.L)) // attack
         {
             if (attacking)
                 return;
             Attack();
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)) // jump
         {
             if (rb.velocity.y != 0 && !rb.IsSleeping())
                 return;
