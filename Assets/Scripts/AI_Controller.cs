@@ -49,6 +49,7 @@ public class AI_Controller : MonoBehaviour
     //private fields
     private STATE state;
     private Stats stats;
+    private AIDestinationSetter destination;
     //patrol
     private GameObject patrolToPoint; // this field tells the other patrol points what to do
     //pathfinding
@@ -64,6 +65,7 @@ public class AI_Controller : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponentInChildren<Stats>();
+        destination = GetComponent<AIDestinationSetter>();
 
         state = STATE.CHASE;
 
@@ -124,16 +126,19 @@ public class AI_Controller : MonoBehaviour
                     /// follows characters position
                     /// constantly sets target object transform to target
                     if (Vector2.Distance(this.transform.position, target.position) < 10)
-                    { state = STATE.ATTACK; }
+                    { 
+                        
+                        state = STATE.ATTACK;
+                    
+                    }
                 }
                 return;
 
             case STATE.ATTACK:
                 {
                     /// stops upon reaching character and try's attacking
-                        Debug.Log("Enemy attack");
-                        
-                        StartCoroutine(AttackSequence());
+                    
+                    StartCoroutine(AttackSequence());
                         
                 }
                 return;
@@ -157,7 +162,7 @@ public class AI_Controller : MonoBehaviour
         { 
             if (tagWhitelist[i].Tag.Contains(collision.tag))
             {
-                targetObject = collision.gameObject;
+                destination.target = collision.gameObject.transform;
             }
         }
     }
@@ -235,9 +240,11 @@ public class AI_Controller : MonoBehaviour
         // this isnt working
         followEnabled = false;
         weapon.transform.Translate(Vector3.left, Space.Self);
+        //Debug.Log("ENENMY ATTACK\nENENMY ATTACK\nENENMY ATTACK\nENENMY ATTACK");
         yield return new WaitForSeconds(stats.attackSpeed);
         weapon.transform.Translate(Vector3.right, Space.Self);
         followEnabled = true;
+        state = STATE.CHASE;
     }
 }
 [System.Serializable]
