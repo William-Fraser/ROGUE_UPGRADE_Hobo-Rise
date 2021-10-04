@@ -79,12 +79,7 @@ public class Stats : MonoBehaviour
         alive = false;
         if (this.gameObject.tag == "Player")
         {
-            GameManager.gameManager.data.maxHealth = maxHealth;
-            GameManager.gameManager.data.speedModifier = speedModifier;
-            GameManager.gameManager.data.damageModifier = damageModifier;
-            GameManager.gameManager.data.attackSpeedModifier = attackSpeedModifier;
-            GameManager.gameManager.data.maxEnergy = maxEnergy;
-            GameManager.gameManager.data.totalMoney = totalMoney;
+            GameManager.gameManager.data.totalMoney += collectedMoney;
         }
         Color colour = GetComponent<SpriteRenderer>().color;
         colour.a = 0; 

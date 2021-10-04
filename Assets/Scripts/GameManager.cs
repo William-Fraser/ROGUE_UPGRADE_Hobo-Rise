@@ -18,11 +18,10 @@ public class GameManager : MonoBehaviour
     public int resultsID;
     public int upgradeID;
     public int creditsID;
-    private GameScenes currentScene;
+    public GameScenes currentScene;
 
-    public bool test;
 
-    private enum GameScenes { 
+    public enum GameScenes { 
         Main,
         InGame,
         Victory,
@@ -45,11 +44,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    private void Update()
-    {
-        if (test)
-            AttemptSave();
-    }
     #region Scenes
     public void MainMenu()
     {
@@ -62,6 +56,14 @@ public class GameManager : MonoBehaviour
     {
         isNewGame = true;
         ChangeScene(GameScenes.Upgrade);
+    }
+    public bool isOnUpgrade()
+    {
+        if(currentScene == GameScenes.Upgrade)
+        {
+            return true;
+        }
+        return false;
     }
     public void Load()
     {
@@ -158,15 +160,39 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    #region Stat Upgrades
+    public void UpgradeHealth()
+    {
+        data.maxHealth += 10;
+    }
+    public void UpgradeSpeed()
+    {
+        data.speedModifier += 1;
+    }
+    public void UpgradeDamage()
+    {
+        data.damageModifier += 1;
+    }
+    public void UpgradeAttackSpeed()
+    {
+        data.attackSpeedModifier += 1;
+    }
+    public void UpgradeEnergy()
+    {
+        data.maxEnergy += 1;
+    }
+
+    #endregion
 }
 
 [Serializable]
 public class PlayerData
 {
-    public int maxHealth;
-    public float speedModifier;
-    public float damageModifier;
-    public float attackSpeedModifier;
-    public int maxEnergy;
-    public float totalMoney;
+    public int maxHealth = 10;
+    public float speedModifier = 1;
+    public float damageModifier = 1;
+    public float attackSpeedModifier = 1;
+    public int maxEnergy = 10;
+    public float totalMoney = 0;
 }
