@@ -5,13 +5,18 @@ using UnityEngine;
 
 public class ButtonControl : MonoBehaviour
 {
-    private GameObject UpgradesCanvas;
+    private GameObject replacementCanvas;
     public void Start()
     {
         if (GameObject.Find("Upgrades Canvas") != null)
         {
-            UpgradesCanvas = GameObject.Find("Upgrades Canvas").gameObject;
-            UpgradesCanvas.SetActive(false);
+            replacementCanvas = GameObject.Find("Upgrades Canvas").gameObject;
+            replacementCanvas.SetActive(false);
+        }
+        else if (GameObject.Find("Instructions Canvas") != null)
+        {
+            replacementCanvas = GameObject.Find("Instructions Canvas").gameObject;
+            replacementCanvas.SetActive(false);
         }
     }
     public void NewGame()
@@ -34,7 +39,15 @@ public class ButtonControl : MonoBehaviour
         if (GameObject.Find("Results Canvas") != null)
         {
             GameObject.Find("Results Canvas").gameObject.SetActive(false);
-            UpgradesCanvas.SetActive(true);
+            replacementCanvas.SetActive(true);
+        }
+    }
+    public void ContinueToInstructions()
+    {
+        if (GameObject.Find("Menu Canvas") != null)
+        {
+            GameObject.Find("Menu Canvas").gameObject.SetActive(false);
+            replacementCanvas.SetActive(true);
         }
     }
     public void UpgradeHat()
