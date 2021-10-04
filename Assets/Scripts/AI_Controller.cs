@@ -88,13 +88,9 @@ public class AI_Controller : MonoBehaviour
     private float attackingTimer;
     private float canAttackTimer;
 
-    private Text displayedHealth;
-
     // Start is called before the first frame update
     void Start()
     {
-        displayedHealth = GameObject.Find("EnemyHealth").GetComponent<Text>();
-
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponentInChildren<Stats>();
@@ -144,8 +140,6 @@ public class AI_Controller : MonoBehaviour
     {
         if (!stats.alive)
             return;
-
-        displayedHealth.text = $"Enemy : {stats.health}";
 
         switch (state)
         {

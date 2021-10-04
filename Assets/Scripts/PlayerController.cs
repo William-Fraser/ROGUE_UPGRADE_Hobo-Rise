@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     private float timeSpentInAttack = 0f;
 
-    private Text displayedHealth;
+    
 
     public enum PlayerDirection
     {
@@ -29,18 +29,16 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        displayedHealth = GameObject.Find("PlayerHealth").GetComponent<Text>();
-
         stats = this.gameObject.GetComponent<Stats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         UpdateStats();
     }
     void Update()
     {
+        
+
         if (stats.alive == false)
         { return; }
-
-        displayedHealth.text = $"Player : {stats.health}";
 
         UpdateStats();
         if (Input.anyKey)
