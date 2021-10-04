@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    public GameObject saveWarning;
     public PlayerData data = new PlayerData();
     public GameObject player;
     public bool isNewGame = false;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     public int upgradeID;
     public int creditsID;
     private GameScenes currentScene;
+
+    public bool test;
 
     private enum GameScenes { 
         Main,
@@ -42,6 +45,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    private void Update()
+    {
+        if (test)
+            AttemptSave();
+    }
     #region Scenes
     public void MainMenu()
     {
@@ -87,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         if (isNewGame == true && CanLoad())
         {
-            // CREATE SAVING WARNING
+            saveWarning.SetActive(true);
         } else
         {
             Save();
