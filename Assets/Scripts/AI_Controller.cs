@@ -23,9 +23,10 @@ public enum STATE
 public class AI_Controller : MonoBehaviour
 {
     public TagWhitelist[] tagWhitelist;
-    
+
     //public fields
     [Header("Pathfinding")]
+    public GameObject playerObject;
     public Transform target;
     public float triggerDistance = 15f;
     [Tooltip("in Seconds, \nHow often AI path updates")]
@@ -148,7 +149,7 @@ public class AI_Controller : MonoBehaviour
                     /// play idle anim>?
                     // if patrol type then start timer to start patrolling
                 }
-                return;
+                break;
 
             case STATE.PATROL:
                 {
@@ -168,7 +169,7 @@ public class AI_Controller : MonoBehaviour
                         { patrolToPoint = patrolPoint1; }
                     }
                 }
-                return;
+                break;
 
             case STATE.CHASE:
                 {
@@ -180,107 +181,29 @@ public class AI_Controller : MonoBehaviour
                     if (Vector2.Distance(this.transform.position, target.position) < a_Range)
                     { state = STATE.ATTACK; }
                 }
-                return;
+                break;
 
             case STATE.ATTACK:
                 {
                     /// stops upon reaching character and try's attacking
-                    if (canAttack)
-                    {
-                        canAttack = false;
-
-                        //directiong calc
-                        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                        attackLeft = false;
-                        attackRight = false;
-
-                        attacking = true;
-                        followEnabled = false;
-
-                        //attack on correct side
-                        if (direction.x > -0.1f)
-                        {
-                            Debug.Log("attack left");
-                            attackLeft = true;
-                        }
-                        else if (direction.x < 0.1f)
-                        {
-                            Debug.Log("attack right");
-                            attackRight = true;
-                        }
-                        moveWeapon = true;
-                    }
-
-                    if (attackLeft)
-                    {
-                        if (attacking)
-                        {
-                            if (moveWeapon)
-                            {   
-                                weapon.transform.Translate(Vector3.left * 2);
-                                moveWeapon = false;
-                                attackingTimer = a_Speed;
-                                attackingCountDown = true;
-
-                            }
-                        }
-                        else if (!attacking)
-                        {
-                            if (!moveWeapon)
-                            { 
-                                weapon.transform.Translate(Vector3.right * 2);
-                                moveWeapon = true;
-                                attackLeft = false;
-                                followEnabled = true;
-                                canAttackTimer = a_CoolDown;
-                                canAttackCountDown = true;
-                            }
-                        }
-                    }
-                    else if (attackRight)
-                    {
-                        if (attacking)
-                        {
-                            if (moveWeapon)
-                            { 
-                                weapon.transform.Translate(Vector3.right * 2);
-                                moveWeapon = false;
-                                attackingTimer = a_Speed;
-                                attackingCountDown = true;
-                            }
-                        }
-                        else if (!attacking)
-                        {
-                            if (!moveWeapon)
-                            { 
-                                weapon.transform.Translate(Vector3.left * 2);
-                                moveWeapon = true;
-                                attackRight = false; 
-                                followEnabled = true;
-                                canAttackTimer = a_CoolDown;
-                                canAttackCountDown = true;
-                            }
-                        }
-                    }
-                    if (Vector2.Distance(this.transform.position, target.position) > a_Range)
-                    { state = STATE.CHASE; }
+                    
                 }
-                return;
+                break;
 
             case STATE.SEARCH:
                 { 
                     /// sets up temp patrol points around last seen area and searches them
                 }
-                return;
+                break;
 
             case STATE.RETURN:
                 { 
                     /// returns to point left during patrol 
                 }
-                return;
+                break;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+   /* private void OnTriggerEnter2D(Collider2D collision)
     {
         for (int i = 0; i < tagWhitelist.Length; i++)
         { 
@@ -288,6 +211,19 @@ public class AI_Controller : MonoBehaviour
             {
                 targetObject = collision.gameObject;
             }
+        }
+    }*/
+    private void OnTriggerStay2D(Collider2D collision) // easy damage
+    {
+        //Debug.Log("Collision");
+        if (canAttack && collision.gameObject.GetComponent<Stats>() != null)
+        {
+            canAttack = false;
+            Debug.Log("Enemy Attacking");
+            if (collision.gameObject.GetComponent<Stats>() != null)
+                collision.gameObject.GetComponent<Stats>().health -= 10;
+            canAttackTimer = a_CoolDown;
+            canAttackCountDown = true;
         }
     }
     private void UpdatePath()
@@ -362,6 +298,16 @@ public class AI_Controller : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
+    }
+    IEnumerator AttackingTimer()
+    {
+        yield return new WaitForSeconds(a_Speed);
+        attacking = false;
+    }
+    IEnumerator CanAttackTimer()
+    {
+        yield return new WaitForSeconds(a_CoolDown);
+        canAttack = true;
     }
 }
 [System.Serializable]
