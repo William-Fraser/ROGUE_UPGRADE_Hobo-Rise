@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     public int creditsID;
     private GameScenes currentScene;
 
-    public bool test;
-
     private enum GameScenes { 
         Main,
         InGame,
@@ -45,11 +43,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    private void Update()
-    {
-        if (test)
-            AttemptSave();
-    }
     #region Scenes
     public void MainMenu()
     {
