@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
                 attackSpeedModifier = loadData.attackSpeedModifier;
                 maxEnergy = loadData.maxEnergy;
                 totalMoney = loadData.totalMoney;
-                //ChangeScene(GameScenes.Upgrade);
+                ChangeScene(GameScenes.Upgrade);
             }
         }
         catch
