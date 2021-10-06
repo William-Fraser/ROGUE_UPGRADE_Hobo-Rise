@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 538721653071654980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0081, z: 0}
-  m_LocalScale: {x: 0.111269936, y: 0.022788655, z: 0}
+  m_LocalScale: {x: 0.07232545, y: 0.022788655, z: 0}
   m_Children: []
   m_Father: {fileID: 2558519522662399377}
   m_RootOrder: 0
@@ -291,8 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagWhitelist:
   - Tag: Player
-  playerObject: {fileID: 0}
-  target: {fileID: 0}
+  playerObject: {fileID: 9072340229771961918, guid: 0baf89b833a21364ab73189cf512f8f6, type: 3}
+  target: {fileID: 2558519522411026419}
   triggerDistance: 15
   pathUpdateRate: 1
   speed: 2500
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2558519522511200021}
   m_Layer: 0
-  m_Name: Enemy Adv
+  m_Name: Enemy Adv.AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -511,11 +511,14 @@ MonoBehaviour:
   maxHealth: 100
   health: 30
   speedModifier: 0
+  damageModifier: 0
+  attackSpeedModifier: 0
   maxEnergy: 0
   energy: 0
   displayedEnergy: 0
   collectedMoney: 0
   totalMoney: 0
+  displayedHealth: {fileID: 0}
 --- !u!1 &2558519523189558011
 GameObject:
   m_ObjectHideFlags: 0

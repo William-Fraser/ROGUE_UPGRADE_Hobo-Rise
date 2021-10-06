@@ -21,13 +21,14 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
+
         displayedHealth.text = $"{health}";
         if (health <= 0)
             Death();
     }
     private void Awake()
     {
-        if(this.gameObject.tag == "Player")
+        /*if(this.gameObject.tag == "Player")
         {
             maxHealth = GameManager.gameManager.data.maxHealth;
             speedModifier = GameManager.gameManager.data.speedModifier;
@@ -35,7 +36,7 @@ public class Stats : MonoBehaviour
             attackSpeedModifier = GameManager.gameManager.data.attackSpeedModifier;
             maxEnergy = GameManager.gameManager.data.maxEnergy;
             totalMoney = GameManager.gameManager.data.totalMoney;
-        }
+        }*/
     }
 
     #region Set, Obtain, and Lose resources
@@ -77,7 +78,7 @@ public class Stats : MonoBehaviour
     private void Death()
     {
         alive = false;
-        if (this.gameObject.tag == "Player")
+        /*if (this.gameObject.tag == "Player")
         {
             GameManager.gameManager.data.maxHealth = maxHealth;
             GameManager.gameManager.data.speedModifier = speedModifier;
@@ -85,7 +86,7 @@ public class Stats : MonoBehaviour
             GameManager.gameManager.data.attackSpeedModifier = attackSpeedModifier;
             GameManager.gameManager.data.maxEnergy = maxEnergy;
             GameManager.gameManager.data.totalMoney = totalMoney;
-        }
+        }*/
         Color colour = GetComponent<SpriteRenderer>().color;
         colour.a = 0; 
         GetComponent<SpriteRenderer>().color = colour;

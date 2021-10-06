@@ -25,7 +25,7 @@ public class AI_Controller : MonoBehaviour
 {
     public TagWhitelist[] tagWhitelist;
 
-    //public fields
+#region public fields;
     [Header("Pathfinding")]
     public GameObject playerObject;
     public Transform target;
@@ -61,8 +61,9 @@ public class AI_Controller : MonoBehaviour
 
     [Space(20)]
     public GameObject weapon;
+    #endregion
 
-    //private fields
+#region private fields
     private STATE state;
     private Stats stats;
     private GameObject targetObject;
@@ -83,13 +84,14 @@ public class AI_Controller : MonoBehaviour
     private bool attackRight;
     private bool moveWeapon;
     //timer
-    private bool attackingCountDown;
-    private bool canAttackCountDown;
+    private bool attackingDuration;
+    private bool canAttackCoolDown;
     private float attackingTimer;
     private float canAttackTimer;
+    #endregion
 
-    // Start is called before the first frame update
-    void Start()
+#region Start/Update
+    private void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -110,33 +112,14 @@ public class AI_Controller : MonoBehaviour
         if (!stats.alive)
             return;
 
-        if (attackingCountDown && attackingTimer > 0)
-        {
-            attackingTimer -= Time.deltaTime;
-        }
-        else if (attackingCountDown)
-        {
-            attackingCountDown = false;
-            attacking = !attacking;
-        }
-        
-        if (canAttackCountDown && canAttackTimer > 0)
-        {
-            canAttackTimer -= Time.deltaTime;
-        }
-        else if (canAttackCountDown)
-        {
-            canAttackCountDown = false;
-            canAttack = !canAttack;
-        }
+        AttackChecks();
 
         if (TargetInDistance() && followEnabled)
         {
             PathFollow();
         }
     }
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!stats.alive)
             return;
@@ -204,29 +187,9 @@ public class AI_Controller : MonoBehaviour
                 break;
         }
     }
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        for (int i = 0; i < tagWhitelist.Length; i++)
-        { 
-            if (tagWhitelist[i].Tag.Contains(collision.tag))
-            {
-                targetObject = collision.gameObject;
-            }
-        }
-    }*/
-    private void OnTriggerStay2D(Collider2D collision) // easy damage
-    {
-        //Debug.Log("Collision");
-        if (canAttack && collision.gameObject.GetComponent<Stats>() != null)
-        {
-            canAttack = false;
-            Debug.Log("Enemy Attacking");
-            if (collision.gameObject.GetComponent<Stats>() != null)
-                collision.gameObject.GetComponent<Stats>().health -= 10;
-            canAttackTimer = a_CoolDown;
-            canAttackCountDown = true;
-        }
-    }
+    #endregion
+
+#region Astar
     private void UpdatePath()
     {
         if (followEnabled && TargetInDistance() && seeker.IsDone())
@@ -300,6 +263,56 @@ public class AI_Controller : MonoBehaviour
             currentWaypoint = 0;
         }
     }
+    #endregion
+
+    /* private void OnTriggerEnter2D(Collider2D collision)
+     {
+         for (int i = 0; i < tagWhitelist.Length; i++)
+         { 
+             if (tagWhitelist[i].Tag.Contains(collision.tag))
+             {
+                 targetObject = collision.gameObject;
+             }
+         }
+     }*/
+    private void OnTriggerStay2D(Collider2D collision) // basic easy damage sphere
+    {
+        //Debug.Log("Collision");
+        if (canAttack && collision.gameObject.GetComponent<Stats>() != null)
+        {
+            canAttack = false;
+            Debug.Log("Enemy Attacking");
+            if (collision.gameObject.GetComponent<Stats>() != null)
+                collision.gameObject.GetComponent<Stats>().health -= 10;
+            canAttackTimer = a_CoolDown;
+            canAttackCoolDown = true;
+        }
+    }
+
+    public void AttackChecks()
+    {
+        //
+        if (attackingDuration && attackingTimer > 0)
+        {
+            attackingTimer -= Time.deltaTime;
+        }
+        else if (attackingDuration)
+        {
+            attackingDuration = false;
+            attacking = !attacking;
+        }
+
+        if (canAttackCoolDown && canAttackTimer > 0)
+        {
+            canAttackTimer -= Time.deltaTime;
+        }
+        else if (canAttackCoolDown)
+        {
+            canAttackCoolDown = false;
+            canAttack = !canAttack;
+        }
+    }
+
     IEnumerator AttackingTimer()
     {
         yield return new WaitForSeconds(a_Speed);
