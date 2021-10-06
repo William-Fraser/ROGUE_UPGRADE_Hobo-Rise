@@ -8,7 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     public GameObject saveWarning;
-    public PlayerData data = new PlayerData();
+    public int maxHealth;
+    public float speedModifier;
+    public float damageModifier;
+    public float attackSpeedModifier;
+    public int maxEnergy;
+    public float totalMoney;
     public GameObject player;
     public bool isNewGame = false;
     public int mainID;
@@ -73,19 +78,15 @@ public class GameManager : MonoBehaviour
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-
                 PlayerData loadData = (PlayerData)bf.Deserialize(file);
                 file.Close();
-
-                data.maxHealth = loadData.maxHealth;
-                data.speedModifier = loadData.speedModifier;
-                data.damageModifier = loadData.damageModifier;
-                data.attackSpeedModifier = loadData.attackSpeedModifier;
-                data.maxEnergy = loadData.maxEnergy;
-                data.totalMoney = loadData.totalMoney;
-
-                ChangeScene(GameScenes.Upgrade);
-
+                maxHealth = loadData.maxHealth;
+                speedModifier = loadData.speedModifier;
+                damageModifier = loadData.damageModifier;
+                attackSpeedModifier = loadData.attackSpeedModifier;
+                maxEnergy = loadData.maxEnergy;
+                totalMoney = loadData.totalMoney;
+                //ChangeScene(GameScenes.Upgrade);
             }
         }
         catch
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
     }
     public void AttemptSave()
     {
+        Debug.Log("SAVE ATTEMPT!");
         if (isNewGame == true && CanLoad())
         {
             saveWarning.SetActive(true);
@@ -115,15 +117,14 @@ public class GameManager : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-
-        data.maxHealth = player.GetComponent<Stats>().maxHealth;
-        data.speedModifier = player.GetComponent<Stats>().speedModifier;
-        data.damageModifier = player.GetComponent<Stats>().damageModifier;
-        data.attackSpeedModifier = player.GetComponent<Stats>().attackSpeedModifier;
-        data.maxEnergy = player.GetComponent<Stats>().maxEnergy;
-        data.totalMoney = player.GetComponent<Stats>().totalMoney;
-
-        bf.Serialize(file, data);
+        PlayerData saveData = new PlayerData();
+        saveData.attackSpeedModifier = attackSpeedModifier;
+        saveData.damageModifier = damageModifier;
+        saveData.maxEnergy = maxEnergy;
+        saveData.maxHealth = maxHealth;
+        saveData.speedModifier = speedModifier;
+        saveData.totalMoney = totalMoney;
+        bf.Serialize(file, saveData);
         file.Close();
     }
     #endregion
@@ -164,35 +165,34 @@ public class GameManager : MonoBehaviour
     #region Stat Upgrades
     public void UpgradeHealth()
     {
-        data.maxHealth += 10;
+        maxHealth += 10;
     }
     public void UpgradeSpeed()
     {
-        data.speedModifier += 1;
+        speedModifier += 1;
     }
     public void UpgradeDamage()
     {
-        data.damageModifier += 1;
+        damageModifier += 1;
     }
     public void UpgradeAttackSpeed()
     {
-        data.attackSpeedModifier += 1;
+        attackSpeedModifier += 1;
     }
     public void UpgradeEnergy()
     {
-        data.maxEnergy += 1;
+        maxEnergy += 1;
     }
-
     #endregion
 }
 
 [Serializable]
 public class PlayerData
 {
-    public int maxHealth = 10;
-    public float speedModifier = 1;
-    public float damageModifier = 1;
-    public float attackSpeedModifier = 1;
-    public int maxEnergy = 10;
-    public float totalMoney = 0;
+    public int maxHealth;
+    public float speedModifier;
+    public float damageModifier;
+    public float attackSpeedModifier;
+    public int maxEnergy;
+    public float totalMoney;
 }

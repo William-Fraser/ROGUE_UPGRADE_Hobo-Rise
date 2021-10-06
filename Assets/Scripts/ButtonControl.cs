@@ -66,4 +66,12 @@ public class ButtonControl : MonoBehaviour
         Debug.Log("Upgrading Food");
         GameManager.gameManager.UpgradeEnergy();
     }
+    public void Save()
+    {
+        GameManager.gameManager.AttemptSave();
+    }
+    public void Load()
+    {
+        GameManager.gameManager.Load();
+    }
 }
