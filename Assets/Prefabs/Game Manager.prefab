@@ -153,7 +153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Save Anyways
 --- !u!1 &7995370465514321294
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7995370465514321283}
   - component: {fileID: 7995370465514321293}
+  - component: {fileID: 7316274371412839137}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -199,7 +200,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveWarning: {fileID: 7995370466424918764}
-  data:
+  stats:
+    maxHealth: 10
+    speedModifier: 1
+    damageModifier: 1
+    attackSpeedModifier: 1
+    maxEnergy: 10
+    totalMoney: 0
+  maxPossibleStats:
     maxHealth: 10
     speedModifier: 1
     damageModifier: 1
@@ -207,7 +215,7 @@ MonoBehaviour:
     maxEnergy: 10
     totalMoney: 0
   player: {fileID: 9072340229771961918, guid: 0baf89b833a21364ab73189cf512f8f6, type: 3}
-  isNewGame: 0
+  isNewGame: 1
   mainID: 0
   inGameID: 0
   victoryID: 0
@@ -216,6 +224,18 @@ MonoBehaviour:
   upgradeID: 0
   creditsID: 0
   currentScene: 0
+--- !u!114 &7316274371412839137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7995370465514321294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae088a2ffd8b024786ee134c19a8a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7995370465788796331
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +393,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Cancel
 --- !u!1 &7995370466248429443
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +407,7 @@ GameObject:
   - component: {fileID: 7995370466248429440}
   - component: {fileID: 7995370466248429441}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Force Save
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -494,7 +514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7995370466248429440}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7316274371412839137}
+        m_TargetAssemblyTypeName: SaveWarningControl, Assembly-CSharp
+        m_MethodName: ForceSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7995370466316388896
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +540,7 @@ GameObject:
   - component: {fileID: 7995370466316388901}
   - component: {fileID: 7995370466316388902}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,7 +647,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7995370466316388901}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7316274371412839137}
+        m_TargetAssemblyTypeName: SaveWarningControl, Assembly-CSharp
+        m_MethodName: StopSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7995370466424918764
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7995370466424918752
 RectTransform:
   m_ObjectHideFlags: 0

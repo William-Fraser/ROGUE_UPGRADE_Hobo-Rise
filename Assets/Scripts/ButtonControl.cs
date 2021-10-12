@@ -41,30 +41,82 @@ public class ButtonControl : MonoBehaviour
             UpgradesCanvas.SetActive(true);
         }
     }
+    public bool CanAfford(float price)
+    {
+        if (GameManager.gameManager.stats.totalMoney >= price)
+            return true;
+        else
+            return false;
+    }
     public void UpgradeHat()
     {
-        Debug.Log("Upgrading Hat");
-        GameManager.gameManager.UpgradeAttackSpeed();
+        float price = 10 * GameManager.gameManager.stats.attackSpeedModifier;
+        if (CanAfford(price))
+        {
+            Debug.Log("Upgrading Hat");
+            GameManager.gameManager.RemoveMoney(price);
+            GameManager.gameManager.UpgradeAttackSpeed();
+        }
+        else
+        {
+            Debug.Log("Cannot afford hat, price is set to: " + (price));
+        }
     }
     public void UpgradeClothes()
     {
-        Debug.Log("Upgrading Clothes");
-        GameManager.gameManager.UpgradeHealth();
+        float price = 1 * GameManager.gameManager.stats.maxHealth;
+        if (CanAfford(price))
+        {
+            Debug.Log("Upgrading Clothes");
+            GameManager.gameManager.RemoveMoney(price);
+            GameManager.gameManager.UpgradeHealth();
+        }
+        else
+        {
+            Debug.Log("Cannot afford clothes, price is set to: " + (price));
+        }
     }
     public void UpgradeShoes()
     {
-        Debug.Log("Upgrading Shoes");
-        GameManager.gameManager.UpgradeSpeed();
+        float price = 10 * GameManager.gameManager.stats.speedModifier;
+        if (CanAfford(price))
+        {
+            Debug.Log("Upgrading Shoes");
+            GameManager.gameManager.RemoveMoney(price);
+            GameManager.gameManager.UpgradeSpeed();
+        }
+        else
+        {
+            Debug.Log("Cannot afford shoes, price is set to: " + (price));
+        }
     }
     public void UpgradeWeapon()
     {
-        Debug.Log("Upgrading Weapon");
-        GameManager.gameManager.UpgradeDamage();
+        float price = 10 * GameManager.gameManager.stats.damageModifier;
+        if (CanAfford(price))
+        {
+            Debug.Log("Upgrading Weapon");
+            GameManager.gameManager.RemoveMoney(price);
+            GameManager.gameManager.UpgradeDamage();
+        }
+        else
+        {
+            Debug.Log("Cannot afford weapon, price is set to: " + (price));
+        }
     }
     public void UpgradeFood()
     {
-        Debug.Log("Upgrading Food");
-        GameManager.gameManager.UpgradeEnergy();
+        float price = 1 * GameManager.gameManager.stats.maxEnergy;
+        if (CanAfford(price))
+        {
+            Debug.Log("Upgrading Energy");
+            GameManager.gameManager.RemoveMoney(price);
+            GameManager.gameManager.UpgradeEnergy();
+        }
+        else
+        {
+            Debug.Log("Cannot afford Energy, price is set to: " + (price));
+        }
     }
     public void Save()
     {

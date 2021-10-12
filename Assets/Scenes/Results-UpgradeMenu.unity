@@ -443,6 +443,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: isNewGame
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
@@ -470,6 +474,26 @@ PrefabInstance:
       propertyPath: data.attackSpeedModifier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.maxEnergy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.speedModifier
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.damageModifier
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.attackSpeedModifier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7995370465514321294, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -478,7 +502,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3119910440830006987, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
 --- !u!1 &171521592
 GameObject:
@@ -3609,6 +3634,7 @@ GameObject:
   - component: {fileID: 1878933728}
   - component: {fileID: 1878933727}
   - component: {fileID: 1878933726}
+  - component: {fileID: 1878933730}
   m_Layer: 5
   m_Name: Upgrades Canvas
   m_TagString: Untagged
@@ -3699,6 +3725,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1878933730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878933725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3506470dc3d5e4f9bb7d521acb0c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hatButtonText: {fileID: 1159492040}
+  clothesButtonText: {fileID: 1735945733}
+  weaponButtonText: {fileID: 816568290}
+  shoesButtonText: {fileID: 1423212362}
+  energyButtonText: {fileID: 171521594}
+  hatButton: {fileID: 1340813826}
+  clothesButton: {fileID: 2061613910}
+  weaponButton: {fileID: 1357757866}
+  shoesButton: {fileID: 992319548}
+  energyButton: {fileID: 1544089332}
 --- !u!1 &1891267367
 GameObject:
   m_ObjectHideFlags: 0

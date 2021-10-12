@@ -29,12 +29,12 @@ public class Stats : MonoBehaviour
     {
         if(this.gameObject.tag == "Player")
         {
-            maxHealth = GameManager.gameManager.maxHealth;
-            speedModifier = GameManager.gameManager.speedModifier;
-            damageModifier = GameManager.gameManager.damageModifier;
-            attackSpeedModifier = GameManager.gameManager.attackSpeedModifier;
-            maxEnergy = GameManager.gameManager.maxEnergy;
-            totalMoney = GameManager.gameManager.totalMoney;
+            maxHealth = GameManager.gameManager.stats.maxHealth;
+            speedModifier = GameManager.gameManager.stats.speedModifier;
+            damageModifier = GameManager.gameManager.stats.damageModifier;
+            attackSpeedModifier = GameManager.gameManager.stats.attackSpeedModifier;
+            maxEnergy = GameManager.gameManager.stats.maxEnergy;
+            totalMoney = GameManager.gameManager.stats.totalMoney;
         }
     }
 
@@ -79,7 +79,7 @@ public class Stats : MonoBehaviour
         alive = false;
         if (this.gameObject.tag == "Player")
         {
-            GameManager.gameManager.totalMoney += collectedMoney;
+            GameManager.gameManager.stats.totalMoney += collectedMoney;
         }
         Color colour = GetComponent<SpriteRenderer>().color;
         colour.a = 0; 

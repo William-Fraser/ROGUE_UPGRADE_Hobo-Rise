@@ -8,12 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     public GameObject saveWarning;
-    public int maxHealth;
-    public float speedModifier;
-    public float damageModifier;
-    public float attackSpeedModifier;
-    public int maxEnergy;
-    public float totalMoney;
+    public PlayerData stats;
+    public PlayerData maxPossibleStats;
     public GameObject player;
     public bool isNewGame = false;
     public int mainID;
@@ -80,12 +76,12 @@ public class GameManager : MonoBehaviour
                 FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
                 PlayerData loadData = (PlayerData)bf.Deserialize(file);
                 file.Close();
-                maxHealth = loadData.maxHealth;
-                speedModifier = loadData.speedModifier;
-                damageModifier = loadData.damageModifier;
-                attackSpeedModifier = loadData.attackSpeedModifier;
-                maxEnergy = loadData.maxEnergy;
-                totalMoney = loadData.totalMoney;
+                stats.maxHealth = loadData.maxHealth;
+                stats.speedModifier = loadData.speedModifier;
+                stats.damageModifier = loadData.damageModifier;
+                stats.attackSpeedModifier = loadData.attackSpeedModifier;
+                stats.maxEnergy = loadData.maxEnergy;
+                stats.totalMoney = loadData.totalMoney;
                 ChangeScene(GameScenes.Upgrade);
             }
         }
@@ -113,17 +109,17 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
-    private void Save()
+    public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
         PlayerData saveData = new PlayerData();
-        saveData.attackSpeedModifier = attackSpeedModifier;
-        saveData.damageModifier = damageModifier;
-        saveData.maxEnergy = maxEnergy;
-        saveData.maxHealth = maxHealth;
-        saveData.speedModifier = speedModifier;
-        saveData.totalMoney = totalMoney;
+        saveData.attackSpeedModifier = stats.attackSpeedModifier;
+        saveData.damageModifier = stats.damageModifier;
+        saveData.maxEnergy = stats.maxEnergy;
+        saveData.maxHealth = stats.maxHealth;
+        saveData.speedModifier = stats.speedModifier;
+        saveData.totalMoney = stats.totalMoney;
         bf.Serialize(file, saveData);
         file.Close();
     }
@@ -163,25 +159,29 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Stat Upgrades
+    public void RemoveMoney(float moneyToRemove)
+    {
+        stats.totalMoney -= moneyToRemove;
+    }
     public void UpgradeHealth()
     {
-        maxHealth += 10;
+        stats.maxHealth += 10;
     }
     public void UpgradeSpeed()
     {
-        speedModifier += 1;
+        stats.speedModifier += 1;
     }
     public void UpgradeDamage()
     {
-        damageModifier += 1;
+        stats.damageModifier += 1;
     }
     public void UpgradeAttackSpeed()
     {
-        attackSpeedModifier += 1;
+        stats.attackSpeedModifier += 1;
     }
     public void UpgradeEnergy()
     {
-        maxEnergy += 1;
+        stats.maxEnergy += 10;
     }
     #endregion
 }
@@ -189,10 +189,10 @@ public class GameManager : MonoBehaviour
 [Serializable]
 public class PlayerData
 {
-    public int maxHealth;
-    public float speedModifier;
-    public float damageModifier;
-    public float attackSpeedModifier;
-    public int maxEnergy;
-    public float totalMoney;
+    public int maxHealth = 10;
+    public float speedModifier = 1;
+    public float damageModifier = 1;
+    public float attackSpeedModifier = 1;
+    public int maxEnergy = 10;
+    public float totalMoney = 0;
 }
