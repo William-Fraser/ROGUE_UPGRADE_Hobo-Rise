@@ -5,10 +5,10 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     public bool alive = true;
-    public int maxHealth;
-    public int health;
+    public float maxHealth;
+    public float health;
     public float speedModifier;
-    public int maxEnergy;
+    public float maxEnergy;
     public float energy;
     public int displayedEnergy; // used to display in place of energy to show better looking scale
     public float collectedMoney; // money collected in a single run

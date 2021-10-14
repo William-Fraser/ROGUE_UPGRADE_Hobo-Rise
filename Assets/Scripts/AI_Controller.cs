@@ -26,7 +26,7 @@ public class AI_Controller : MonoBehaviour
 
     //public fields
     [Header("Pathfinding")]
-    public GameObject playerObject;
+    //public GameObject playerObject;
     public Transform target;
     public float triggerDistance = 15f;
     [Tooltip("in Seconds, \nHow often AI path updates")]
@@ -57,6 +57,7 @@ public class AI_Controller : MonoBehaviour
     public float a_Range = 5f;
     public float a_Speed = 2f;
     public float a_CoolDown = 3f;
+    public float a_Damage = 10;
 
     [Space(20)]
     public GameObject weapon;
@@ -74,6 +75,8 @@ public class AI_Controller : MonoBehaviour
     private bool isGrounded = false;
     private Seeker seeker;
     private Rigidbody2D rb;
+    private float defaultTriggerDistance;
+    private CapsuleCollider2D targetingView;
     //attacking
     private bool canAttack = true;
     private Vector2 direction;
@@ -94,13 +97,16 @@ public class AI_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponentInChildren<Stats>();
         destination = GetComponent<AIDestinationSetter>();
+        targetingView = GetComponent<CapsuleCollider2D>();
 
         canAttack = true;
         followEnabled = true;
         state = STATE.CHASE;
+        targetObject = target.gameObject;
+        defaultTriggerDistance = triggerDistance;
 
         if (patrolling)
-        { target = patrolPoint1.transform; state = STATE.PATROL; }
+        { state = STATE.PATROL; patrolToPoint = patrolPoint1; targetObject = patrolToPoint; }
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateRate); // repeats method on loop, checks in seconds on third parameter
     }
@@ -140,6 +146,8 @@ public class AI_Controller : MonoBehaviour
         if (!stats.alive)
             return;
 
+        target = targetObject.transform;
+
         switch (state)
         {
             case STATE.IDLE:
@@ -153,19 +161,21 @@ public class AI_Controller : MonoBehaviour
 
             case STATE.PATROL:
                 {
-                    /// moves between patrol points
+                    targetObject = patrolToPoint;
+                    if (triggerDistance != 500)
+                    {
+                        triggerDistance = 500; // set to patrol format
+                    }
 
-                    // starts timer to start Idle
+                    // starts timer to start Idle // should use scriptable objects for now uses 2 object if statement
                     if (patrolToPoint == patrolPoint1)
                     {
-                        target = patrolPoint1.transform;
-                        if (Vector2.Distance(patrolPoint1.transform.position, target.position) < 5)
+                        if (Vector2.Distance(transform.position, patrolPoint1.transform.position) < 5)
                         { patrolToPoint = patrolPoint2; }
                     }
                     else if (patrolToPoint == patrolPoint2)
                     {
-                        target = patrolPoint2.transform;
-                        if (Vector2.Distance(patrolPoint2.transform.position, target.position) < 5)
+                        if (Vector2.Distance(transform.position, patrolPoint2.transform.position) < 5)
                         { patrolToPoint = patrolPoint1; }
                     }
                 }
@@ -177,9 +187,7 @@ public class AI_Controller : MonoBehaviour
                     /// constantly sets target object transform to target
                     /// 
 
-                    //enters attack range
-                    if (Vector2.Distance(this.transform.position, target.position) < a_Range)
-                    { state = STATE.ATTACK; }
+                    
                 }
                 break;
 
@@ -203,27 +211,35 @@ public class AI_Controller : MonoBehaviour
                 break;
         }
     }
-   /* private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject);
         for (int i = 0; i < tagWhitelist.Length; i++)
-        { 
+        {
             if (tagWhitelist[i].Tag.Contains(collision.tag))
             {
                 targetObject = collision.gameObject;
+                triggerDistance = defaultTriggerDistance; // change trigger distance back for chasing
             }
         }
-    }*/
-    private void OnTriggerStay2D(Collider2D collision) // easy damage
+    }
+
+
+    private void OnTriggerStay2D(Collider2D collision) // attacks
     {
-        //Debug.Log("Collision");
-        if (canAttack && collision.gameObject.GetComponent<Stats>() != null)
-        {
-            canAttack = false;
-            Debug.Log("Enemy Attacking");
-            if (collision.gameObject.GetComponent<Stats>() != null)
-                collision.gameObject.GetComponent<Stats>().health -= 10;
-            canAttackTimer = a_CoolDown;
-            canAttackCountDown = true;
+        // enters attack range
+        if (Vector2.Distance(this.transform.position, target.position) < a_Range)
+        { 
+            //Debug.Log("Collision");
+            if (canAttack && collision.gameObject.GetComponent<Stats>() != null)
+            {
+                canAttack = false;
+                Debug.Log("Enemy Attacking");
+                if (collision.gameObject.GetComponent<Stats>() != null)
+                    collision.gameObject.GetComponent<Stats>().health -= a_Damage;
+                canAttackTimer = a_CoolDown;
+                canAttackCountDown = true;
+            }
         }
     }
     private void UpdatePath()
@@ -279,10 +295,12 @@ public class AI_Controller : MonoBehaviour
             if (rb.velocity.x > 0.05f)
             {
                 transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                targetingView.offset.Set(3.3f, 0);
             }
             else if (rb.velocity.x < -0.05f)
             {
                 transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                targetingView.offset.Set(-3.3f, 0);
             }
         }
     }
