@@ -17,12 +17,8 @@ public class Stats : MonoBehaviour
     public float collectedMoney; // money collected in a single run
     public float totalMoney; // total collected money in game
 
-    public Text displayedHealth;
-
     private void Update()
     {
-
-        displayedHealth.text = $"{health}";
         if (health <= 0)
             Death();
     }

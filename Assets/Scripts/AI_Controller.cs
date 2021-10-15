@@ -57,7 +57,7 @@ public class AI_Controller : MonoBehaviour
     public float a_Range = 5f;
     public float a_Speed = 2f;
     public float a_CoolDown = 3f;
-    public float a_Damage = 10;
+    public int a_Damage = 10;
 
     [Space(20)]
     public GameObject weapon;
