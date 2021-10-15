@@ -208,12 +208,12 @@ MonoBehaviour:
     maxEnergy: 10
     totalMoney: 0
   maxPossibleStats:
-    maxHealth: 10
-    speedModifier: 1
-    damageModifier: 1
-    attackSpeedModifier: 1
-    maxEnergy: 10
-    totalMoney: 0
+    maxHealth: 100
+    speedModifier: 10
+    damageModifier: 10
+    attackSpeedModifier: 10
+    maxEnergy: 100
+    totalMoney: 999999
   player: {fileID: 9072340229771961918, guid: 0baf89b833a21364ab73189cf512f8f6, type: 3}
   isNewGame: 1
   mainID: 0

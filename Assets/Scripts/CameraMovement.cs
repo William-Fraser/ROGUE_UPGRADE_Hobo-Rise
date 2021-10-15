@@ -8,6 +8,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+        if (GameManager.gameManager.player != null)
+        {
+            player = GameManager.gameManager.player;
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+        }
     }
 }

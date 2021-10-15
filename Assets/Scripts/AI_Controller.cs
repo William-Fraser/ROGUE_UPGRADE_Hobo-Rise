@@ -91,6 +91,8 @@ public class AI_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerObject = GameManager.gameManager.player;
+        target = GameManager.gameManager.player.transform;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponentInChildren<Stats>();

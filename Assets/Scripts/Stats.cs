@@ -21,21 +21,35 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
         displayedHealth.text = $"{health}";
         if (health <= 0)
             Death();
     }
     private void Awake()
     {
-        if(this.gameObject.tag == "Player")
+        if (GameManager.gameManager == null)
+            return;
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
+        if (this.gameObject.tag == "Player")
         {
-            maxHealth = GameManager.gameManager.stats.maxHealth;
-            speedModifier = GameManager.gameManager.stats.speedModifier;
-            damageModifier = GameManager.gameManager.stats.damageModifier;
-            attackSpeedModifier = GameManager.gameManager.stats.attackSpeedModifier;
-            maxEnergy = GameManager.gameManager.stats.maxEnergy;
-            totalMoney = GameManager.gameManager.stats.totalMoney;
+            ResetPlayerStats();
         }
+    }
+    public void ResetPlayerStats()
+    {
+        maxHealth = GameManager.gameManager.stats.maxHealth;
+        health = maxHealth;
+        speedModifier = GameManager.gameManager.stats.speedModifier;
+        damageModifier = GameManager.gameManager.stats.damageModifier;
+        attackSpeedModifier = GameManager.gameManager.stats.attackSpeedModifier;
+        maxEnergy = GameManager.gameManager.stats.maxEnergy;
+        energy = maxEnergy;
+        totalMoney = GameManager.gameManager.stats.totalMoney;
+        collectedMoney = 0;
+        alive = true;
     }
 
     #region Set, Obtain, and Lose resources
@@ -76,14 +90,16 @@ public class Stats : MonoBehaviour
 
     private void Death()
     {
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
         alive = false;
         if (this.gameObject.tag == "Player")
         {
             GameManager.gameManager.stats.totalMoney += collectedMoney;
         }
-        Color colour = GetComponent<SpriteRenderer>().color;
-        colour.a = 0; 
-        GetComponent<SpriteRenderer>().color = colour;
+       // Color colour = GetComponent<SpriteRenderer>().color;
+      //  colour.a = 0; 
+       // GetComponent<SpriteRenderer>().color = colour;
         if (GetComponent<Rigidbody2D>() != null)
         { transform.gameObject.SetActive(false); }
         else if (GetComponentInParent<Rigidbody2D>())

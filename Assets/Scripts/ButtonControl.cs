@@ -18,6 +18,10 @@ public class ButtonControl : MonoBehaviour
             ContinueToUpgrade();
         }
     }
+    public void NextRound()
+    {
+        GameManager.gameManager.NextRound(); 
+    }
     public void NewGame()
     {
         Debug.Log("Loading New Game");

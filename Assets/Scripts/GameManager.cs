@@ -43,6 +43,19 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    private void Update()
+    {
+        if(currentScene == GameScenes.InGame && player == null)
+            player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            if(player.GetComponent<Stats>().health == 0 || player.GetComponent<Stats>().energy == 0)
+            {
+                if(currentScene == GameScenes.InGame)
+                    ChangeScene(GameScenes.Results);
+            }
+        }
+    }
     #endregion
 
     #region Scenes
@@ -50,13 +63,20 @@ public class GameManager : MonoBehaviour
     {
         ChangeScene(GameScenes.Main);
     }
+    public void NextRound()
+    {
+        player.GetComponent<PlayerController>().Reset();
+        player.GetComponent<PlayerController>().UpdateStats();
+        player.SetActive(true);
+        ChangeScene(GameScenes.InGame);
+    }
     #endregion
 
     #region Save and Load System
     public void NewGame()
     {
         isNewGame = true;
-        ChangeScene(GameScenes.Upgrade);
+        ChangeScene(GameScenes.InGame);
     }
     public bool isOnUpgrade()
     {
