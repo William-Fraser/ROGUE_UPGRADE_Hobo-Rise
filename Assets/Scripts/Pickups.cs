@@ -6,30 +6,12 @@ public class Pickups : MonoBehaviour
 {
     public PickupTypes type;
     public int effectValue;
-    
-    private GameObject player;
-    
+    public GameObject player;
     public enum PickupTypes { 
         Coin,
         Bill,
         Food,
         MysteryMeat
-    }
-    private void Start()
-    {
-        // find player character
-        GameObject[] players;
-
-        players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject player in players)
-        {
-            if (player.GetComponent<PlayerController>())
-            {
-                this.player = player;
-                break;
-            }
-        }
     }
     private void Collected()
     {
