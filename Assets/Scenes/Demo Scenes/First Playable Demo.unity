@@ -679,7 +679,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestHud
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6186588180655235276, guid: e6666cfa1420d284590511bd42f7bf73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e6666cfa1420d284590511bd42f7bf73, type: 3}
 --- !u!4 &6280781332994353361 stripped
 Transform:
