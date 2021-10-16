@@ -15,6 +15,8 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
         Debug.Log("attack hit");
         if (collision.gameObject.GetComponent<Stats>() != null)
         collision.gameObject.GetComponent<Stats>().health -= damage;
