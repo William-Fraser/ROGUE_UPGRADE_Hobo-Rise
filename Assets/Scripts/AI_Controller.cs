@@ -218,12 +218,12 @@ public class AI_Controller : MonoBehaviour
         {
             if (tagWhitelist[i].Tag.Contains(collision.tag))
             {
+                state = STATE.CHASE;
                 targetObject = collision.gameObject;
                 triggerDistance = defaultTriggerDistance; // change trigger distance back for chasing
             }
         }
     }
-
 
     private void OnTriggerStay2D(Collider2D collision) // attacks
     {

@@ -692,6 +692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 7859629019766342191, guid: 241367f1ca4be9244a52b271e168a990, type: 3}
+      propertyPath: fOV
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 241367f1ca4be9244a52b271e168a990, type: 3}
 --- !u!1 &1711034288
@@ -935,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 2040898294}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: a_Range
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: patrolling

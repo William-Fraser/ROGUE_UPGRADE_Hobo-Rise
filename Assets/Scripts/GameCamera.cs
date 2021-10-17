@@ -10,12 +10,24 @@ public class GameCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameManager.gameManager.player;
+        // find player character
+        GameObject[] players;
+
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<PlayerController>())
+            {
+                this.player = player;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.position = player.transform.position - new Vector3(0, 0, 15-fOV);
+        this.gameObject.transform.position = player.transform.position - new Vector3(0, 0, 1+fOV);
     }
 }
