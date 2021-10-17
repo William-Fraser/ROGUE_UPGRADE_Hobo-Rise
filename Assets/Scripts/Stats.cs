@@ -33,10 +33,6 @@ public class Stats : MonoBehaviour
             return;
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
-        if (this.gameObject.tag == "Player")
-        {
-            ResetPlayerStats();
-        }
     }
     public void ResetPlayerStats()
     {

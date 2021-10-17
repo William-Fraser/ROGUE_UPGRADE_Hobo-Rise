@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(creditsID);
                 break;
             default:
+                Debug.LogError("ERR:Loading Scene");
                 SceneManager.LoadScene(upgradeID);
                 break;
         }
