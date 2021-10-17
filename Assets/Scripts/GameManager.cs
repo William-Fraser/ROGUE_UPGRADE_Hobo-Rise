@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     public GameObject saveWarning;
-    public PlayerData stats;
-    public PlayerData maxPossibleStats;
+    public PlayerData data = new PlayerData();
     public GameObject player;
     public bool isNewGame = false;
     public int mainID;
@@ -19,10 +18,9 @@ public class GameManager : MonoBehaviour
     public int resultsID;
     public int upgradeID;
     public int creditsID;
-    public GameScenes currentScene;
+    private GameScenes currentScene;
 
-
-    public enum GameScenes { 
+    private enum GameScenes { 
         Main,
         InGame,
         Victory,
@@ -43,19 +41,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void Update()
-    {
-        if(currentScene == GameScenes.InGame && player == null)
-            player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            if(player.GetComponent<Stats>().health == 0 || player.GetComponent<Stats>().energy == 0)
-            {
-                if(currentScene == GameScenes.InGame)
-                    ChangeScene(GameScenes.Results);
-            }
-        }
-    }
     #endregion
 
     #region Scenes
@@ -63,28 +48,13 @@ public class GameManager : MonoBehaviour
     {
         ChangeScene(GameScenes.Main);
     }
-    public void NextRound()
-    {
-        player.GetComponent<PlayerController>().Reset();
-        player.GetComponent<PlayerController>().UpdateStats();
-        player.SetActive(true);
-        ChangeScene(GameScenes.InGame);
-    }
     #endregion
 
     #region Save and Load System
     public void NewGame()
     {
         isNewGame = true;
-        ChangeScene(GameScenes.InGame);
-    }
-    public bool isOnUpgrade()
-    {
-        if(currentScene == GameScenes.Upgrade)
-        {
-            return true;
-        }
-        return false;
+        ChangeScene(GameScenes.Upgrade);
     }
     public void Load()
     {
@@ -94,15 +64,19 @@ public class GameManager : MonoBehaviour
             {
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+
                 PlayerData loadData = (PlayerData)bf.Deserialize(file);
                 file.Close();
-                stats.maxHealth = loadData.maxHealth;
-                stats.speedModifier = loadData.speedModifier;
-                stats.damageModifier = loadData.damageModifier;
-                stats.attackSpeedModifier = loadData.attackSpeedModifier;
-                stats.maxEnergy = loadData.maxEnergy;
-                stats.totalMoney = loadData.totalMoney;
+
+                data.maxHealth = loadData.maxHealth;
+                data.speedModifier = loadData.speedModifier;
+                data.damageModifier = loadData.damageModifier;
+                data.attackSpeedModifier = loadData.attackSpeedModifier;
+                data.maxEnergy = loadData.maxEnergy;
+                data.totalMoney = loadData.totalMoney;
+
                 ChangeScene(GameScenes.Upgrade);
+
             }
         }
         catch
@@ -112,7 +86,6 @@ public class GameManager : MonoBehaviour
     }
     public void AttemptSave()
     {
-        Debug.Log("SAVE ATTEMPT!");
         if (isNewGame == true && CanLoad())
         {
             saveWarning.SetActive(true);
@@ -129,18 +102,19 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
-    public void Save()
+    private void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-        PlayerData saveData = new PlayerData();
-        saveData.attackSpeedModifier = stats.attackSpeedModifier;
-        saveData.damageModifier = stats.damageModifier;
-        saveData.maxEnergy = stats.maxEnergy;
-        saveData.maxHealth = stats.maxHealth;
-        saveData.speedModifier = stats.speedModifier;
-        saveData.totalMoney = stats.totalMoney;
-        bf.Serialize(file, saveData);
+
+        data.maxHealth = player.GetComponent<Stats>().maxHealth;
+        data.speedModifier = player.GetComponent<Stats>().speedModifier;
+        data.damageModifier = player.GetComponent<Stats>().damageModifier;
+        data.attackSpeedModifier = player.GetComponent<Stats>().attackSpeedModifier;
+        data.maxEnergy = player.GetComponent<Stats>().maxEnergy;
+        data.totalMoney = player.GetComponent<Stats>().totalMoney;
+
+        bf.Serialize(file, data);
         file.Close();
     }
     #endregion
@@ -177,42 +151,15 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
-
-    #region Stat Upgrades
-    public void RemoveMoney(float moneyToRemove)
-    {
-        stats.totalMoney -= moneyToRemove;
-    }
-    public void UpgradeHealth()
-    {
-        stats.maxHealth += 10;
-    }
-    public void UpgradeSpeed()
-    {
-        stats.speedModifier += 1;
-    }
-    public void UpgradeDamage()
-    {
-        stats.damageModifier += 1;
-    }
-    public void UpgradeAttackSpeed()
-    {
-        stats.attackSpeedModifier += 1;
-    }
-    public void UpgradeEnergy()
-    {
-        stats.maxEnergy += 10;
-    }
-    #endregion
 }
 
 [Serializable]
 public class PlayerData
 {
-    public int maxHealth = 10;
-    public float speedModifier = 1;
-    public float damageModifier = 1;
-    public float attackSpeedModifier = 1;
-    public int maxEnergy = 10;
-    public float totalMoney = 0;
+    public int maxHealth;
+    public float speedModifier;
+    public float damageModifier;
+    public float attackSpeedModifier;
+    public int maxEnergy;
+    public float totalMoney;
 }

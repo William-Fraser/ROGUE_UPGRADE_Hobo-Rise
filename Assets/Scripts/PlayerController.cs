@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     private float timeSpentInAttack = 0f;
 
+    
+
     public enum PlayerDirection
     {
         Right,
@@ -33,8 +35,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
         if (stats.alive == false)
         { return; }
 
@@ -47,15 +47,11 @@ public class PlayerController : MonoBehaviour
     }
     public void Reset()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
         UpdateStats();   
         direction = PlayerDirection.Right;
     }
     private void CheckTimes()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
         if (attacking)
         {
             if(timeSpentInAttack >= lengthOfAttack / baseAttackSpeed)
@@ -72,15 +68,12 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void UpdateStats()
+    private void UpdateStats()
     {
-        stats.ResetPlayerStats();
         modifiedSpeed = baseSpeed * stats.speedModifier;
     }
     private void CheckInput()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
         if (attacking)
             return;
         if (Input.GetKey(KeyCode.A))
