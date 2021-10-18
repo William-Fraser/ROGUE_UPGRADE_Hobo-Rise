@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour
     }
     public void ResetPlayer()
     {
-        //if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-          //  return;
+        if (GameManager.gameManager.currentScene == GameManager.GameScenes.InGame)
+          return;
         ResetStats();   
         direction = PlayerDirection.Right;
     }

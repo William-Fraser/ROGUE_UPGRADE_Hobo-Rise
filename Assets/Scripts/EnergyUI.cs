@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class EnergyUI : MonoBehaviour
 {
-    public Text energyText;
+    public Image energyImage;
     private void Update()
     {
-        energyText.text = "Energy: " + GameManager.gameManager.player.GetComponent<Stats>().displayedEnergy;
+        energyImage.rectTransform.localScale = new Vector3(GameManager.gameManager.player.GetComponent<Stats>().energy / GameManager.gameManager.player.GetComponent<Stats>().maxEnergy, GameManager.gameManager.player.GetComponent<Stats>().energy / GameManager.gameManager.player.GetComponent<Stats>().maxEnergy, 1);
     }
 }
