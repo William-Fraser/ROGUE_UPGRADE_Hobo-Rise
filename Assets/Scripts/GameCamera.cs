@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameCamera : MonoBehaviour
 {
-    public float fOV = 1;
+    public float fOV = 10;
 
     private GameObject player;
     // Start is called before the first frame update

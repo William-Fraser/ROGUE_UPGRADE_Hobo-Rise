@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
 public class PlayerData
 {
     public int maxHealth = 10;
-    public float speedModifier = 1;
+    public float speedModifier = 10;
     public float damageModifier = 1;
     public float attackSpeedModifier = 1;
     public int maxEnergy = 10;
