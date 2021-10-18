@@ -122,7 +122,8 @@ public class GameManager : MonoBehaviour
             saveWarning.SetActive(true);
         } else
         {
-            Save();
+            player.GetComponent<PlayerController>().ResetPlayer();
+            ChangeScene(GameScenes.InGame);
         }
     }
     public bool CanLoad()
