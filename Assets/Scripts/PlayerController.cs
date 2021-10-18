@@ -83,6 +83,15 @@ public class PlayerController : MonoBehaviour
     {
         UpdateStats();
         stats.ResetInGameStats();
+        if (attacking)
+        {
+            attacking = false;
+            timeSpentInAttack = 0;
+            if (direction == PlayerDirection.Right)
+                weapon.transform.Translate(Vector3.left, Space.Self);
+            else
+                weapon.transform.Translate(Vector3.right, Space.Self);
+        }
     }
     private void CheckInput()
     {
