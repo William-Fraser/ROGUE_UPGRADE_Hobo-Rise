@@ -23,7 +23,7 @@ public class CoinUI : MonoBehaviour
     {
         if (inGame)
         {
-            coinText.text = "Coins: " + GameManager.gameManager.player.GetComponent<Stats>().collectedMoney;
+            coinText.text = "Coins: " + GameManager.gameManager.collectedMoney;
         } else
         {
             coinText.text = "Coins: " + GameManager.gameManager.stats.totalMoney;

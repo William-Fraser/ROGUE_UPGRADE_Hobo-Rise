@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public int creditsID;
     public GameScenes currentScene;
 
+    public float collectedMoney;
+
 
     public enum GameScenes { 
         Main,
@@ -45,14 +47,17 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(currentScene == GameScenes.InGame && player == null)
+        if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             if(player.GetComponent<Stats>().health == 0 || player.GetComponent<Stats>().energy == 0)
             {
-                if(currentScene == GameScenes.InGame)
+                if (currentScene == GameScenes.InGame)
+                {
                     ChangeScene(GameScenes.Results);
+                    stats.totalMoney += collectedMoney;
+                }
             }
         }
     }
@@ -65,10 +70,10 @@ public class GameManager : MonoBehaviour
     }
     public void NextRound()
     {
-        player.GetComponent<PlayerController>().Reset();
-        player.GetComponent<PlayerController>().UpdateStats();
         player.SetActive(true);
+        player.GetComponent<PlayerController>().ResetPlayer();
         ChangeScene(GameScenes.InGame);
+        collectedMoney = 0;
     }
     #endregion
 
@@ -76,6 +81,7 @@ public class GameManager : MonoBehaviour
     public void NewGame()
     {
         isNewGame = true;
+        player.GetComponent<PlayerController>().ResetPlayer();
         ChangeScene(GameScenes.InGame);
     }
     public bool isOnUpgrade()
@@ -118,6 +124,7 @@ public class GameManager : MonoBehaviour
             saveWarning.SetActive(true);
         } else
         {
+            isNewGame = false;
             Save();
         }
     }
@@ -205,6 +212,11 @@ public class GameManager : MonoBehaviour
         stats.maxEnergy += 10;
     }
     #endregion
+
+    public void CollectCoins(int value)
+    {
+        collectedMoney += value;
+    }
 }
 
 [Serializable]

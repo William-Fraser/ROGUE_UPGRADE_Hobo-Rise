@@ -15,27 +15,15 @@ public class Pickups : MonoBehaviour
         Food,
         MysteryMeat
     }
-    private void Start()
+    private void Awake()
     {
-        // find player character
-        GameObject[] players;
-
-        players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject player in players)
-        {
-            if (player.GetComponent<PlayerController>())
-            {
-                this.player = player;
-                break;
-            }
-        }
+        player = GameManager.gameManager.player;
     }
     private void Collected()
     {
         switch (type) {
             case PickupTypes.Coin:
-                player.GetComponent<Stats>().ObtainCoins(effectValue);
+                GameManager.gameManager.CollectCoins(effectValue);
                 break;
             case PickupTypes.Bill:
                 player.GetComponent<Stats>().ObtainCoins(effectValue);

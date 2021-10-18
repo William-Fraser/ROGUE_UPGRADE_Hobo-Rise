@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,18 @@ public class Stats : MonoBehaviour
             return;
         if (health <= 0)
             Death();
+
+        if(this.gameObject.tag == GameManager.gameManager.player.tag)
+        {
+            energy -= Time.deltaTime;
+            if (energy > 0)
+                displayedEnergy = Convert.ToInt16(energy);
+            else
+                displayedEnergy = 0;
+
+            if (energy < 0)
+                energy = 0;
+        }
     }
     private void Awake()
     {
@@ -31,18 +44,21 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
     }
-    public void ResetPlayerStats()
+    public void ResetInGameStats()
+    {
+        health = maxHealth;
+        energy = maxEnergy;
+        collectedMoney = 0;
+        alive = true;
+    }
+    public void ResetMainStats()
     {
         maxHealth = GameManager.gameManager.stats.maxHealth;
-        health = maxHealth;
         speedModifier = GameManager.gameManager.stats.speedModifier;
         damageModifier = GameManager.gameManager.stats.damageModifier;
         attackSpeedModifier = GameManager.gameManager.stats.attackSpeedModifier;
         maxEnergy = GameManager.gameManager.stats.maxEnergy;
-        energy = maxEnergy;
         totalMoney = GameManager.gameManager.stats.totalMoney;
-        collectedMoney = 0;
-        alive = true;
     }
 
     #region Set, Obtain, and Lose resources

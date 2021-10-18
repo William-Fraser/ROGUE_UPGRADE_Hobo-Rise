@@ -45,11 +45,11 @@ public class PlayerController : MonoBehaviour
         }
         CheckTimes();
     }
-    public void Reset()
+    public void ResetPlayer()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
-        UpdateStats();   
+        //if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+          //  return;
+        ResetStats();   
         direction = PlayerDirection.Right;
     }
     private void CheckTimes()
@@ -74,8 +74,15 @@ public class PlayerController : MonoBehaviour
     }
     public void UpdateStats()
     {
-        stats.ResetPlayerStats();
+        stats.ResetMainStats();
         modifiedSpeed = baseSpeed * stats.speedModifier;
+        modifiedAttackSpeed = baseSpeed * stats.attackSpeedModifier;
+        modifiedDamage = baseDamage * stats.damageModifier;
+    }
+    public void ResetStats()
+    {
+        UpdateStats();
+        stats.ResetInGameStats();
     }
     private void CheckInput()
     {
