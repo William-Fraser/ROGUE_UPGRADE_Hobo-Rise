@@ -1282,6 +1282,10 @@ PrefabInstance:
       propertyPath: upgradeID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7995370465514321293, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: stats.speedModifier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7995370465514321294, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_Name
       value: Game Manager

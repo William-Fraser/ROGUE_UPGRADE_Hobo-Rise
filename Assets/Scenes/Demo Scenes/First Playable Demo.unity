@@ -531,8 +531,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600860485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.04, z: 0}
-  m_LocalScale: {x: 8.195549, y: 8.195549, z: 8.195549}
+  m_LocalPosition: {x: -0.00000095367, y: -0.04, z: 0}
+  m_LocalScale: {x: 13.373497, y: 13.373497, z: 13.373497}
   m_Children: []
   m_Father: {fileID: 6280781332994353361}
   m_RootOrder: 1
@@ -714,19 +714,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522411026416, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Size.x
-      value: 8.061721
+      value: 13.209318
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522411026416, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Size.y
-      value: 8.061721
+      value: 13.305534
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522411026416, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.072164536
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522411026416, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: -0.024054527
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522511200020, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Name
@@ -785,8 +785,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6280781332994353361}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: a_Range
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: playerObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: nextWaypointDistance
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
