@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             return;
         if (attacking)
         {
-            if(timeSpentInAttack >= lengthOfAttack / baseAttackSpeed)
+            if(timeSpentInAttack >= lengthOfAttack / modifiedAttackSpeed)
             {
                 attacking = false;
                 timeSpentInAttack = 0;
