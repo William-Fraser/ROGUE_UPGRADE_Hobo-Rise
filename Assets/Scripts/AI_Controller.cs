@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-/// <summary>
-/// current err
-///     index failure in coroutine (after wait for seconds, unknown source)
-///     spacing issues, inspector needs tweaking
-///     when killing player, death is ungraceful and removes camera from scene
-///     
-/// </summary>
-
 public enum STATE
 { 
     IDLE,
@@ -68,6 +60,7 @@ public class AI_Controller : MonoBehaviour
     public int searchTime = 10;
 
     //private fields
+    private GameObject targetCheckObject;
     public STATE state;
     private Stats stats;
     private GameObject targetObject;
@@ -198,6 +191,7 @@ public class AI_Controller : MonoBehaviour
                         if (Vector2.Distance(transform.position, patrolPoint2.transform.position) < 5)
                         { patrolToPoint = patrolPoint1; }
                     }
+                    CheckAndSetStateToChase();
                 }
                 break;
 
@@ -336,28 +330,30 @@ public class AI_Controller : MonoBehaviour
     }
     #endregion
 
-    #region public methods
-    public void CheckChaseTarget(Collider2D collision) // CHASE STATE
+    #region state methods
+    private void CheckAndSetStateToChase()
     {
-        //detected but outside of attack range
-        if (Vector2.Distance(this.transform.position, target.position) > attackRange)
+        for (int i = 0; i < tagWhitelist.Length; i++)
         {
-            Debug.Log(collision.gameObject);
-            for (int i = 0; i < tagWhitelist.Length; i++)
+            if (tagWhitelist[i].Tag.Contains(targetCheckObject.tag))
             {
-                if (tagWhitelist[i].Tag.Contains(collision.tag))
-                {
-                    returnPoint.transform.position = new Vector3(transform.position.x, 0, 0);
-                    state = STATE.CHASE;
-                    targetVisible = true;
-                    targetObject = collision.gameObject;
+                returnPoint.transform.position = new Vector3(transform.position.x, 0, 0);
+                state = STATE.CHASE;
+                targetVisible = true;
+                targetObject = targetCheckObject;
 
-                    triggerDistance = defaultTriggerDistance; // change trigger distance back for chasing
-                }
+                triggerDistance = defaultTriggerDistance; // change trigger distance back for chasing
             }
         }
     }
-    public void TryAttack(Collider2D collision)
+    #endregion
+
+    #region public methods
+    public void ViewTriggerEnter(Collider2D collision) // CHASE STATE
+    {
+        targetCheckObject = collision.gameObject;
+    }
+    public void ViewTriggerStay(Collider2D collision)
     {
         // enters attack range
         if (Vector2.Distance(this.transform.position, target.position) < attackRange)
@@ -369,7 +365,7 @@ public class AI_Controller : MonoBehaviour
             }
         }
     }
-    public void StartChaseCountdown()
+    public void ViewTriggerExit()
     {
         targetVisible = false;
         StartCoroutine("ChaseCountdown");

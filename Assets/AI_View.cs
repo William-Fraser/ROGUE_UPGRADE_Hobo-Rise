@@ -7,14 +7,14 @@ public class AI_View : MonoBehaviour
     public AI_Controller controller;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        controller.CheckChaseTarget(collision);
+        controller.ViewTriggerEnter(collision);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        controller.TryAttack(collision);
+        controller.ViewTriggerStay(collision);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        controller.StartChaseCountdown();
+        controller.ViewTriggerExit();
     }
 }
