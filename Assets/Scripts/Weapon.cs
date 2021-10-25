@@ -20,5 +20,6 @@ public class Weapon : MonoBehaviour
         Debug.Log("attack hit");
         if (collision.gameObject.GetComponent<Stats>() != null)
         collision.gameObject.GetComponent<Stats>().health -= damage;
+        GameManager.gameManager.DamageAdded(damage);
     }
 }

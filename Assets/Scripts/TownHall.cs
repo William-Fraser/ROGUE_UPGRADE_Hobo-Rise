@@ -7,9 +7,13 @@ public class TownHall : MonoBehaviour
 {
     public GameObject townHallCanvas;
     public Text shackText;
+    public Text houseText;
+    public Text mansionText;
     private bool canvasOpen;
     private bool isPlayerHere;
     private int shackPrice = 50;
+    private int housePrice = 150;
+    private int mansionPrice = 250;
     private void Update()
     {
         Debug.LogWarning(Time.timeScale);
@@ -27,6 +31,24 @@ public class TownHall : MonoBehaviour
             } else
             {
                 shackText.text = "Cannot Afford: $" + shackPrice;
+            }
+
+            if (GameManager.gameManager.CanPurchase(housePrice))
+            {
+                houseText.text = "Buy: " + housePrice;
+            }
+            else
+            {
+                houseText.text = "Cannot Afford: $" + housePrice;
+            }
+
+            if (GameManager.gameManager.CanPurchase(mansionPrice))
+            {
+                mansionText.text = "Buy: " + mansionPrice;
+            }
+            else
+            {
+                mansionText.text = "Cannot Afford: $" + mansionPrice;
             }
         }
     }
@@ -54,6 +76,20 @@ public class TownHall : MonoBehaviour
         if (GameManager.gameManager.CanPurchase(shackPrice))
         {
             GameManager.gameManager.BuyHouse(GameManager.HouseBought.Shack);
+        }
+    }
+    public void PurchaseHouse()
+    {
+        if (GameManager.gameManager.CanPurchase(housePrice))
+        {
+            GameManager.gameManager.BuyHouse(GameManager.HouseBought.House);
+        }
+    }
+    public void PurchaseMansion()
+    {
+        if (GameManager.gameManager.CanPurchase(mansionPrice))
+        {
+            GameManager.gameManager.BuyHouse(GameManager.HouseBought.Mansion);
         }
     }
 

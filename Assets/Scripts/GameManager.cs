@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public HouseBought houseBought = HouseBought.None;
 
     public float collectedMoney;
+    public int enemiesKilled;
+    public int damageDealt;
 
 
     public enum GameScenes { 
@@ -81,6 +83,9 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().ResetPlayer();
         ChangeScene(GameScenes.InGame);
         collectedMoney = 0;
+
+        damageDealt = 0;
+        enemiesKilled = 0;
     }
     #endregion
 
@@ -251,6 +256,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Result Methods
+    public void EnemyKilled()
+    {
+        enemiesKilled += 1;
+    }
+    public void DamageAdded(int damage)
+    {
+        damageDealt += damage;
+    }
+
+    #endregion
     public void CollectCoins(int value)
     {
         collectedMoney += value;
