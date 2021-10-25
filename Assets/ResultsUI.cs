@@ -17,7 +17,7 @@ public class ResultsUI : MonoBehaviour
         coinsCollected.text = "" +GameManager.gameManager.collectedMoney;
         healthLeft.text = "" + GameManager.gameManager.player.GetComponent<Stats>().health;
         enemiesKilled.text = "" + GameManager.gameManager.enemiesKilled;
-        distanceTraveled.text = "" + GameManager.gameManager.collectedMoney;
+        distanceTraveled.text = "" + GameManager.gameManager.distanceTraveled;
         damageDealt.text = "" + GameManager.gameManager.damageDealt;
     }
 }

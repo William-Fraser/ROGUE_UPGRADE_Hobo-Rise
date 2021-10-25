@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     public float collectedMoney;
     public int enemiesKilled;
-    public int damageDealt;
+    public float damageDealt;
+    public float distanceTraveled;
 
 
     public enum GameScenes { 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
 
         damageDealt = 0;
         enemiesKilled = 0;
+        distanceTraveled = 0;
     }
     #endregion
 
@@ -136,6 +138,7 @@ public class GameManager : MonoBehaviour
         } else
         {
             player.GetComponent<PlayerController>().ResetPlayer();
+            player.GetComponent<PlayerController>().ResetStats();
             ChangeScene(GameScenes.InGame);
         }
     }
@@ -261,11 +264,16 @@ public class GameManager : MonoBehaviour
     {
         enemiesKilled += 1;
     }
-    public void DamageAdded(int damage)
+    public void DamageAdded(float damage, bool isPlayer)
     {
-        damageDealt += damage;
+        if(isPlayer)
+            damageDealt += damage;
     }
 
+    public void DistanceTraveled(float distance)
+    {
+        distanceTraveled += distance;
+    }
     #endregion
     public void CollectCoins(int value)
     {
