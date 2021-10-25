@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
             {
                 if (currentScene == GameScenes.InGame)
                 {
-                    ChangeScene(GameScenes.Results);
-                    stats.totalMoney += collectedMoney;
+                    stats.totalMoney += collectedMoney; 
+                    ChangeScene(GameScenes.Results); 
                 }
             }
         }
@@ -80,9 +80,7 @@ public class GameManager : MonoBehaviour
     #region Save and Load System
     public void NewGame()
     {
-        isNewGame = true;
-        player.GetComponent<PlayerController>().ResetPlayer();
-        ChangeScene(GameScenes.InGame);
+        AttemptSave();
     }
     public bool isOnUpgrade()
     {
@@ -119,13 +117,13 @@ public class GameManager : MonoBehaviour
     public void AttemptSave()
     {
         Debug.Log("SAVE ATTEMPT!");
-        if (isNewGame == true && CanLoad())
+        if (CanLoad())
         {
             saveWarning.SetActive(true);
         } else
         {
-            isNewGame = false;
-            Save();
+            player.GetComponent<PlayerController>().ResetPlayer();
+            ChangeScene(GameScenes.InGame);
         }
     }
     public bool CanLoad()
@@ -153,8 +151,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Change Scene Methods
-    private void ChangeScene(GameScenes targetScene)
+    public void ChangeScene(GameScenes targetScene)
     {
+        Save();
         currentScene = targetScene;
         switch (currentScene) {
             case GameScenes.Main:
@@ -187,6 +186,10 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Stat Upgrades
+    public void UpgradeTrigger() // Designed to run everytime you upgrade, just so we could add additional logic without editing each method
+    {
+        Save();
+    }
     public void RemoveMoney(float moneyToRemove)
     {
         stats.totalMoney -= moneyToRemove;
@@ -194,22 +197,27 @@ public class GameManager : MonoBehaviour
     public void UpgradeHealth()
     {
         stats.maxHealth += 10;
+        UpgradeTrigger();
     }
     public void UpgradeSpeed()
     {
         stats.speedModifier += 1;
+        UpgradeTrigger();
     }
     public void UpgradeDamage()
     {
         stats.damageModifier += 1;
+        UpgradeTrigger();
     }
     public void UpgradeAttackSpeed()
     {
         stats.attackSpeedModifier += 1;
+        UpgradeTrigger();
     }
     public void UpgradeEnergy()
     {
         stats.maxEnergy += 10;
+        UpgradeTrigger();
     }
     #endregion
 

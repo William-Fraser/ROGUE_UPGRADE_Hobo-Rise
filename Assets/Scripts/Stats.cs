@@ -8,7 +8,7 @@ public class Stats : MonoBehaviour
 {
     public bool alive = true;
     public int maxHealth;
-    public int health;
+    public float health;
     public float speedModifier;
     public float damageModifier;
     public float attackSpeedModifier;

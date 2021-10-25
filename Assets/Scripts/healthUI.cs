@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class healthUI : MonoBehaviour
 {
-    public Text healthText;
+    public Image heart;
     private void Update()
     {
-        healthText.text = "Health: " + GameManager.gameManager.player.GetComponent<Stats>().health;
+        heart.rectTransform.localScale = new Vector3(GameManager.gameManager.player.GetComponent<Stats>().health / GameManager.gameManager.player.GetComponent<Stats>().maxHealth, GameManager.gameManager.player.GetComponent<Stats>().health / GameManager.gameManager.player.GetComponent<Stats>().maxHealth, 1);
     }
 }
