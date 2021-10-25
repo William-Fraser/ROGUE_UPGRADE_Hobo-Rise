@@ -577,6 +577,7 @@ MonoBehaviour:
     attackSpeedModifier: 1
     maxEnergy: 10
     totalMoney: 0
+    clout: 0
   maxPossibleStats:
     maxHealth: 100
     speedModifier: 10
@@ -584,17 +585,22 @@ MonoBehaviour:
     attackSpeedModifier: 10
     maxEnergy: 100
     totalMoney: 999999
+    clout: 0
   player: {fileID: 0}
   isNewGame: 1
   mainID: 0
   inGameID: 1
-  victoryID: 0
+  victoryID: 3
   gameOverID: 0
   resultsID: 2
   upgradeID: 2
   creditsID: 0
   currentScene: 0
+  houseBought: 0
   collectedMoney: 0
+  enemiesKilled: 0
+  damageDealt: 0
+  distanceTraveled: 0
 --- !u!114 &1922373691153822774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,6 +1092,10 @@ PrefabInstance:
     - target: {fileID: 9072340229968461003, guid: 0baf89b833a21364ab73189cf512f8f6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 9072340229968461004, guid: 0baf89b833a21364ab73189cf512f8f6, type: 3}
+      propertyPath: playerWeapon
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9072340229968461005, guid: 0baf89b833a21364ab73189cf512f8f6, type: 3}
       propertyPath: m_Size.x

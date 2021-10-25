@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     private float timeSpentInAttack = 0f;
 
+    private Vector3 previousPosition;
+
     public enum PlayerDirection
     {
         Right,
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        previousPosition = this.transform.position;
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
         if (stats.alive == false)
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
             CheckInput();
         }
         CheckTimes();
+        GameManager.gameManager.DistanceTraveled(Vector3.Distance(previousPosition, this.transform.position));
     }
     public void ResetPlayer()
     {
@@ -58,7 +62,8 @@ public class PlayerController : MonoBehaviour
             return;
         if (attacking)
         {
-            if(timeSpentInAttack >= lengthOfAttack / modifiedAttackSpeed)
+            weapon.GetComponent<Weapon>().attacking = true;
+            if (timeSpentInAttack >= lengthOfAttack / modifiedAttackSpeed)
             {
                 attacking = false;
                 timeSpentInAttack = 0;
@@ -70,11 +75,13 @@ public class PlayerController : MonoBehaviour
             {
                 timeSpentInAttack += Time.deltaTime;
             }
+        } else
+        {
+            weapon.GetComponent<Weapon>().attacking = false;
         }
     }
     public void UpdateStats()
     {
-        stats.ResetMainStats();
         modifiedSpeed = baseSpeed * stats.speedModifier;
         modifiedAttackSpeed = baseSpeed * stats.attackSpeedModifier;
         modifiedDamage = baseDamage * stats.damageModifier;
@@ -82,7 +89,10 @@ public class PlayerController : MonoBehaviour
     public void ResetStats()
     {
         UpdateStats();
+        stats.ResetMainStats();
         stats.ResetInGameStats();
+        weapon.GetComponent<Weapon>().SetDamage(modifiedDamage);
+        stats.health = stats.maxHealth;
         if (attacking)
         {
             attacking = false;

@@ -20,8 +20,12 @@ public class GameManager : MonoBehaviour
     public int upgradeID;
     public int creditsID;
     public GameScenes currentScene;
+    public HouseBought houseBought = HouseBought.None;
 
     public float collectedMoney;
+    public int enemiesKilled;
+    public float damageDealt;
+    public float distanceTraveled;
 
 
     public enum GameScenes { 
@@ -32,6 +36,12 @@ public class GameManager : MonoBehaviour
         Results,
         Upgrade,
         Credits
+    }
+    public enum HouseBought { 
+        None,
+        Shack,
+        Mansion,
+        House
     }
     #region Unity Messages
     private void Start()
@@ -74,6 +84,10 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().ResetPlayer();
         ChangeScene(GameScenes.InGame);
         collectedMoney = 0;
+
+        damageDealt = 0;
+        enemiesKilled = 0;
+        distanceTraveled = 0;
     }
     #endregion
 
@@ -106,6 +120,7 @@ public class GameManager : MonoBehaviour
                 stats.attackSpeedModifier = loadData.attackSpeedModifier;
                 stats.maxEnergy = loadData.maxEnergy;
                 stats.totalMoney = loadData.totalMoney;
+                stats.clout = loadData.clout;
                 ChangeScene(GameScenes.Upgrade);
             }
         }
@@ -123,6 +138,7 @@ public class GameManager : MonoBehaviour
         } else
         {
             player.GetComponent<PlayerController>().ResetPlayer();
+            player.GetComponent<PlayerController>().ResetStats();
             ChangeScene(GameScenes.InGame);
         }
     }
@@ -145,6 +161,7 @@ public class GameManager : MonoBehaviour
         saveData.maxHealth = stats.maxHealth;
         saveData.speedModifier = stats.speedModifier;
         saveData.totalMoney = stats.totalMoney;
+        saveData.clout = stats.clout;
         bf.Serialize(file, saveData);
         file.Close();
     }
@@ -189,10 +206,23 @@ public class GameManager : MonoBehaviour
     public void UpgradeTrigger() // Designed to run everytime you upgrade, just so we could add additional logic without editing each method
     {
         Save();
+        AddClout(1);
     }
     public void RemoveMoney(float moneyToRemove)
     {
         stats.totalMoney -= moneyToRemove;
+    }
+    public void AddClout(int amount)
+    {
+        stats.clout += amount;
+    }
+    public bool CheckClout(int amountToCheckAgainst)
+    {
+        return stats.clout >= amountToCheckAgainst;
+    }
+    public bool CanPurchase(int amountToCheckAgainst)
+    {
+        return stats.totalMoney >= amountToCheckAgainst;
     }
     public void UpgradeHealth()
     {
@@ -221,6 +251,30 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Housing Methods
+    public void BuyHouse(HouseBought typeOfHouse)
+    {
+        houseBought = typeOfHouse;
+        ChangeScene(GameScenes.Victory);
+    }
+    #endregion
+
+    #region Result Methods
+    public void EnemyKilled()
+    {
+        enemiesKilled += 1;
+    }
+    public void DamageAdded(float damage, bool isPlayer)
+    {
+        if(isPlayer)
+            damageDealt += damage;
+    }
+
+    public void DistanceTraveled(float distance)
+    {
+        distanceTraveled += distance;
+    }
+    #endregion
     public void CollectCoins(int value)
     {
         collectedMoney += value;
@@ -236,4 +290,5 @@ public class PlayerData
     public float attackSpeedModifier = 1;
     public int maxEnergy = 10;
     public float totalMoney = 0;
+    public int clout = 0;
 }

@@ -879,6 +879,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsCollected: {fileID: 983146911}
+  healthLeft: {fileID: 891525335}
+  enemiesKilled: {fileID: 1557178231}
+  distanceTraveled: {fileID: 1442891185}
+  damageDealt: {fileID: 1980422770}
 --- !u!1 &791588521
 GameObject:
   m_ObjectHideFlags: 0

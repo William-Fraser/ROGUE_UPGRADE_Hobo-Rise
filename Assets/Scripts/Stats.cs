@@ -105,6 +105,9 @@ public class Stats : MonoBehaviour
         if (this.gameObject.tag == "Player")
         {
             GameManager.gameManager.stats.totalMoney += collectedMoney;
+        } else
+        {
+            GameManager.gameManager.EnemyKilled();
         }
        // Color colour = GetComponent<SpriteRenderer>().color;
       //  colour.a = 0; 
