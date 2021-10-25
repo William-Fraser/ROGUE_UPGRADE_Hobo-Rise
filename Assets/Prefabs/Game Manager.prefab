@@ -577,6 +577,7 @@ MonoBehaviour:
     attackSpeedModifier: 1
     maxEnergy: 10
     totalMoney: 0
+    clout: 0
   maxPossibleStats:
     maxHealth: 100
     speedModifier: 10
@@ -584,16 +585,18 @@ MonoBehaviour:
     attackSpeedModifier: 10
     maxEnergy: 100
     totalMoney: 999999
+    clout: 0
   player: {fileID: 0}
   isNewGame: 1
   mainID: 0
   inGameID: 1
-  victoryID: 0
+  victoryID: 3
   gameOverID: 0
   resultsID: 2
   upgradeID: 2
   creditsID: 0
   currentScene: 0
+  houseBought: 0
   collectedMoney: 0
 --- !u!114 &1922373691153822774
 MonoBehaviour:
