@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6414589305166169208}
   - component: {fileID: 6414589305166169209}
   - component: {fileID: 6414589305166169214}
-  m_Layer: 6
-  m_Name: Collectible
+  m_Layer: 0
+  m_Name: aCollectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,4 +124,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   effectValue: 5
-  player: {fileID: 0}
