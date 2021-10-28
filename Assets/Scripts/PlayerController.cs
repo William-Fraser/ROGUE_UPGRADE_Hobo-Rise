@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float baseJumpHeight;
     public PlayerDirection direction;
     public GameObject weapon;
+    public Animator animator;
 
     private Stats stats;
     private Rigidbody2D rb;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private float timeSpentInAttack = 0f;
 
     private Vector3 previousPosition;
+    public Vector2 movementDirection; //Used for Blend Tree
 
     public enum PlayerDirection
     {
@@ -48,6 +50,12 @@ public class PlayerController : MonoBehaviour
         }
         CheckTimes();
         GameManager.gameManager.DistanceTraveled(Vector3.Distance(previousPosition, this.transform.position));
+
+        if (Input.GetAxis("Horizontal") >= 0.1f || Input.GetAxis("Horizontal") <= -0.1f)
+        {
+            animator.SetFloat("LastMoveX", Input.GetAxis("Horizontal"));
+        }
+        Animate();
     }
     public void ResetPlayer()
     {
@@ -148,6 +156,9 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.Translate(new Vector3((modifiedSpeed * Time.deltaTime), 0, 0));
         }
+
+        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movementDirection.Normalize();
     }
 
     private void Attack()
@@ -161,5 +172,14 @@ public class PlayerController : MonoBehaviour
             attacking = true;
             weapon.transform.Translate(Vector3.left, Space.Self);
         }
+    }
+
+    private void Animate()
+    {
+        animator.SetFloat("LastMoveX", movementDirection.x);
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            animator.SetFloat("Speed", 1f);
+        else
+            animator.SetFloat("Speed", -1f);
     }
 }
