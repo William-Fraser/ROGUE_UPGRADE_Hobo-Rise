@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 previousPosition;
     public Vector2 movementDirection; //Used for Blend Tree
 
+    private Vector3 originalWeaponScaling;
+
     public enum PlayerDirection
     {
         Right,
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         stats = this.gameObject.GetComponent<Stats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+        originalWeaponScaling = weapon.transform.localScale;
         UpdateStats();
     }
     void Update()
@@ -167,17 +170,19 @@ public class PlayerController : MonoBehaviour
         {
             attacking = true;
             weapon.transform.Translate(Vector3.right, Space.Self);
+            weapon.transform.localScale = originalWeaponScaling;
         } else
         {
             attacking = true;
             weapon.transform.Translate(Vector3.left, Space.Self);
+            weapon.transform.localScale = new Vector3(-originalWeaponScaling.x, originalWeaponScaling.y, originalWeaponScaling.z);
         }
     }
 
     private void Animate()
     {
         animator.SetFloat("LastMoveX", movementDirection.x);
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && attacking == false)
             animator.SetFloat("Speed", 1f);
         else
             animator.SetFloat("Speed", -1f);
