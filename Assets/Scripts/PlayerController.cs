@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float baseJumpHeight;
     public PlayerDirection direction;
     public GameObject weapon;
+    public Animator animator;
 
     private Stats stats;
     private Rigidbody2D rb;
@@ -21,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private float timeSpentInAttack = 0f;
 
     private Vector3 previousPosition;
+    public Vector2 movementDirection; //Used for Blend Tree
+
+    private Vector3 originalWeaponScaling;
 
     public enum PlayerDirection
     {
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         stats = this.gameObject.GetComponent<Stats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
+        originalWeaponScaling = weapon.transform.localScale;
         UpdateStats();
     }
     void Update()
@@ -48,6 +53,12 @@ public class PlayerController : MonoBehaviour
         }
         CheckTimes();
         GameManager.gameManager.DistanceTraveled(Vector3.Distance(previousPosition, this.transform.position));
+
+        if (Input.GetAxis("Horizontal") >= 0.1f || Input.GetAxis("Horizontal") <= -0.1f)
+        {
+            animator.SetFloat("LastMoveX", Input.GetAxis("Horizontal"));
+        }
+        Animate();
     }
     public void ResetPlayer()
     {
@@ -148,6 +159,9 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.Translate(new Vector3((modifiedSpeed * Time.deltaTime), 0, 0));
         }
+
+        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movementDirection.Normalize();
     }
 
     private void Attack()
@@ -156,10 +170,21 @@ public class PlayerController : MonoBehaviour
         {
             attacking = true;
             weapon.transform.Translate(Vector3.right, Space.Self);
+            weapon.transform.localScale = originalWeaponScaling;
         } else
         {
             attacking = true;
             weapon.transform.Translate(Vector3.left, Space.Self);
+            weapon.transform.localScale = new Vector3(-originalWeaponScaling.x, originalWeaponScaling.y, originalWeaponScaling.z);
         }
+    }
+
+    private void Animate()
+    {
+        animator.SetFloat("LastMoveX", movementDirection.x);
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && attacking == false)
+            animator.SetFloat("Speed", 1f);
+        else
+            animator.SetFloat("Speed", -1f);
     }
 }

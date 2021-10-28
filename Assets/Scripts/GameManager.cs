@@ -226,27 +226,27 @@ public class GameManager : MonoBehaviour
     }
     public void UpgradeHealth()
     {
-        stats.maxHealth += 10;
+        stats.maxHealth += maxPossibleStats.maxHealth/10;
         UpgradeTrigger();
     }
     public void UpgradeSpeed()
     {
-        stats.speedModifier += 1;
+        stats.speedModifier += maxPossibleStats.speedModifier / 10;
         UpgradeTrigger();
     }
     public void UpgradeDamage()
     {
-        stats.damageModifier += 1;
+        stats.damageModifier += maxPossibleStats.damageModifier / 10;
         UpgradeTrigger();
     }
     public void UpgradeAttackSpeed()
     {
-        stats.attackSpeedModifier += 1;
+        stats.attackSpeedModifier += maxPossibleStats.attackSpeedModifier / 10;
         UpgradeTrigger();
     }
     public void UpgradeEnergy()
     {
-        stats.maxEnergy += 10;
+        stats.maxEnergy += maxPossibleStats.maxEnergy / 10;
         UpgradeTrigger();
     }
     #endregion
