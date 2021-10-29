@@ -10,13 +10,19 @@ public class Weapon : MonoBehaviour
 
     public void SetDamage(float value)
     {
-        if (value < 0)
+        if (value <= 0)
+        {
             Debug.LogWarning("WARNING: Damage is below zero!!");
-        damage = value;
+            if (playerWeapon)
+                value = 10;
+        }
+            damage = value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(playerWeapon == true)
+         Debug.LogWarning(collision.gameObject +", Damage: " + damage);
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
         if (playerWeapon && !attacking)
