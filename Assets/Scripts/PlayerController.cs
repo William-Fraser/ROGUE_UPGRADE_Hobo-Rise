@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public PlayerDirection direction;
     public GameObject weapon;
     public Animator animator;
+    public Vector2 movementDirection; //Used for Blend Tree
 
     private Stats stats;
     private Rigidbody2D rb;
@@ -22,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private float timeSpentInAttack = 0f;
 
     private Vector3 previousPosition;
-    public Vector2 movementDirection; //Used for Blend Tree
 
     private Vector3 originalWeaponScaling;
 
