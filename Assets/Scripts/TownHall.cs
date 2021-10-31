@@ -10,6 +10,7 @@ public class TownHall : MonoBehaviour
     public Text houseText;
     public Text mansionText;
     public GameObject hoboRequirementText;
+    public GameObject welcomeTextBox;
     private bool canvasOpen;
     private bool isPlayerHere;
     private int shackPrice = 50;
@@ -24,6 +25,7 @@ public class TownHall : MonoBehaviour
             {
                 Time.timeScale = 0;
                 CanvasSetActive(true);
+                welcomeTextBox.SetActive(true);
             } else
             {
                 hoboRequirementText.SetActive(true);
@@ -72,6 +74,9 @@ public class TownHall : MonoBehaviour
         if (hoboRequirementText.activeInHierarchy)
         {
             hoboRequirementText.SetActive(false);
+        } else
+        {
+            welcomeTextBox.SetActive(false);
         }
     }
 
