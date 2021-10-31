@@ -572,7 +572,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
   m_Origin: {x: -68, y: -2, z: 0}
   m_Size: {x: 78, y: 14, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -14117,6 +14117,18 @@ PrefabInstance:
     - target: {fileID: 8711878293820624763, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
       propertyPath: m_Name
       value: CoinBronze (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711878293820624764, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
+      propertyPath: m_Color.b
+      value: 0.33962262
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711878293820624764, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
+      propertyPath: m_Color.g
+      value: 0.33962262
+      objectReference: {fileID: 0}
+    - target: {fileID: 8711878293820624764, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
+      propertyPath: m_Color.r
+      value: 0.33962262
       objectReference: {fileID: 0}
     - target: {fileID: 8711878293820624767, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
       propertyPath: m_RootOrder
