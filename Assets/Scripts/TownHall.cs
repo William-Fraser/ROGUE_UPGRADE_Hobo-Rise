@@ -25,10 +25,6 @@ public class TownHall : MonoBehaviour
             {
                 Time.timeScale = 0;
                 CanvasSetActive(true);
-                welcomeTextBox.SetActive(true);
-            } else
-            {
-                hoboRequirementText.SetActive(true);
             }
         }
 
@@ -66,6 +62,16 @@ public class TownHall : MonoBehaviour
         if(other.gameObject == GameManager.gameManager.player)
         {
             isPlayerHere = true;
+            if (GameManager.gameManager.CheckClout(10))
+            {
+                Time.timeScale = 0;
+                CanvasSetActive(true);
+                welcomeTextBox.SetActive(true);
+            }
+            else
+            {
+                hoboRequirementText.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
