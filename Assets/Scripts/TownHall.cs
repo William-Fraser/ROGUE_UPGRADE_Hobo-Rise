@@ -64,8 +64,6 @@ public class TownHall : MonoBehaviour
             isPlayerHere = true;
             if (GameManager.gameManager.CheckClout(10))
             {
-                Time.timeScale = 0;
-                CanvasSetActive(true);
                 welcomeTextBox.SetActive(true);
             }
             else
@@ -118,5 +116,6 @@ public class TownHall : MonoBehaviour
     {
         townHallCanvas.SetActive(active);
         canvasOpen = active;
+        welcomeTextBox.SetActive(!active);
     }
 }
