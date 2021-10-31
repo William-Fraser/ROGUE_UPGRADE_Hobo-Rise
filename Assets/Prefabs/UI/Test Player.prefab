@@ -150,7 +150,7 @@ MonoBehaviour:
   baseAttackSpeed: 1
   lengthOfAttack: 2
   baseSpeed: 1
-  baseJumpHeight: 8
+  baseJumpHeight: 9
   direction: 0
   weapon: {fileID: 9072340229968461007}
   animator: {fileID: 0}
