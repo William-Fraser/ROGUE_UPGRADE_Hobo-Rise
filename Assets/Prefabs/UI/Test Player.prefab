@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 9ea72647c24be493ba6f15a9cd2a24ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -153,6 +153,8 @@ MonoBehaviour:
   baseJumpHeight: 8
   direction: 0
   weapon: {fileID: 9072340229968461007}
+  animator: {fileID: 0}
+  movementDirection: {x: 0, y: 0}
 --- !u!114 &9072340229771961919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +300,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4f7d0965316a74099356d57093457f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWeapon: 0
+  attacking: 0

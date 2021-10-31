@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu-Instructions.unity
     guid: 37252208a6db84a4bbfe579b41dbcdde
   - enabled: 1
-    path: Assets/Scenes/Demo Scenes/First Playable Demo.unity
-    guid: c26d7c6f10cc33c40ab4cc2b9ff88a55
+    path: Assets/Scenes/Overworld.unity
+    guid: b0b83c4bbedd2a1459be6332d3b4a7bd
   - enabled: 1
     path: Assets/Scenes/Results-UpgradeMenu.unity
     guid: 8578107c53dd046478d3690c9283ed26
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/Demo Scenes/First Playable Demo.unity
+    guid: c26d7c6f10cc33c40ab4cc2b9ff88a55
+  - enabled: 0
     path: Assets/Scenes/Demo Scenes/Enemy AI Demo.unity
     guid: bd5e53030fd5fa74d948fe016d75561d
   m_configObjects: {}
