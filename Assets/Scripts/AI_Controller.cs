@@ -191,7 +191,6 @@ public class AI_Controller : MonoBehaviour
                         if (Vector2.Distance(transform.position, patrolPoint2.transform.position) < 5)
                         { patrolToPoint = patrolPoint1; }
                     }
-                    CheckAndSetStateToChase();
                 }
                 break;
 
@@ -330,28 +329,21 @@ public class AI_Controller : MonoBehaviour
     }
     #endregion
 
-    #region state methods
-    private void CheckAndSetStateToChase()
+    #region public methods
+    public void ViewTriggerEnter(Collider2D collision) // CHASE STATE
     {
         for (int i = 0; i < tagWhitelist.Length; i++)
         {
-            if (tagWhitelist[i].Tag.Contains(targetCheckObject.tag))
+            if (tagWhitelist[i].Tag.Contains(collision.tag))
             {
                 returnPoint.transform.position = new Vector3(transform.position.x, 0, 0);
                 state = STATE.CHASE;
                 targetVisible = true;
-                targetObject = targetCheckObject;
+                targetObject = collision.gameObject;
 
                 triggerDistance = defaultTriggerDistance; // change trigger distance back for chasing
             }
         }
-    }
-    #endregion
-
-    #region public methods
-    public void ViewTriggerEnter(Collider2D collision) // CHASE STATE
-    {
-        targetCheckObject = collision.gameObject;
     }
     public void ViewTriggerStay(Collider2D collision)
     {
