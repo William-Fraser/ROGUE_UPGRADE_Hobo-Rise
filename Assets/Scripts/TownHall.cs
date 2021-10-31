@@ -9,6 +9,7 @@ public class TownHall : MonoBehaviour
     public Text shackText;
     public Text houseText;
     public Text mansionText;
+    public GameObject hoboRequirementText;
     private bool canvasOpen;
     private bool isPlayerHere;
     private int shackPrice = 50;
@@ -19,8 +20,14 @@ public class TownHall : MonoBehaviour
         Debug.LogWarning(Time.timeScale);
         if(isPlayerHere && Input.GetKeyDown(KeyCode.E))
         {
-            Time.timeScale = 0;
-            CanvasSetActive(true);
+            if (GameManager.gameManager.CheckClout(10))
+            {
+                Time.timeScale = 0;
+                CanvasSetActive(true);
+            } else
+            {
+                hoboRequirementText.SetActive(true);
+            }
         }
 
         if (canvasOpen)
@@ -56,13 +63,16 @@ public class TownHall : MonoBehaviour
     {
         if(other.gameObject == GameManager.gameManager.player)
         {
-            if (GameManager.gameManager.CheckClout(10))
-                isPlayerHere = true;
+            isPlayerHere = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         isPlayerHere = false;
+        if (hoboRequirementText.activeInHierarchy)
+        {
+            hoboRequirementText.SetActive(false);
+        }
     }
 
     public void CloseMenu()
