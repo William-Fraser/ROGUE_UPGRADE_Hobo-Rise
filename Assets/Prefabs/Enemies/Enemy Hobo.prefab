@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 8.64
       objectReference: {fileID: 0}
+    - target: {fileID: 2558519521817113619, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2558519522411026419, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.8444695
@@ -79,6 +83,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2558519523426763300, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2558519523426763303, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.96
@@ -99,6 +107,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4051766262716904403, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: speed
       value: 2000
@@ -117,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: attackRange
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: attackSpeed

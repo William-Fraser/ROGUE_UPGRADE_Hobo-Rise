@@ -187,7 +187,7 @@ MonoBehaviour:
   patrolPoint1: {fileID: 2558519523426763302}
   patrolPoint2: {fileID: 2558519521817113621}
   chaseCountdown: 3
-  attackRange: 3
+  attackRange: 15
   attackSpeed: 2
   attackCoolDown: 3
   attackDamage: 10

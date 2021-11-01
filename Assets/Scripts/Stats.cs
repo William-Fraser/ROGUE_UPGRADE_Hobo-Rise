@@ -18,12 +18,19 @@ public class Stats : MonoBehaviour
     public float collectedMoney; // money collected in a single run
     public float totalMoney; // total collected money in game
 
+    private SpriteRenderer sprite;
+
     private void Update()
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
         if (health <= 0)
             Death();
+
+        if (sprite.color.r < 255)
+        {
+            sprite.color = new Color(255, 255, 255);
+        }
 
         if(this.gameObject.tag == GameManager.gameManager.player.tag)
         {
@@ -39,6 +46,13 @@ public class Stats : MonoBehaviour
     }
     private void Awake()
     {
+        /*if (GetComponent<SpriteRenderer>())
+            sprite = GetComponent<SpriteRenderer>();
+        else if (GetComponentInChildren<SpriteRenderer>())
+            sprite = GetComponentInChildren<SpriteRenderer>();
+        else if (GetComponentInParent<SpriteRenderer>())
+            sprite = GetComponentInParent<SpriteRenderer>();*/
+
         if (GameManager.gameManager == null)
             return;
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
@@ -89,9 +103,13 @@ public class Stats : MonoBehaviour
     {
         health += value;
     }
-    public void LoseHealth(int value)
+    public void LoseHealth(int value, bool attack)
     {
         health -= value;
+
+        if (attack)
+        { sprite.color = new Color(100, 0, 0); }
+
         if (health < 0)
             health = 0;
     }

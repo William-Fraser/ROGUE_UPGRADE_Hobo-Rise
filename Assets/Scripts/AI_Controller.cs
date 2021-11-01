@@ -143,7 +143,7 @@ public class AI_Controller : MonoBehaviour
             attacking = !attacking;
         }
         
-        if (canAttackCountDown && canAttackTimer > 0)
+        /*if (canAttackCountDown && canAttackTimer > 0)
         {
             canAttackTimer -= Time.deltaTime;
         }
@@ -151,7 +151,7 @@ public class AI_Controller : MonoBehaviour
         {
             canAttackCountDown = false;
             canAttack = !canAttack;
-        }
+        }*/
 
         if (TargetInDistance() && followEnabled)
         {
@@ -210,14 +210,15 @@ public class AI_Controller : MonoBehaviour
             case STATE.ATTACK:
                 {
                     /// stops upon reaching character and try's attacking
+                    
                     if (canAttack)
                     { 
                         canAttack = false;
                         Debug.Log("Enemy Attacking");
                         if (target.gameObject.GetComponent<Stats>() != null)
-                            target.gameObject.GetComponent<Stats>().LoseHealth(attackDamage);
+                            target.gameObject.GetComponent<Stats>().LoseHealth(attackDamage, true); ;
                         canAttackTimer = attackCoolDown;
-                        canAttackCountDown = true;
+                        StartCoroutine(CanAttackTimer());
                     }
                 }
                 break;
@@ -355,12 +356,16 @@ public class AI_Controller : MonoBehaviour
     public void ViewTriggerStay(Collider2D collision)
     {
         // enters attack range
-        if (Vector2.Distance(this.transform.position, target.position) < attackRange)
-        {
-            //Debug.Log("Collision");
-            if (collision.gameObject.GetComponent<Stats>() != null)
+        if (target.tag == "Player")
+        { 
+            if (Vector2.Distance(this.transform.position, target.position) < attackRange)
             {
-                state = STATE.ATTACK;
+                //Debug.Log("Collision");
+                    Debug.Log("Stuck Here" + Vector2.Distance(this.transform.position, target.position) + target.gameObject.name);
+                    state = STATE.ATTACK;
+                /*if (collision.gameObject.GetComponent<Stats>() != null || collision.gameObject.GetComponentInChildren<Stats>() != null)
+                {
+                }*/
             }
         }
     }

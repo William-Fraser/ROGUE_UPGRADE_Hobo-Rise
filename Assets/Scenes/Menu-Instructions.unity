@@ -1673,6 +1673,14 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1219386447}
+    - target: {fileID: 7442983370674529923, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442983370674529923, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7442983370674529927, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_SortingOrder
       value: 5

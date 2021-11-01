@@ -48,7 +48,7 @@ public class Pickups : MonoBehaviour
                 player.GetComponent<Stats>().ObtainHealth(effectValue);
                 break;
             case 2:
-                player.GetComponent<Stats>().LoseHealth(effectValue);
+                player.GetComponent<Stats>().LoseHealth(effectValue, true);
                 break;
         }
     }
