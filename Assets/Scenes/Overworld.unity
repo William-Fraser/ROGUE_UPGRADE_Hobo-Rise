@@ -1979,7 +1979,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145290634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1988,7 +1988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49, y: 5}
+  m_AnchoredPosition: {x: 31.68991, y: 16.65541}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &145290636
@@ -2024,12 +2024,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'You can press A and D to move left and right.
+  m_Text: 'A - Walk Left
 
-    Pressing W will allow
-    you to jump.
+    D - Walk Right
 
-    Pressing L allows you to swing your weapon.'
+    W or Space - Jump
+
+    L - Attack'
 --- !u!222 &145290637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2372,8 +2373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.4082, y: 127}
-  m_SizeDelta: {x: 327.4655, y: 71.7872}
+  m_AnchoredPosition: {x: 0, y: 128.24455}
+  m_SizeDelta: {x: 166.0857, y: 79.2547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181429487
 MonoBehaviour:
