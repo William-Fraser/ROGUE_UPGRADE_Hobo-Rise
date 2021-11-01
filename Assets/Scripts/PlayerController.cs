@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 return;
             Attack();
         }
-        if (Input.GetKey(KeyCode.W)) // jump
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) // jump
         {
             if (rb.velocity.y != 0 && !rb.IsSleeping())
                 return;
