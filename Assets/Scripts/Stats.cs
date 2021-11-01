@@ -27,10 +27,10 @@ public class Stats : MonoBehaviour
         if (health <= 0)
             Death();
 
-        if (sprite.color.r < 255)
+        /*if (sprite.color.r < 255)
         {
             sprite.color = new Color(255, 255, 255);
-        }
+        }*/
 
         if(this.gameObject.tag == GameManager.gameManager.player.tag)
         {
