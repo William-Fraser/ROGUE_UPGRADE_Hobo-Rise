@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    public GameObject gameOverObject;
     public GameObject saveWarning;
     public PlayerData stats;
     public PlayerData maxPossibleStats;
@@ -15,7 +16,6 @@ public class GameManager : MonoBehaviour
     public int mainID;
     public int inGameID;
     public int victoryID;
-    public int gameOverID;
     public int resultsID;
     public int upgradeID;
     public int creditsID;
@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public int enemiesKilled;
     public float damageDealt;
     public float distanceTraveled;
+
+    private float gameOverTimer = 0f;
+    private float gameOverTimeRequirement = 3f;
 
 
     public enum GameScenes { 
@@ -61,12 +64,21 @@ public class GameManager : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            if(player.GetComponent<Stats>().health == 0 || player.GetComponent<Stats>().energy == 0)
+            if(player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
             {
                 if (currentScene == GameScenes.InGame)
                 {
-                    stats.totalMoney += collectedMoney; 
-                    ChangeScene(GameScenes.Results); 
+                    if (gameOverTimer >= gameOverTimeRequirement)
+                    {
+                        gameOverObject.SetActive(false);
+                        gameOverTimer = 0;
+                        stats.totalMoney += collectedMoney;
+                        ChangeScene(GameScenes.Results);
+                    } else
+                    {
+                        gameOverObject.SetActive(true);
+                        gameOverTimer += Time.deltaTime;
+                    }
                 }
             }
         }
@@ -182,9 +194,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GameScenes.Victory:
                 SceneManager.LoadScene(victoryID);
-                break;
-            case GameScenes.GameOver:
-                SceneManager.LoadScene(gameOverID);
                 break;
             case GameScenes.Results:
                 SceneManager.LoadScene(resultsID);
