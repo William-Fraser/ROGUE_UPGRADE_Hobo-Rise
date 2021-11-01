@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagWhitelist:
   - Tag: Player
-  target: {fileID: 2558519522411026419}
+  target: {fileID: 2558519522662399377}
   triggerDistance: 15
   pathUpdateRate: 1
   targetingView: {fileID: 8531104934169903126}
@@ -419,6 +419,7 @@ MonoBehaviour:
   displayedEnergy: 0
   collectedMoney: 0
   totalMoney: 0
+  sprite: {fileID: 3561416242528923282}
 --- !u!1 &2558519523189558011
 GameObject:
   m_ObjectHideFlags: 0

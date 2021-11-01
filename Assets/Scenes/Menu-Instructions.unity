@@ -577,6 +577,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!212 &1219386454 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7442983370674529927, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+  m_PrefabInstance: {fileID: 1922373691288682302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223564933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1682,10 @@ PrefabInstance:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7442983370674529923, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1219386454}
     - target: {fileID: 7442983370674529923, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: maxHealth
       value: 10
