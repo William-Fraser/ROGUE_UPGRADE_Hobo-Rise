@@ -2022,8 +2022,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'You can press A and D to move left and right.
 
-    Pressing Space will
-    allow you to jump.
+    Pressing W will allow
+    you to jump.
 
     Pressing L allows you to swing your weapon.'
 --- !u!222 &145290637
@@ -26880,7 +26880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!213 &961958608
 Sprite:
@@ -58069,7 +58069,7 @@ Transform:
   - {fileID: 47324391}
   - {fileID: 454893786}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!213 &1567720965
 Sprite:
@@ -102589,7 +102589,7 @@ Transform:
   m_Children:
   - {fileID: 633333361}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1970658576
 BoxCollider2D:
@@ -106600,7 +106600,7 @@ Transform:
   m_Children:
   - {fileID: 1203752205}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4085918079324284122
 PrefabInstance:
