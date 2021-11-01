@@ -588,7 +588,7 @@ MonoBehaviour:
     maxEnergy: 100
     totalMoney: 999999
     clout: 0
-  player: {fileID: 7442983370674529922}
+  player: {fileID: 0}
   isNewGame: 1
   mainID: 0
   inGameID: 1

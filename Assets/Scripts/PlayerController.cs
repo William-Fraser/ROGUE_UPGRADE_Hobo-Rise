@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
     public Animator animator;
     public Vector2 movementDirection; //Used for Blend Tree
+    public AudioSource audioSource;
+    public AudioClip footStep;
 
     private Stats stats;
     private Rigidbody2D rb;
@@ -45,6 +47,14 @@ public class PlayerController : MonoBehaviour
             return;
         if (stats.alive == false)
         { return; }
+
+        if (attacking)
+        {
+            weapon.SetActive(true);
+        } else
+        {
+            weapon.SetActive(false);
+        }
 
         UpdateStats();
         if (Input.anyKey)
@@ -127,11 +137,19 @@ public class PlayerController : MonoBehaviour
             if (direction != PlayerDirection.Left)
                 Turn(PlayerDirection.Left);
             Move();
+            if (rb.velocity.y != 0 && !rb.IsSleeping())
+                return;
+            if (audioSource.isPlaying == false)
+                audioSource.PlayOneShot(footStep);
         } else if (Input.GetKey(KeyCode.D))
         {
             if (direction != PlayerDirection.Right)
                 Turn(PlayerDirection.Right);
             Move();
+            if (rb.velocity.y != 0 && !rb.IsSleeping())
+                return;
+            if (audioSource.isPlaying == false)
+                audioSource.PlayOneShot(footStep);
         }
 
         if (Input.GetKey(KeyCode.L)) // attack
@@ -184,9 +202,17 @@ public class PlayerController : MonoBehaviour
     private void Animate()
     {
         animator.SetFloat("LastMoveX", movementDirection.x);
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && attacking == false)
-            animator.SetFloat("Speed", 1f);
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && attacking == false)
+        {
+            if (rb.velocity.y != 0 && !rb.IsSleeping())
+                animator.SetFloat("Speed", -1f);
+            else
+                animator.SetFloat("Speed", 1f);
+
+        }
         else
+        {
             animator.SetFloat("Speed", -1f);
+        }
     }
 }
