@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public float damageDealt;
     public float distanceTraveled;
 
+    public AudioSource audioSource;
+    public AudioClip buttonPress;
+
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
 
@@ -288,6 +291,11 @@ public class GameManager : MonoBehaviour
     public void CollectCoins(int value)
     {
         collectedMoney += value;
+    }
+
+    public void ButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonPress);
     }
 }
 

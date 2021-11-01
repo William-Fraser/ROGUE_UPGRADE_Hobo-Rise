@@ -86,12 +86,14 @@ public class TownHall : MonoBehaviour
 
     public void CloseMenu()
     {
+        GameManager.gameManager.ButtonPressed();
         CanvasSetActive(false);
         Time.timeScale = 1;
     }
 
     public void PurchaseShack()
     {
+        GameManager.gameManager.ButtonPressed();
         if (GameManager.gameManager.CanPurchase(shackPrice))
         {
             GameManager.gameManager.BuyHouse(GameManager.HouseBought.Shack);
@@ -99,6 +101,7 @@ public class TownHall : MonoBehaviour
     }
     public void PurchaseHouse()
     {
+        GameManager.gameManager.ButtonPressed();
         if (GameManager.gameManager.CanPurchase(housePrice))
         {
             GameManager.gameManager.BuyHouse(GameManager.HouseBought.House);
@@ -106,6 +109,7 @@ public class TownHall : MonoBehaviour
     }
     public void PurchaseMansion()
     {
+        GameManager.gameManager.ButtonPressed();
         if (GameManager.gameManager.CanPurchase(mansionPrice))
         {
             GameManager.gameManager.BuyHouse(GameManager.HouseBought.Mansion);

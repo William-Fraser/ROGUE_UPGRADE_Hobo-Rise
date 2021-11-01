@@ -25,25 +25,30 @@ public class ButtonControl : MonoBehaviour
     }
     public void NextRound()
     {
-        GameManager.gameManager.NextRound(); 
+        GameManager.gameManager.NextRound();
+        GameManager.gameManager.ButtonPressed();
     }
     public void NewGame()
     {
         Debug.Log("Loading New Game");
         GameManager.gameManager.NewGame();
+        GameManager.gameManager.ButtonPressed();
     }
     public void LoadGame()
     {
         Debug.Log("Loading Saved Game");
         GameManager.gameManager.Load();
+        GameManager.gameManager.ButtonPressed();
     }
     public void QuitGame()
     {
         Debug.Log("Exiting Game");
+        GameManager.gameManager.ButtonPressed();
         Application.Quit();
     }
     public void ContinueToUpgrade()
     {
+        GameManager.gameManager.ButtonPressed();
         if (GameObject.Find("Results Canvas") != null)
         {
             GameObject.Find("Results Canvas").gameObject.SetActive(false);
@@ -68,6 +73,7 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeHat()
     {
         float price = 10 * GameManager.gameManager.stats.attackSpeedModifier;
+        GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Hat");
@@ -82,6 +88,7 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeClothes()
     {
         float price = 1 * GameManager.gameManager.stats.maxHealth;
+        GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Clothes");
@@ -96,6 +103,7 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeShoes()
     {
         float price = 10 * GameManager.gameManager.stats.speedModifier;
+        GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Shoes");
@@ -110,6 +118,7 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeWeapon()
     {
         float price = 10 * GameManager.gameManager.stats.damageModifier;
+        GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Weapon");
@@ -124,6 +133,7 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeFood()
     {
         float price = 1 * GameManager.gameManager.stats.maxEnergy;
+        GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Energy");

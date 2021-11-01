@@ -29,10 +29,12 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         paused = false;
         pauseMenu.SetActive(false);
+        GameManager.gameManager.ButtonPressed();
     }
     public void MainMenu()
     {
         Time.timeScale = 1;
+        GameManager.gameManager.ButtonPressed();
         GameManager.gameManager.MainMenu();
     }
 }
