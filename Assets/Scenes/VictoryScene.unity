@@ -554,12 +554,12 @@ MonoBehaviour:
     Level Design: William
 
     Sound:
-    Jared and Fesliyan Studios
+    Jared, FreeSound and Fesliyan Studios
 
-    Art: William, Jared and LPC Spritesheet Generator
+    Art: William, Jared and LPC Spritesheet
+    Generator
 
-    Music:
-    Jared and Envato Environment'
+    Music: Jared and Envato Environment'
 --- !u!222 &542150034
 CanvasRenderer:
   m_ObjectHideFlags: 0
