@@ -95,6 +95,8 @@ public class AI_Controller : MonoBehaviour
     private GameObject searchPoint2;
     private GameObject searchPoint3;
 
+    Animator animator;
+
     public bool TargetVisible { set { targetVisible = value; } }
 
     #region Unity Messages
@@ -118,6 +120,8 @@ public class AI_Controller : MonoBehaviour
         searchPoint1 = new GameObject();
         searchPoint2 = new GameObject();
         searchPoint3 = new GameObject();
+
+        animator = GetComponent<Animator>();
 
         if (patrolling)
         { state = STATE.PATROL; patrolToPoint = patrolPoint1; targetObject = patrolToPoint; }
@@ -159,6 +163,9 @@ public class AI_Controller : MonoBehaviour
     {
         if (!stats.alive)
             return;
+
+        animator.SetFloat("Speed", rb.velocity.magnitude);
+        animator.SetFloat("LastMoveX", rb.velocity.x);
 
         target = targetObject.transform;
 
