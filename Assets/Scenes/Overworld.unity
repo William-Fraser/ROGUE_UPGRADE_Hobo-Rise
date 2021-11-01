@@ -14231,7 +14231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8892710710755601568, guid: 0f89e5e8d760ce84ba4a2fca1543a8aa, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8892710710755601568, guid: 0f89e5e8d760ce84ba4a2fca1543a8aa, type: 3}
       propertyPath: m_AnchorMax.x
@@ -52938,16 +52938,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117130200}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1203752205}
+  m_Father: {fileID: 1572251860}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 89, y: -45}
+  m_AnchoredPosition: {x: 93.99994, y: -23.998285}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117130202
@@ -52991,13 +52991,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: 'COINS: '
+  m_Text: 'COINS: 100'
 --- !u!222 &1117130204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53568,7 +53568,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1117130201}
+  - {fileID: 1572251860}
   - {fileID: 1288728010}
   - {fileID: 588192337}
   m_Father: {fileID: 2145717544}
@@ -58286,6 +58286,82 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
+--- !u!1 &1572251859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1572251860}
+  - component: {fileID: 1572251862}
+  - component: {fileID: 1572251861}
+  m_Layer: 5
+  m_Name: Coins Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1572251860
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572251859}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1117130201}
+  m_Father: {fileID: 1203752205}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 320, y: 166}
+  m_SizeDelta: {x: 135.3138, y: 38.999}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1572251861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572251859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 57fdbd17f15559d4aaa8fc521b5929c7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1572251862
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572251859}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1572423380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102629,6 +102705,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5880836094643528292, guid: 241367f1ca4be9244a52b271e168a990, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7859629019766342188, guid: 241367f1ca4be9244a52b271e168a990, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -103189,6 +103269,13 @@ PrefabInstance:
     - target: {fileID: 920237354296702590, guid: 74c909b737c339a4d85dfa55a3b835a0, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1304085329265408003, guid: 74c909b737c339a4d85dfa55a3b835a0, type: 3}
+      propertyPath: m_Text
+      value: 'Clerk: Welcome to our Town Hall! Can I interest you in a potential
+        property you can buy?
+
+        (Press E to enter)'
       objectReference: {fileID: 0}
     - target: {fileID: 2661087652065553528, guid: 74c909b737c339a4d85dfa55a3b835a0, type: 3}
       propertyPath: m_RenderMode
@@ -106598,7 +106685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8892710710755601568, guid: 0f89e5e8d760ce84ba4a2fca1543a8aa, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8892710710755601568, guid: 0f89e5e8d760ce84ba4a2fca1543a8aa, type: 3}
       propertyPath: m_AnchorMax.x

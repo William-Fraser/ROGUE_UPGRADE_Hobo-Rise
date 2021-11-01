@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         UpdateStats();
         if (Input.anyKey)
         {
+            if (stats.health <= 0 || stats.energy <= 0)
+                return;
             CheckInput();
         }
         CheckTimes();

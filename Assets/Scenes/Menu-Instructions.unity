@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &76640204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7442983370674529922, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
-  m_PrefabInstance: {fileID: 1922373691288682302}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &245988443
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 51}
-  m_SizeDelta: {x: 600, y: 400}
+  m_AnchoredPosition: {x: 0, y: -1}
+  m_SizeDelta: {x: 850, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245988445
 MonoBehaviour:
@@ -1307,7 +1302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1508,18 +1503,18 @@ PrefabInstance:
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 76640204}
+      objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.maxEnergy
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.maxHealth
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.speedModifier
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822777, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_Name
