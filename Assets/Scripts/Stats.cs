@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Stats : MonoBehaviour
 {
     public bool alive = true;
+    public CharacterType type;
     public int maxHealth;
     public float health;
     public float speedModifier;
@@ -19,6 +20,13 @@ public class Stats : MonoBehaviour
     public float totalMoney; // total collected money in game
 
     private SpriteRenderer sprite;
+
+    public enum CharacterType { 
+        Player,
+        Hobo,
+        TaxCollector,
+        Police
+    }
 
     private void Update()
     {
@@ -126,6 +134,18 @@ public class Stats : MonoBehaviour
         } else
         {
             GameManager.gameManager.EnemyKilled();
+            switch (type)
+            {
+                case CharacterType.Hobo:
+                    GameManager.gameManager.SpawnBronzeCoin(this.transform.position);
+                    break;
+                case CharacterType.TaxCollector:
+                    GameManager.gameManager.SpawnGoldCoin(this.transform.position);
+                    break;
+                case CharacterType.Police:
+                    GameManager.gameManager.SpawnBill(this.transform.position);
+                    break;
+            }
         }
        // Color colour = GetComponent<SpriteRenderer>().color;
       //  colour.a = 0; 

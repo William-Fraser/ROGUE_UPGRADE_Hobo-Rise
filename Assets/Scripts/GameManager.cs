@@ -7,8 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    public GameObject gameOverObject;
+    public GameObject runOverObject;
     public GameObject saveWarning;
+    public GameObject bronzeCoinPrefab;
+    public GameObject goldCoinPrefab;
+    public GameObject billPrefab;
     public PlayerData stats;
     public PlayerData maxPossibleStats;
     public GameObject player;
@@ -73,13 +76,13 @@ public class GameManager : MonoBehaviour
                 {
                     if (gameOverTimer >= gameOverTimeRequirement)
                     {
-                        gameOverObject.SetActive(false);
+                        runOverObject.SetActive(false);
                         gameOverTimer = 0;
                         stats.totalMoney += collectedMoney;
                         ChangeScene(GameScenes.Results);
                     } else
                     {
-                        gameOverObject.SetActive(true);
+                        runOverObject.SetActive(true);
                         gameOverTimer += Time.deltaTime;
                     }
                 }
@@ -296,6 +299,21 @@ public class GameManager : MonoBehaviour
     public void ButtonPressed()
     {
         audioSource.PlayOneShot(buttonPress);
+    }
+    public void SpawnBronzeCoin(Vector3 position)
+    {
+        GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
+        coin.transform.position = position;
+    }
+    public void SpawnGoldCoin(Vector3 position)
+    {
+        GameObject coin = GameObject.Instantiate(goldCoinPrefab);
+        coin.transform.position = position;
+    }
+    public void SpawnBill(Vector3 position)
+    {
+        GameObject bill = GameObject.Instantiate(billPrefab);
+        bill.transform.position = position;
     }
 }
 
