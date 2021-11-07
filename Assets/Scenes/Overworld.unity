@@ -106052,6 +106052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8214024011867215099, guid: 0bb1892470f304a47a785d1189b9c55e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.23
+      objectReference: {fileID: 0}
     - target: {fileID: 8214024012519503486, guid: 0bb1892470f304a47a785d1189b9c55e, type: 3}
       propertyPath: m_Name
       value: BadHobo
