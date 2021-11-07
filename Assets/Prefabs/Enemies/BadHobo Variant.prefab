@@ -115,5 +115,9 @@ PrefabInstance:
       propertyPath: attackCoolDown
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: jumpNodeHeightReqirement
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
