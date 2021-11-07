@@ -27,20 +27,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6414589305166169208, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6414589305166169208, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 962894229737122442, guid: 6cacf405402be3a41a7ea30317f9424b, type: 3}
     - target: {fileID: 6414589305166169208, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Color.b
-      value: 0.3179779
+      value: 0.64132386
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169208, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Color.g
-      value: 0.7264151
+      value: 0.57924527
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169208, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Color.r
-      value: 0.3417036
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169209, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Size.x
@@ -120,11 +124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169214, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: effectValue
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169215, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Name
-      value: Bill
+      value: Bill $50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}

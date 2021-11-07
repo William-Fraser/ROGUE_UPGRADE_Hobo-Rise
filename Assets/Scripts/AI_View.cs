@@ -15,6 +15,6 @@ public class AI_View : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        controller.ViewTriggerExit();
+        controller.ViewTriggerExit(collision);
     }
 }

@@ -8,9 +8,7 @@ public enum STATE
     IDLE,
     PATROL,
     CHASE,
-    ATTACK,
-    SEARCH,
-    RETURN
+    ATTACK
 }
 public class AI_Controller : MonoBehaviour
 {
@@ -24,7 +22,7 @@ public class AI_Controller : MonoBehaviour
     [Tooltip("in Seconds, \nHow often AI path updates")]
     public float pathUpdateRate = 1f;
     public GameObject targetingView;
-
+    
     [Header("Physics")]
     public float speed = 250f;
     [Tooltip("How far away the target needs to be \nbefore AI changes WayPoints")]
@@ -36,32 +34,23 @@ public class AI_Controller : MonoBehaviour
     public float jumpCheckOffset = 0.7f;
 
     [Header("Custom Behaviour")]
-    public bool followEnabled = true;
-    public bool jumpEnabled = true;
-    [Tooltip("allows enemy to change direction \n(useful for animation control)")]
-    public bool canTurnAround = true;
-    public bool patrolling = false;
+    public bool patrolling = true;
+    public bool chasing = true;
+    public bool hostile = true;
 
     [Header("Patrol Points")] // replace these with auto generating class objects that are contained in a array or list
     public GameObject patrolPoint1;
     public GameObject patrolPoint2;
 
-    [Header("Chase")]
-    [Tooltip(" Amount of time before AI stops chasing target ")]
-    public int chaseCountdown = 5;
-
     [Header("Attack")]
     public float attackRange = 3f;
-    public float attackSpeed = 2f;
     public float attackCoolDown = 3f;
-    public int attackDamage = 10;
+    public int attackDamage = 1;
 
-    [Header("Search")]
-    public int searchTime = 10;
 
     //private fields
     private GameObject targetCheckObject;
-    public STATE state;
+    private STATE state;
     private Stats stats;
     private GameObject targetObject;
     private AIDestinationSetter destination;
@@ -74,26 +63,15 @@ public class AI_Controller : MonoBehaviour
     private bool isGrounded = false;
     private Seeker seeker;
     private Rigidbody2D rb;
-    private float defaultTriggerDistance;
+    private float defaultTriggerRadius;
     //chasing
     private bool targetVisible;
     //attacking
     private bool canAttack = true;
-    private Vector2 direction;
-    private bool attacking = false;
-    private bool attackLeft;
-    private bool attackRight;
-    private bool moveWeapon;
+    private bool shouldAttack = false;
         //timer
     private bool attackingCountDown;
-    private bool canAttackCountDown;
     private float attackingTimer;
-    private float canAttackTimer;
-    //search
-    private GameObject searchThis;
-    private GameObject searchPoint1;
-    private GameObject searchPoint2;
-    private GameObject searchPoint3;
 
     Animator animator;
 
@@ -111,20 +89,17 @@ public class AI_Controller : MonoBehaviour
         returnPoint.transform.position = transform.position;
 
         canAttack = true;
-        followEnabled = true;
         state = STATE.IDLE;
         targetObject = target.gameObject;
-        defaultTriggerDistance = triggerDistance;
+        defaultTriggerRadius = triggerDistance;
 
-        searchThis = new GameObject();
-        searchPoint1 = new GameObject();
-        searchPoint2 = new GameObject();
-        searchPoint3 = new GameObject();
 
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
-        if (patrolling)
-        { state = STATE.PATROL; patrolToPoint = patrolPoint1; targetObject = patrolToPoint; }
+        //set up patrol
+        state = STATE.PATROL; 
+        patrolToPoint = patrolPoint1; 
+        targetObject = patrolToPoint; 
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateRate); // repeats method on loop, checks in seconds on third parameter
     }
@@ -133,27 +108,10 @@ public class AI_Controller : MonoBehaviour
         if (!stats.alive)
             return;
 
-        if (attackingCountDown && attackingTimer > 0)
-        {
-            attackingTimer -= Time.deltaTime;
-        }
-        else if (attackingCountDown)
-        {
-            attackingCountDown = false;
-            attacking = !attacking;
-        }
-        
-        /*if (canAttackCountDown && canAttackTimer > 0)
-        {
-            canAttackTimer -= Time.deltaTime;
-        }
-        else if (canAttackCountDown)
-        {
-            canAttackCountDown = false;
-            canAttack = !canAttack;
-        }*/
+        AttackTimer();
 
-        if (TargetInDistance() && followEnabled)
+        // following a path     only if
+        if (TargetInDistance() && (hostile || chasing))
         {
             PathFollow();
         }
@@ -167,94 +125,37 @@ public class AI_Controller : MonoBehaviour
         animator.SetFloat("Speed", rb.velocity.magnitude);
         animator.SetFloat("LastMoveX", rb.velocity.x);
 
-        target = targetObject.transform;
-
         switch (state)
         {
             case STATE.IDLE:
                 {
-                    /// face sprite forward?s this.gameObject.GetComponent<CircleCollider2D>().offset = new Vector2(0, 0);
-                    /// idles
-                    // if patrol type then start timer to start patrolling
+                    TrySetStatePatrol();
+                    TrySetStateChase();
+                    TrySetStateAttack();
                 }
                 break;
-
             case STATE.PATROL:
                 {
-                    targetObject = patrolToPoint;
-                    if (triggerDistance != 500)
-                    {
-                        triggerDistance = 500; // set to patrol format
-                    }
-
-                    // starts timer to start Idle // should use scriptable objects for now uses 2 object if statement
-                    if (patrolToPoint == patrolPoint1)
-                    {
-                        if (Vector2.Distance(transform.position, patrolPoint1.transform.position) < 5)
-                        { patrolToPoint = patrolPoint2; }
-                    }
-                    else if (patrolToPoint == patrolPoint2)
-                    {
-                        if (Vector2.Distance(transform.position, patrolPoint2.transform.position) < 5)
-                        { patrolToPoint = patrolPoint1; }
-                    }
+                    Patrol();
+                    TrySetStateChase();
                 }
                 break;
 
             case STATE.CHASE:
                 {
-                    // state reserved for chasing functionality
+                    Chase();
+                    TrySetStatePatrol();
+                    TrySetStateAttack();
                 }
                 break;
 
             case STATE.ATTACK:
                 {
-                    /// stops upon reaching character and try's attacking
-                    
-                    if (canAttack)
-                    { 
-                        canAttack = false;
-                        Debug.Log("Enemy Attacking");
-                        if (target.gameObject.GetComponent<Stats>() != null)
-                            target.gameObject.GetComponent<Stats>().LoseHealth(attackDamage, true); ;
-                        canAttackTimer = attackCoolDown;
-                        StartCoroutine(CanAttackTimer());
-                    }
+                    Attack();
+                    TrySetStatePatrol();
+                    TrySetStateChase();
                 }
-                break;
-
-            case STATE.SEARCH:
-                {
-                    /// sets up temp patrol points around last seen area and searches them
-                    targetObject = searchThis;
-                    if (searchThis == searchPoint1)
-                    {
-                        if ((transform.position.x - searchPoint1.transform.position.x) < 2)
-                        { searchThis = searchPoint2; }
-                    }
-                    else if (searchThis == searchPoint1)
-                    {
-                        if ((transform.position.x - searchPoint2.transform.position.x) < 2)
-                        { searchThis = searchPoint3; }
-                    }
-                    else if (searchThis == searchPoint1)
-                    {
-                        if ((transform.position.x - searchPoint3.transform.position.x) < 2)
-                        { state = STATE.RETURN; targetObject = returnPoint; }
-                    }
-                }
-                break;
-
-            case STATE.RETURN:
-                {
-                    /// returns to point left during patrol 
-                    targetObject = returnPoint;
-                    if (Vector2.Distance(transform.position, returnPoint.transform.position) < 7)
-                    {
-                        state = STATE.PATROL;
-                    }
-                }
-                break;
+                break;       
         }
     }
 #endregion
@@ -262,7 +163,7 @@ public class AI_Controller : MonoBehaviour
     #region Astar Messages
     private void UpdatePath()
     {
-        if (followEnabled && TargetInDistance() && seeker.IsDone())
+        if (hostile && TargetInDistance() && seeker.IsDone())
         {
             if (targetObject != null)
             { 
@@ -289,7 +190,7 @@ public class AI_Controller : MonoBehaviour
         Vector2 force = direction * speed * Time.deltaTime;
 
         // Jump
-        if (jumpEnabled && isGrounded)
+        if (isGrounded)
         {
             if (direction.y > jumpNodeHeightReqirement)
             { 
@@ -307,19 +208,14 @@ public class AI_Controller : MonoBehaviour
             currentWaypoint++;
         }
 
-        // Direction Graphics Handling
-        if (canTurnAround)
+        // View Direction Handling
+        if (rb.velocity.x > 0.05f)
         {
-            if (rb.velocity.x > 0.05f)
-            {
-                transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                targetingView.transform.localPosition = new Vector3(-0.3f, 0, 0);
-            }
-            else if (rb.velocity.x < -0.05f)
-            {
-                transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                targetingView.transform.localPosition = new Vector3(0.3f, 0, 0);
-            }
+            targetingView.transform.localPosition = new Vector3(-0.3f, 0, 0);
+        }
+        else if (rb.velocity.x < -0.05f)
+        {
+            targetingView.transform.localPosition = new Vector3(0.3f, 0, 0);
         }
     }
     private bool TargetInDistance()
@@ -337,88 +233,132 @@ public class AI_Controller : MonoBehaviour
     }
     #endregion
 
-    #region public methods
-    public void ViewTriggerEnter(Collider2D collision) // CHASE STATE
+    #region methods
+    
+    //private
+    private void Patrol()
     {
-        for (int i = 0; i < tagWhitelist.Length; i++)
+        // starts timer to start Idle // should use scriptable objects for now uses 2 object if statement
+        if (patrolToPoint == patrolPoint1)
         {
-            if (tagWhitelist[i].Tag.Contains(collision.tag))
-            {
-                returnPoint.transform.position = new Vector3(transform.position.x, 0, 0);
-                state = STATE.CHASE;
-                targetVisible = true;
-                targetObject = collision.gameObject;
+            if (Vector3.Distance(transform.position, patrolPoint1.transform.position) < 3)
+            { patrolToPoint = patrolPoint2; }
+        }
+        else if (patrolToPoint == patrolPoint2)
+        {
+            if (Vector3.Distance(transform.position, patrolPoint2.transform.position) < 3)
+            { patrolToPoint = patrolPoint1; }
+        }
 
-                triggerDistance = defaultTriggerDistance; // change trigger distance back for chasing
+        target = patrolToPoint.transform;
+    }
+    private void TrySetStateChase()
+    {
+        if (targetVisible && !shouldAttack)
+        { 
+            returnPoint.transform.position = new Vector3(transform.position.x, 0, 0);
+            triggerDistance = defaultTriggerRadius; // trigger distance changes depending on chase or patrol, this is the inspector distance
+            state = STATE.CHASE;
+        }
+    }
+    private void Chase()
+    {
+        target = targetObject.transform; // found object
+    }
+    private void TrySetStateAttack()
+    {
+        if (hostile && shouldAttack)
+        {
+            state = STATE.ATTACK;
+        }
+    }
+    private void Attack()
+    {
+        if (canAttack)
+        {
+            canAttack = false;
+            Debug.Log("Enemy Attacking");
+            
+            attackingCountDown = true;
+            attackingTimer = attackCoolDown;
+
+            if (target.gameObject.GetComponent<Stats>() != null)
+            {
+                target.gameObject.GetComponent<Stats>().LoseHealth(attackDamage, true);
             }
+
+        }
+    }
+    private void TrySetStatePatrol()
+    {
+        if (!targetVisible)
+        {
+            if (triggerDistance != 10000)
+            {
+                triggerDistance = 10000; // set to patrol format
+            }
+            state = STATE.PATROL;
+        }
+    }
+
+    private void AttackTimer()// must be in Fixed update
+    {
+        // set in Attack()
+        if (attackingCountDown && attackingTimer > 0)
+        {
+            attackingTimer -= Time.deltaTime;
+        }
+        else if (attackingCountDown)
+        {
+            attackingCountDown = false;
+            canAttack = true;
+        }
+    }
+    //public
+
+    /*IEnumerator CanAttackTimer()
+    {
+        yield return new WaitForSeconds(attackCoolDown);
+        canAttack = true;
+    }*/
+    #endregion
+
+    #region ViewTriggers 
+    // offloaded onto another gameobject for use of sprite in testing
+    public void ViewTriggerEnter(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            Debug.Log("TARGET FOUND");
+            targetObject = collision.gameObject;
+            targetVisible = true;
         }
     }
     public void ViewTriggerStay(Collider2D collision)
     {
         // enters attack range
         if (target.tag == "Player")
-        { 
-            if (Vector2.Distance(this.transform.position, target.position) < attackRange)
+        {
+            if (Vector2.Distance(this.transform.position, target.position) <= attackRange)
             {
-                //Debug.Log("Collision");
-                    Debug.Log("Stuck Here" + Vector2.Distance(this.transform.position, target.position) + target.gameObject.name);
-                    state = STATE.ATTACK;
-                /*if (collision.gameObject.GetComponent<Stats>() != null || collision.gameObject.GetComponentInChildren<Stats>() != null)
-                {
-                }*/
+                shouldAttack = true;
             }
         }
-    }
-    public void ViewTriggerExit()
-    {
-        targetVisible = false;
-        StartCoroutine("ChaseCountdown");
-    }
-    public void SetSearchArea()
-    {
-        if (rb.velocity.x > 0.05f)
+        else
         {
-            searchPoint1.transform.position = target.position + Vector3.right;
-            searchPoint2.transform.position = target.position - Vector3.right;
-            searchPoint3 = searchPoint1;
+            shouldAttack = false;
         }
-        else if (rb.velocity.x < -0.05f)
-        {
-            searchPoint1.transform.position = target.position - Vector3.right;
-            searchPoint2.transform.position = target.position + Vector3.right;
-            searchPoint3 = searchPoint1;
-        }
-        searchThis = searchPoint1;
     }
+    public void ViewTriggerExit(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        { 
+            targetVisible = false;
+        }
+    }
+
     #endregion
 
-    #region Coroutines
-    IEnumerator AttackingTimer()
-    {
-        yield return new WaitForSeconds(attackSpeed);
-        attacking = false;
-    }
-    IEnumerator CanAttackTimer()
-    {
-        yield return new WaitForSeconds(attackCoolDown);
-        canAttack = true;
-    }
-    IEnumerator ChaseCountdown()
-    {
-        yield return new WaitForSeconds(chaseCountdown);
-        if (targetVisible)
-            StopCoroutine("ChaseCountdown");
-        SetSearchArea();
-        state = STATE.SEARCH;
-        StartCoroutine(SearchTime());
-    }
-    IEnumerator SearchTime()
-    {
-        yield return new WaitForSeconds(searchTime);
-        if (state == STATE.SEARCH)
-            state = STATE.RETURN;
-    }
-    #endregion
 }
 [System.Serializable]
 public class TagWhitelist
