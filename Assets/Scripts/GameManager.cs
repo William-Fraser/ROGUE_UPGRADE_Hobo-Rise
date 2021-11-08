@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public bool isNewGame = false;
     public int mainID;
+    public int cutsceneID;
     public int inGameID;
     public int victoryID;
     public int resultsID;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public enum GameScenes { 
         Main,
+        Cutscene,
         InGame,
         Victory,
         GameOver,
@@ -158,7 +160,7 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<PlayerController>().ResetPlayer();
             player.GetComponent<PlayerController>().ResetStats();
-            ChangeScene(GameScenes.InGame);
+            ChangeScene(GameScenes.Cutscene);
         }
     }
     public bool CanLoad()
@@ -194,6 +196,9 @@ public class GameManager : MonoBehaviour
         switch (currentScene) {
             case GameScenes.Main:
                 SceneManager.LoadScene(mainID);
+                break;
+            case GameScenes.Cutscene:
+                SceneManager.LoadScene(cutsceneID);
                 break;
             case GameScenes.InGame:
                 SceneManager.LoadScene(inGameID);
