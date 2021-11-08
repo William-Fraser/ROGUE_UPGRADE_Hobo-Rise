@@ -1,64 +1,79 @@
 fileFormatVersion: 2
-guid: cd3c85baddc9a7a46addbb3f6cb96f76
+guid: 3d96d47035ae0f045b160864c154135c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4665297531074523978
-    second: Base Hobo Spritesheet_0
+      213: -3101461029435330541
+    second: HOBOATTACK_0
   - first:
-      213: -4615303261532639737
-    second: Base Hobo Spritesheet_1
+      213: 7438894758013242173
+    second: HOBOATTACK_1
   - first:
-      213: 544057991925557071
-    second: Base Hobo Spritesheet_2
+      213: -8931610803023875710
+    second: HOBOATTACK_2
   - first:
-      213: 204189039259347167
-    second: Base Hobo Spritesheet_3
+      213: -2449610429175739089
+    second: HOBOATTACK_3
   - first:
-      213: -3108491986556199286
-    second: Base Hobo Spritesheet_4
+      213: 2531704142831711107
+    second: HOBOATTACK_4
   - first:
-      213: -812744057933899079
-    second: Base Hobo Spritesheet_5
+      213: 3652929683151477071
+    second: HOBOATTACK_5
   - first:
-      213: 5567888006476565023
-    second: Base Hobo Spritesheet_6
+      213: -691257631522388141
+    second: HOBOATTACK_6
   - first:
-      213: 8721199675873810487
-    second: Base Hobo Spritesheet_7
+      213: 6534998181558060857
+    second: HOBOATTACK_7
   - first:
-      213: 4186173184054983572
-    second: Base Hobo Spritesheet_8
+      213: 8912964746229861158
+    second: HOBOATTACK_8
   - first:
-      213: 322448178959571127
-    second: Base Hobo Spritesheet_9
+      213: 6889091919919849766
+    second: HOBOATTACK_9
   - first:
-      213: -7229137713948762882
-    second: Base Hobo Spritesheet_10
+      213: -930431148639104521
+    second: HOBOATTACK_10
   - first:
-      213: -951530681378339434
-    second: Base Hobo Spritesheet_11
+      213: -3212796334667484041
+    second: HOBOATTACK_11
   - first:
-      213: 3255680718640714974
-    second: Base Hobo Spritesheet_12
+      213: -6069370472111808786
+    second: HOBOATTACK_12
   - first:
-      213: 2740826678944309973
-    second: Base Hobo Spritesheet_13
+      213: -1583476791125292066
+    second: HOBOATTACK_13
   - first:
-      213: 6257460826726068160
-    second: Base Hobo Spritesheet_14
+      213: 1986448569243408965
+    second: HOBOATTACK_14
   - first:
-      213: -6478605165603685350
-    second: Base Hobo Spritesheet_15
+      213: -2533776338531311541
+    second: HOBOATTACK_15
   - first:
-      213: 6723113770433623740
-    second: Base Hobo Spritesheet_16
+      213: -7892061539076761925
+    second: HOBOATTACK_16
   - first:
-      213: 3872780746805301216
-    second: Base Hobo Spritesheet_17
+      213: 496652422783145436
+    second: HOBOATTACK_17
   - first:
-      213: 1722793710346096607
-    second: Base Hobo Spritesheet_18
+      213: -1180614287664548220
+    second: HOBOATTACK_18
+  - first:
+      213: -3262754218671614276
+    second: HOBOATTACK_19
+  - first:
+      213: -3295798092319916421
+    second: HOBOATTACK_20
+  - first:
+      213: -9186112217978320794
+    second: HOBOATTACK_21
+  - first:
+      213: 7674129976183693896
+    second: HOBOATTACK_22
+  - first:
+      213: -7644603583456457833
+    second: HOBOATTACK_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,7 +140,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,7 +152,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,200 +163,263 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 140
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6bccbc00d98814fb0800000000000000
-      internalID: -4665297531074523978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 140
-        width: 26
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70e25a5f22623ffb0800000000000000
-      internalID: -4615303261532639737
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 149
-        y: 141
-        width: 24
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f476fe17cd1ec8700800000000000000
-      internalID: 544057991925557071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 141
-        width: 23
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd8e41079dc65d200800000000000000
-      internalID: 204189039259347167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 140
-        width: 24
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8e5b2af10b6cd4d0800000000000000
-      internalID: -3108491986556199286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 140
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ba5a8dd59d88b4f0800000000000000
-      internalID: -812744057933899079
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 406
-        y: 140
-        width: 24
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1a813754ac154d40800000000000000
-      internalID: 5567888006476565023
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 470
-        y: 140
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 738d5b7f5ece70970800000000000000
-      internalID: 8721199675873810487
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 534
-        y: 140
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49bfcd3e456481a30800000000000000
-      internalID: 4186173184054983572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_9
+      name: HOBOATTACK_0
       rect:
         serializedVersion: 2
         x: 17
-        y: 76
+        y: 197
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3103acf30a565f4d0800000000000000
+      internalID: -3101461029435330541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 196
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b05e49e534c3760800000000000000
+      internalID: 7438894758013242173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 196
+        width: 27
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28178bddb4b8c0480800000000000000
+      internalID: -8931610803023875710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_3
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 196
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2d43e21b4c310ed0800000000000000
+      internalID: -2449610429175739089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_4
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 196
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3837edd118b622320800000000000000
+      internalID: 2531704142831711107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_5
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 196
+        width: 39
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4959b95130d1b230800000000000000
+      internalID: 3652929683151477071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_6
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 133
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35784d8b8d82866f0800000000000000
+      internalID: -691257631522388141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_7
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 133
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9378793e83af0ba50800000000000000
+      internalID: 6534998181558060857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_8
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 133
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b4c9ab63631bb70800000000000000
+      internalID: 8912964746229861158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_9
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 133
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62126d7e998fa9f50800000000000000
+      internalID: 6889091919919849766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_10
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 133
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f15869ccc17613f0800000000000000
+      internalID: -930431148639104521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_11
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 133
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774b77871cad963d0800000000000000
+      internalID: -3212796334667484041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_12
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 69
         width: 30
         height: 49
       alignment: 0
@@ -351,18 +429,123 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b85b5d09e0997400800000000000000
-      internalID: 322448178959571127
+      spriteID: eeed78766b345cba0800000000000000
+      internalID: -6069370472111808786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_10
+      name: HOBOATTACK_13
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 69
+        width: 27
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edbc6e28f3c560ae0800000000000000
+      internalID: -1583476791125292066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_14
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 69
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a1656f278419b10800000000000000
+      internalID: 1986448569243408965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_15
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 69
+        width: 27
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b402d8938d736dcd0800000000000000
+      internalID: -2533776338531311541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_16
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 69
+        width: 35
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb69ec918d3c97290800000000000000
+      internalID: -7892061539076761925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_17
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 69
+        width: 39
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd593d44fb674e600800000000000000
+      internalID: 496652422783145436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HOBOATTACK_18
       rect:
         serializedVersion: 2
         x: 19
-        y: 12
+        y: 5
         width: 23
         height: 49
       alignment: 0
@@ -372,20 +555,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efc54bffc81fcab90800000000000000
-      internalID: -7229137713948762882
+      spriteID: 486f00f7f8d9d9fe0800000000000000
+      internalID: -1180614287664548220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_11
+      name: HOBOATTACK_19
       rect:
         serializedVersion: 2
-        x: 83
-        y: 12
+        x: 85
+        y: 5
         width: 26
-        height: 48
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -393,20 +576,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6950f8ff2eb7bc2f0800000000000000
-      internalID: -951530681378339434
+      spriteID: cb6dbae235e58b2d0800000000000000
+      internalID: -3262754218671614276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_12
+      name: HOBOATTACK_20
       rect:
         serializedVersion: 2
-        x: 147
-        y: 13
+        x: 148
+        y: 5
         width: 24
-        height: 48
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -414,40 +597,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed41ba04d508e2d20800000000000000
-      internalID: 3255680718640714974
+      spriteID: b7e7cdfc819f242d0800000000000000
+      internalID: -3295798092319916421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_13
+      name: HOBOATTACK_21
       rect:
         serializedVersion: 2
         x: 211
-        y: 13
-        width: 23
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d2a36dc75f590620800000000000000
-      internalID: 2740826678944309973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_14
-      rect:
-        serializedVersion: 2
-        x: 274
-        y: 12
-        width: 24
+        y: 5
+        width: 34
         height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -456,40 +618,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cfedece777f6d650800000000000000
-      internalID: 6257460826726068160
+      spriteID: 668c68c9b9f548080800000000000000
+      internalID: -9186112217978320794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_15
+      name: HOBOATTACK_22
       rect:
         serializedVersion: 2
-        x: 336
-        y: 12
-        width: 28
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1c7e205dee5716a0800000000000000
-      internalID: -6478605165603685350
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_16
-      rect:
-        serializedVersion: 2
-        x: 402
-        y: 12
-        width: 24
+        x: 276
+        y: 5
+        width: 36
         height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -498,19 +639,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb6bb378a5c4d4d50800000000000000
-      internalID: 6723113770433623740
+      spriteID: 8422b96dd8cff7a60800000000000000
+      internalID: 7674129976183693896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Base Hobo Spritesheet_17
+      name: HOBOATTACK_23
       rect:
         serializedVersion: 2
-        x: 467
-        y: 12
-        width: 23
+        x: 340
+        y: 5
+        width: 33
         height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -519,29 +660,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ef4d420291eeb530800000000000000
-      internalID: 3872780746805301216
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Base Hobo Spritesheet_18
-      rect:
-        serializedVersion: 2
-        x: 531
-        y: 12
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fdfc47670c798e710800000000000000
-      internalID: 1722793710346096607
+      spriteID: 79b466f2b89e8e590800000000000000
+      internalID: -7644603583456457833
       vertices: []
       indices: 
       edges: []

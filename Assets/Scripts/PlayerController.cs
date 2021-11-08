@@ -66,11 +66,6 @@ public class PlayerController : MonoBehaviour
         }
         CheckTimes();
         GameManager.gameManager.DistanceTraveled(Vector3.Distance(previousPosition, this.transform.position));
-
-        if (Input.GetAxis("Horizontal") >= 0.1f || Input.GetAxis("Horizontal") <= -0.1f)
-        {
-            animator.SetFloat("LastMoveX", Input.GetAxis("Horizontal"));
-        }
         Animate();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -230,5 +225,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("MovingRight", false);
         }
+        animator.SetBool("Attacking", attacking);
+        animator.SetBool("Jumping", jumping);
     }
 }
