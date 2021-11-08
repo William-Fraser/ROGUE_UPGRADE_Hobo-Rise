@@ -222,5 +222,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("Speed", -1f);
         }
+
+        if(direction == PlayerDirection.Right)
+        {
+            animator.SetBool("MovingRight", true);
+        } else
+        {
+            animator.SetBool("MovingRight", false);
+        }
     }
 }
