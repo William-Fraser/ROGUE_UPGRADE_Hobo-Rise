@@ -16,7 +16,12 @@ public class CutsceneManager : MonoBehaviour
     }
     public void PlayCutscene()
     {
-        foreach(GameObject cutsceneObject in textBoxObjects)
+        if (cutsceneProgress > textBoxObjects.GetUpperBound(0))
+        {
+            GameManager.gameManager.ChangeScene(GameManager.GameScenes.InGame);
+            return;
+        }
+        foreach (GameObject cutsceneObject in textBoxObjects)
         {
             cutsceneObject.SetActive(false);
         }
