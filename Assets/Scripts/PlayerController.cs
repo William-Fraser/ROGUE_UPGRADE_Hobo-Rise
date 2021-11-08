@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private float modifiedDamage;
     private float modifiedAttackSpeed;
 
+    private bool jumping = false;
     private bool attacking = false;
     private float timeSpentInAttack = 0f;
 
@@ -71,6 +72,10 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("LastMoveX", Input.GetAxis("Horizontal"));
         }
         Animate();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (jumping) jumping = false;
     }
     public void ResetPlayer()
     {
@@ -132,7 +137,12 @@ public class PlayerController : MonoBehaviour
             return;
         if (attacking)
             return;
-        if (Input.GetKey(KeyCode.A))
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) && !jumping) // check jump before moving
+        {
+            jumping = true;
+            rb.AddForce(new Vector2(0, baseJumpHeight), ForceMode2D.Impulse);
+        }
+        else if (Input.GetKey(KeyCode.A))
         {
             if (direction != PlayerDirection.Left)
                 Turn(PlayerDirection.Left);
@@ -141,7 +151,8 @@ public class PlayerController : MonoBehaviour
                 return;
             if (audioSource.isPlaying == false)
                 audioSource.PlayOneShot(footStep);
-        } else if (Input.GetKey(KeyCode.D))
+        } 
+        else if (Input.GetKey(KeyCode.D))
         {
             if (direction != PlayerDirection.Right)
                 Turn(PlayerDirection.Right);
@@ -158,12 +169,7 @@ public class PlayerController : MonoBehaviour
                 return;
             Attack();
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) // jump
-        {
-            if (rb.velocity.y != 0 && !rb.IsSleeping())
-                return;
-            rb.AddForce(new Vector2(0,baseJumpHeight), ForceMode2D.Impulse);
-        }
+        
     }
     private void Turn(PlayerDirection directionToFace)
     {
