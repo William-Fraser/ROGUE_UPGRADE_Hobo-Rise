@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
             return;
         if (attacking)
             return;
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) && rb.velocity.y == 0) // check jump before moving
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.Space)) // check jump before moving
         {
             if (jumping) return;
 

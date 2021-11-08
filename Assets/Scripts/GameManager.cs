@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
+
         if (player != null)
         {
             if(player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
