@@ -57,6 +57,7 @@ public class AI_Controller : MonoBehaviour
     //patrol
     private GameObject patrolToPoint; // this field tells the other patrol points what to do
     private GameObject returnPoint;
+    private float switchToNextPointTimer;
     //pathfinding
     private Path path;
     private int currentWaypoint = 0;
@@ -97,7 +98,6 @@ public class AI_Controller : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
 
         //set up patrol
-        state = STATE.PATROL; 
         patrolToPoint = patrolPoint1; 
         targetObject = patrolToPoint; 
 
@@ -109,6 +109,7 @@ public class AI_Controller : MonoBehaviour
             return;
 
         AttackTimer();
+        PatrolPointAutoSwitchTimer();
 
         // following a path     only if
         if (TargetInDistance() && (hostile || chasing))
@@ -293,14 +294,23 @@ public class AI_Controller : MonoBehaviour
     {
         if (!targetVisible)
         {
-            if (triggerDistance != 10000)
-            {
-                triggerDistance = 10000; // set to patrol format
-            }
+            triggerDistance = 10000; // set to patrol format
             state = STATE.PATROL;
         }
     }
-
+    private void PatrolPointAutoSwitchTimer()
+    {
+        if (switchToNextPointTimer > 0)
+        { switchToNextPointTimer -= Time.deltaTime; }
+        else
+        { 
+            switchToNextPointTimer = 50;
+            if (patrolToPoint == patrolPoint1)
+            { patrolToPoint = patrolPoint2; }
+            else if (patrolToPoint == patrolPoint2)
+            { patrolToPoint = patrolPoint1; }
+        }
+    }
     private void AttackTimer()// must be in Fixed update
     {
         // set in Attack()
