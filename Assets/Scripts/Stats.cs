@@ -42,14 +42,8 @@ public class Stats : MonoBehaviour
 
         if(this.gameObject.tag == GameManager.gameManager.player.tag)
         {
-            energy -= Time.deltaTime;
-            if (energy > 0)
-                displayedEnergy = Convert.ToInt16(energy);
-            else
-                displayedEnergy = 0;
-
-            if (energy < 0)
-                energy = 0;
+            LoseEnergy(Time.deltaTime);
+            displayedEnergy = Convert.ToInt16(energy);
         }
     }
     private void Awake()
@@ -84,33 +78,16 @@ public class Stats : MonoBehaviour
     }
 
     #region Set, Obtain, and Lose resources
-    public float CollectedMoney { set { collectedMoney = value; } }
-    public void ObtainCoins(float value)
-    {
-        collectedMoney += value;
-    }
-    public void LoseCoins(float value)
-    {
-        collectedMoney -= value;
-        if (collectedMoney < 0)
-            collectedMoney = 0;
-    }
-    public int EnergyAmount { set { energy = value; } }
     public void ObtainEnergy(int value)
     {
         energy += value;
     }
-    public void LoseEnergy(int value)
+    public void LoseEnergy(float value)
     {
         energy -= value;
         if (energy < 0)
             energy = 0;
     } 
-    public int Health { set { health = value; } }
-    public void ObtainHealth(int value)
-    {
-        health += value;
-    }
     public void LoseHealth(int value, bool attack)
     {
         if (health - value < 0)

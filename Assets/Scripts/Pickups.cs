@@ -12,8 +12,7 @@ public class Pickups : MonoBehaviour
     public enum PickupTypes { 
         Coin,
         Bill,
-        Food,
-        MysteryMeat
+        Food
     }
     private void Awake()
     {
@@ -26,31 +25,14 @@ public class Pickups : MonoBehaviour
                 GameManager.gameManager.CollectCoins(effectValue);
                 break;
             case PickupTypes.Bill:
-                player.GetComponent<Stats>().ObtainCoins(effectValue);
+                GameManager.gameManager.CollectCoins(effectValue);
                 break;
             case PickupTypes.Food:
                 player.GetComponent<Stats>().ObtainEnergy(effectValue);
                 break;
-            case PickupTypes.MysteryMeat:
-                RandomizeEffect();
-                break;
         }
 
         this.gameObject.SetActive(false);
-    }
-    private void RandomizeEffect()
-    {
-        switch (Random.Range(0, 2)) {
-            case 0:
-                player.GetComponent<Stats>().ObtainEnergy(effectValue);
-                break;
-            case 1:
-                player.GetComponent<Stats>().ObtainHealth(effectValue);
-                break;
-            case 2:
-                player.GetComponent<Stats>().LoseHealth(effectValue, true);
-                break;
-        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

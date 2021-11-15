@@ -158,6 +158,10 @@ public class PlayerController : MonoBehaviour
                 return;
             if (audioSource.isPlaying == false)
                 audioSource.PlayOneShot(footStep);
+        } else if (Input.GetKey(KeyCode.P))
+        {
+            stats.energy = 0;
+            Debug.Log("Pass Out Button Pressed");
         }
 
         if (Input.GetKey(KeyCode.L)) // attack
