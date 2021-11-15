@@ -226,6 +226,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("MovingRight", false);
         }
         animator.SetBool("Attacking", attacking);
-        animator.SetBool("Jumping", jumping);
+        
+        if(rb.velocity.y > 5 || rb.velocity.y < -5)
+        {
+            animator.SetBool("Jumping", true);
+        } else
+        {
+            animator.SetBool("Jumping", jumping);
+        }
     }
 }
