@@ -2111,7 +2111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &466260489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8552,9 +8552,19 @@ MonoBehaviour:
     unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
     obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
   attackPips:
-    pips: []
-    unObtained: {fileID: 0}
-    obtained: {fileID: 0}
+    pips:
+    - {fileID: 1231046808}
+    - {fileID: 1474703717}
+    - {fileID: 605933728}
+    - {fileID: 696731558}
+    - {fileID: 1388173505}
+    - {fileID: 1537337918}
+    - {fileID: 1295727007}
+    - {fileID: 9907924}
+    - {fileID: 346178213}
+    - {fileID: 426586148}
+    unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
+    obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
   attackSpeedPips:
     pips: []
     unObtained: {fileID: 0}
@@ -8567,7 +8577,6 @@ MonoBehaviour:
     pips: []
     unObtained: {fileID: 0}
     obtained: {fileID: 0}
-  speed: 0
 --- !u!1 &1891267367
 GameObject:
   m_ObjectHideFlags: 0

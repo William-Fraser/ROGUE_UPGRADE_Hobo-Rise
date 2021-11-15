@@ -7,10 +7,9 @@ public class UpgradePips : MonoBehaviour
 
     public Pips speedPips;
     public Pips attackPips;
-    public Pips attackSpeedPips;
+    public Pips damagePips;
     public Pips healthPips;
     public Pips energyPips;
-    public float speed;
     [Serializable]
     public struct Pips
     {
@@ -20,7 +19,6 @@ public class UpgradePips : MonoBehaviour
     }
     void Update()
     {
-        speed = GameManager.gameManager.GetSpeedUpgrades();
         for (int i = 0; i < 100; i += 10)
         {
             if(i < GameManager.gameManager.GetSpeedUpgrades())
@@ -29,6 +27,18 @@ public class UpgradePips : MonoBehaviour
             } else
             {
                 speedPips.pips[i/10].sprite = speedPips.unObtained;
+            }
+        }
+
+        for (int i = 0; i < 100; i += 10)
+        {
+            if (i < GameManager.gameManager.GetAttackSpeedUpgrades())
+            {
+                attackPips.pips[i / 10].sprite = attackPips.obtained;
+            }
+            else
+            {
+                attackPips.pips[i / 10].sprite = attackPips.unObtained;
             }
         }
     }
