@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     public int upgradeID;
     public int creditsID;
     public GameScenes currentScene;
-    public HouseBought houseBought = HouseBought.None;
     public float housePrice = 500;
 
     public float collectedMoney;
@@ -48,12 +47,6 @@ public class GameManager : MonoBehaviour
         Results,
         Upgrade,
         Credits
-    }
-    public enum HouseBought { 
-        None,
-        Shack,
-        Mansion,
-        House
     }
     #region Unity Messages
     private void Start()
@@ -275,9 +268,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Housing Methods
-    public void BuyHouse(HouseBought typeOfHouse)
+    public void BuyHouse()
     {
-        houseBought = typeOfHouse;
         ChangeScene(GameScenes.Victory);
     }
     #endregion

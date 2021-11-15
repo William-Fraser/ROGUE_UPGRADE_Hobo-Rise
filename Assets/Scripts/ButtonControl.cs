@@ -70,7 +70,20 @@ public class ButtonControl : MonoBehaviour
         else
             return false;
     }
-    public void UpgradeHat()
+    public void BuyHouse()
+    {
+        GameManager.gameManager.ButtonPressed();
+        if (CanAfford(GameManager.gameManager.GetHousePrice()))
+        {
+            GameManager.gameManager.RemoveMoney(GameManager.gameManager.GetHousePrice());
+            GameManager.gameManager.BuyHouse();
+        }
+        else
+        {
+            Debug.Log("Cannot afford house, price is set to: " + (GameManager.gameManager.GetHousePrice()));
+        }
+    }
+    public void UpgradeAttackSpeed()
     {
         float price = 10 * GameManager.gameManager.stats.attackSpeedModifier;
         GameManager.gameManager.ButtonPressed();
@@ -85,7 +98,7 @@ public class ButtonControl : MonoBehaviour
             Debug.Log("Cannot afford hat, price is set to: " + (price));
         }
     }
-    public void UpgradeClothes()
+    public void UpgradeHealth()
     {
         float price = 1 * GameManager.gameManager.stats.maxHealth;
         GameManager.gameManager.ButtonPressed();
@@ -100,7 +113,7 @@ public class ButtonControl : MonoBehaviour
             Debug.Log("Cannot afford clothes, price is set to: " + (price));
         }
     }
-    public void UpgradeShoes()
+    public void UpgradeSpeed()
     {
         float price = 10 * GameManager.gameManager.stats.speedModifier;
         GameManager.gameManager.ButtonPressed();
@@ -115,7 +128,7 @@ public class ButtonControl : MonoBehaviour
             Debug.Log("Cannot afford shoes, price is set to: " + (price));
         }
     }
-    public void UpgradeWeapon()
+    public void UpgradeDamage()
     {
         float price = 10 * GameManager.gameManager.stats.damageModifier;
         GameManager.gameManager.ButtonPressed();
@@ -130,7 +143,7 @@ public class ButtonControl : MonoBehaviour
             Debug.Log("Cannot afford weapon, price is set to: " + (price));
         }
     }
-    public void UpgradeFood()
+    public void UpgradeEnergy()
     {
         float price = 1 * GameManager.gameManager.stats.maxEnergy;
         GameManager.gameManager.ButtonPressed();
