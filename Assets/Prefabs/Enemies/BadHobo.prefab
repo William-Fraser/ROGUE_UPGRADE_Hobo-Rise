@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522511200020, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Name
-      value: BadHobo Variant
+      value: BadHobo
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522511200021, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_RootOrder
