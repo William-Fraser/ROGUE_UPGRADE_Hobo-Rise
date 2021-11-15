@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int creditsID;
     public GameScenes currentScene;
     public HouseBought houseBought = HouseBought.None;
+    public float housePrice = 500;
 
     public float collectedMoney;
     public int enemiesKilled;
@@ -320,6 +321,14 @@ public class GameManager : MonoBehaviour
     {
         GameObject bill = GameObject.Instantiate(billPrefab);
         bill.transform.position = position;
+    }
+    public float GetMoney()
+    {
+        return stats.totalMoney;
+    }
+    public float GetHousePrice()
+    {
+        return housePrice;
     }
 }
 
