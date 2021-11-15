@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 2b8d4e3fbbcfb224e96c1bb435aa51de
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7286292372478948254
+    second: Base Hobo Jump_0
+  - first:
+      213: -7520154954937756726
+    second: Base Hobo Jump_1
+  - first:
+      213: -6122215479488106341
+    second: Base Hobo Jump_2
+  - first:
+      213: -4685582502606330680
+    second: Base Hobo Jump_3
+  - first:
+      213: -1385597294495792326
+    second: Base Hobo Jump_4
+  - first:
+      213: 4832315843613880513
+    second: Base Hobo Jump_5
+  - first:
+      213: 1499089339365859874
+    second: Base Hobo Jump_6
+  - first:
+      213: -2691972844609688061
+    second: Base Hobo Jump_7
+  - first:
+      213: -8660348045748160604
+    second: Base Hobo Jump_8
+  - first:
+      213: -8704085869255399796
+    second: Base Hobo Jump_9
+  - first:
+      213: -55397841484777412
+    second: Base Hobo Jump_10
+  - first:
+      213: -7000566954696620248
+    second: Base Hobo Jump_11
+  - first:
+      213: -3909803944806471939
+    second: Base Hobo Jump_12
+  - first:
+      213: -1261526019310677525
+    second: Base Hobo Jump_13
+  - first:
+      213: -8531360795593732726
+    second: Base Hobo Jump_14
+  - first:
+      213: 8179319698932390798
+    second: Base Hobo Jump_15
+  - first:
+      213: 2970975456556772656
+    second: Base Hobo Jump_16
+  - first:
+      213: -8185479715324103179
+    second: Base Hobo Jump_17
+  - first:
+      213: 7280231550569064729
+    second: Base Hobo Jump_18
+  - first:
+      213: -9040252447678155394
+    second: Base Hobo Jump_19
+  - first:
+      213: 1938899925345922649
+    second: Base Hobo Jump_20
+  - first:
+      213: -1819991706877105819
+    second: Base Hobo Jump_21
+  - first:
+      213: 3113787487948327801
+    second: Base Hobo Jump_22
+  - first:
+      213: -7007030996140004828
+    second: Base Hobo Jump_23
+  - first:
+      213: 814047128652908326
+    second: Base Hobo Jump_24
+  - first:
+      213: -6805115387400164864
+    second: Base Hobo Jump_25
+  - first:
+      213: -8774772290246375336
+    second: Base Hobo Jump_26
+  - first:
+      213: 6608078639514464169
+    second: Base Hobo Jump_27
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Base Hobo Jump_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 199
+        width: 30
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93fe3fee4c1e1560800000000000000
+      internalID: 7286292372478948254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_1
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 199
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac39a0779ea03a790800000000000000
+      internalID: -7520154954937756726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 199
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90b6b25575890ba0800000000000000
+      internalID: -6122215479488106341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 199
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c42d560a8779feb0800000000000000
+      internalID: -4685582502606330680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_4
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 199
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3306d31a9e55cce0800000000000000
+      internalID: -1385597294495792326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_5
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 199
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0f81538a5df0340800000000000000
+      internalID: 4832315843613880513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 199
+        width: 36
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2222a77cfc5ddc410800000000000000
+      internalID: 1499089339365859874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 135
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30eaa04e5f034aad0800000000000000
+      internalID: -2691972844609688061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 135
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a7beed365340d780800000000000000
+      internalID: -8660348045748160604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 135
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86e884a400e43780800000000000000
+      internalID: -8704085869255399796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_10
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 135
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38f9f8e4ff2b3ff0800000000000000
+      internalID: -55397841484777412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_11
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 135
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82748fef17df8de90800000000000000
+      internalID: -7000566954696620248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_12
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 135
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6a368f6069db9c0800000000000000
+      internalID: -3909803944806471939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_13
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 135
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be11310f4c82e7ee0800000000000000
+      internalID: -1261526019310677525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 71
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8d01f7be848a9980800000000000000
+      internalID: -8531360795593732726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 71
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b58372ee7c28170800000000000000
+      internalID: 8179319698932390798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_16
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 71
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d6874df660b3920800000000000000
+      internalID: 2970975456556772656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_17
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 71
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5f0f34195576e80800000000000000
+      internalID: -8185479715324103179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_18
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 71
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919a24ed504980560800000000000000
+      internalID: 7280231550569064729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_19
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 71
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e75b940db429a8280800000000000000
+      internalID: -9040252447678155394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_20
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 71
+        width: 34
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e6649953b58ea10800000000000000
+      internalID: 1938899925345922649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_21
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 7
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569ee617f271eb6e0800000000000000
+      internalID: -1819991706877105819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_22
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 7
+        width: 24
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b47350935663b20800000000000000
+      internalID: 3113787487948327801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_23
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 7
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a6ce01f6602ce90800000000000000
+      internalID: -7007030996140004828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_24
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 7
+        width: 26
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62788cdec831c4b00800000000000000
+      internalID: 814047128652908326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_25
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 7
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ae7763c9f5f81a0800000000000000
+      internalID: -6805115387400164864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_26
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 7
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8588ceeb71fb93680800000000000000
+      internalID: -8774772290246375336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Base Hobo Jump_27
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 7
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af2b14f28c94bb50800000000000000
+      internalID: 6608078639514464169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
