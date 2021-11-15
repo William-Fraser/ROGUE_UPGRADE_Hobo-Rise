@@ -267,6 +267,30 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Amount of Upgrades Methods
+
+    public float GetSpeedUpgrades()
+    {
+        return stats.speedModifier / maxPossibleStats.speedModifier * 100;
+    }
+    public float GetHealthUpgrades()
+    {
+        return stats.maxHealth / maxPossibleStats.maxHealth * 100;
+    }
+    public float GetEnergyUpgrades()
+    {
+        return stats.maxEnergy / maxPossibleStats.maxEnergy * 100;
+    }
+    public float GetAttackUpgrades()
+    {
+        return stats.damageModifier / maxPossibleStats.damageModifier * 100;
+    }
+    public float GetAttackSpeedUpgrades()
+    {
+        return stats.attackSpeedModifier / maxPossibleStats.attackSpeedModifier * 100;
+    }
+    #endregion
+
     #region Housing Methods
     public void BuyHouse()
     {
@@ -290,15 +314,14 @@ public class GameManager : MonoBehaviour
         distanceTraveled += distance;
     }
     #endregion
+   
+    #region Money Methods
     public void CollectCoins(int value)
     {
         collectedMoney += value;
     }
 
-    public void ButtonPressed()
-    {
-        audioSource.PlayOneShot(buttonPress);
-    }
+    
     public void SpawnBronzeCoin(Vector3 position)
     {
         GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
@@ -321,6 +344,13 @@ public class GameManager : MonoBehaviour
     public float GetHousePrice()
     {
         return housePrice;
+    }
+    #endregion
+
+    
+    public void ButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonPress);
     }
 }
 
