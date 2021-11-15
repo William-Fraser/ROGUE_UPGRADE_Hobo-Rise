@@ -41,5 +41,41 @@ public class UpgradePips : MonoBehaviour
                 attackPips.pips[i / 10].sprite = attackPips.unObtained;
             }
         }
+
+        for (int i = 0; i < 100; i += 10)
+        {
+            if (i < GameManager.gameManager.GetAttackUpgrades())
+            {
+                damagePips.pips[i / 10].sprite = damagePips.obtained;
+            }
+            else
+            {
+                damagePips.pips[i / 10].sprite = damagePips.unObtained;
+            }
+        }
+
+        for (int i = 0; i < 100; i += 10)
+        {
+            if (i < GameManager.gameManager.GetEnergyUpgrades())
+            {
+                energyPips.pips[i / 10].sprite = energyPips.obtained;
+            }
+            else
+            {
+                energyPips.pips[i / 10].sprite = energyPips.unObtained;
+            }
+        }
+
+        for (int i = 0; i < 100; i += 10)
+        {
+            if (i < GameManager.gameManager.GetHealthUpgrades())
+            {
+                healthPips.pips[i / 10].sprite = healthPips.obtained;
+            }
+            else
+            {
+                healthPips.pips[i / 10].sprite = healthPips.unObtained;
+            }
+        }
     }
 }
