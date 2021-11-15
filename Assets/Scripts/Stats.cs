@@ -113,7 +113,14 @@ public class Stats : MonoBehaviour
     }
     public void LoseHealth(int value, bool attack)
     {
-        health -= value;
+        if (health - value < 0)
+        {
+            health = 0;
+        }
+        else
+        {
+            health -= value;
+        }
 
         if (attack)
         { sprite.color = new Color(100, 0, 0); }
