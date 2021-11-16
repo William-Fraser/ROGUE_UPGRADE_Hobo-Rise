@@ -357,11 +357,11 @@ public class GameManager : MonoBehaviour
 [Serializable]
 public class PlayerData
 {
-    public int maxHealth = 10;
+    public float maxHealth = 10;
     public float speedModifier = 1;
     public float damageModifier = 1;
     public float attackSpeedModifier = 1;
-    public int maxEnergy = 10;
+    public float maxEnergy = 10;
     public float totalMoney = 0;
     public int clout = 0;
 }

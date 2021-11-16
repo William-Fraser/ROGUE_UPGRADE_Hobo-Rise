@@ -8565,18 +8565,48 @@ MonoBehaviour:
     - {fileID: 426586148}
     unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
     obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
-  attackSpeedPips:
-    pips: []
-    unObtained: {fileID: 0}
-    obtained: {fileID: 0}
+  damagePips:
+    pips:
+    - {fileID: 1588588027}
+    - {fileID: 852968693}
+    - {fileID: 102628111}
+    - {fileID: 1924109441}
+    - {fileID: 602225277}
+    - {fileID: 1953583327}
+    - {fileID: 2092145709}
+    - {fileID: 1526508508}
+    - {fileID: 163028949}
+    - {fileID: 289004960}
+    unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
+    obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
   healthPips:
-    pips: []
-    unObtained: {fileID: 0}
-    obtained: {fileID: 0}
+    pips:
+    - {fileID: 1324401100}
+    - {fileID: 479552226}
+    - {fileID: 1812118303}
+    - {fileID: 1302748535}
+    - {fileID: 988057710}
+    - {fileID: 2000577695}
+    - {fileID: 32690289}
+    - {fileID: 1243774926}
+    - {fileID: 2131973248}
+    - {fileID: 1140080280}
+    unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
+    obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
   energyPips:
-    pips: []
-    unObtained: {fileID: 0}
-    obtained: {fileID: 0}
+    pips:
+    - {fileID: 1256697740}
+    - {fileID: 1135952906}
+    - {fileID: 418186088}
+    - {fileID: 434154406}
+    - {fileID: 441835752}
+    - {fileID: 1581581025}
+    - {fileID: 1444230828}
+    - {fileID: 800810020}
+    - {fileID: 20154040}
+    - {fileID: 1218995316}
+    unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
+    obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
 --- !u!1 &1891267367
 GameObject:
   m_ObjectHideFlags: 0

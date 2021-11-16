@@ -10,6 +10,8 @@ public class UpgradePips : MonoBehaviour
     public Pips damagePips;
     public Pips healthPips;
     public Pips energyPips;
+
+    public float testVariable;
     [Serializable]
     public struct Pips
     {
