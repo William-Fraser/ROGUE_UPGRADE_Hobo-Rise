@@ -8,12 +8,12 @@ public class Stats : MonoBehaviour
 {
     public bool alive = true;
     public CharacterType type;
-    public float maxHealth;
+    public int maxHealth;
     public float health;
     public float speedModifier;
     public float damageModifier;
     public float attackSpeedModifier;
-    public float maxEnergy;
+    public int maxEnergy;
     public float energy;
     public int displayedEnergy; // used to display in place of energy to show better looking scale
     public float collectedMoney; // money collected in a single run
