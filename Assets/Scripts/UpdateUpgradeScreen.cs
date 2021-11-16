@@ -17,68 +17,43 @@ public class UpdateUpgradeScreen : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameManager.stats.attackSpeedModifier < GameManager.gameManager.maxPossibleStats.attackSpeedModifier && GameManager.gameManager.CanPurchase((int)(10 * GameManager.gameManager.stats.attackSpeedModifier)))
-            hatButtonText.text = "Buy:   $" + (10 * GameManager.gameManager.stats.attackSpeedModifier);
-        else if (GameManager.gameManager.stats.attackSpeedModifier < GameManager.gameManager.maxPossibleStats.attackSpeedModifier && !GameManager.gameManager.CanPurchase((int)(10 * GameManager.gameManager.stats.attackSpeedModifier)))
-        {
-            hatButtonText.text = "Buy:   $" + (10 * GameManager.gameManager.stats.attackSpeedModifier);
-            hatButton.image.color = new Color(0, 0, 0, 55);
-        }
+        if (GameManager.gameManager.stats.attackSpeedModifier < GameManager.gameManager.maxPossibleStats.attackSpeedModifier)
+            hatButtonText.text = "Attack Speed:   $" + (10 * GameManager.gameManager.stats.attackSpeedModifier);
         else
         {
-            hatButtonText.text = "Max";
+            hatButtonText.text = "Attack Speed:   Max";
             hatButton.enabled = false;
         }
 
-        if (GameManager.gameManager.stats.maxHealth < GameManager.gameManager.maxPossibleStats.maxHealth && GameManager.gameManager.CanPurchase((int)(GameManager.gameManager.stats.maxHealth)))
-            clothesButtonText.text = "Buy:   $" + (1 * GameManager.gameManager.stats.maxHealth);
-        else if (GameManager.gameManager.stats.maxHealth < GameManager.gameManager.maxPossibleStats.maxHealth && !GameManager.gameManager.CanPurchase((int)(GameManager.gameManager.stats.maxHealth)))
-        {
-            clothesButtonText.text = "Buy:   $" + (GameManager.gameManager.stats.maxHealth);
-            clothesButton.image.color = new Color(0, 0, 0, 55);
-        }
+        if (GameManager.gameManager.stats.maxHealth < GameManager.gameManager.maxPossibleStats.maxHealth)
+            clothesButtonText.text = "Health:   $" + (1 * GameManager.gameManager.stats.maxHealth);
         else
         {
-            clothesButtonText.text = "Max";
+            clothesButtonText.text = "Health:   Max";
             clothesButton.enabled = false;
         }
 
-        if (GameManager.gameManager.stats.damageModifier < GameManager.gameManager.maxPossibleStats.damageModifier && GameManager.gameManager.CanPurchase((int)(10 * GameManager.gameManager.stats.damageModifier)))
-            weaponButtonText.text = "Buy:   $" + (10 * GameManager.gameManager.stats.damageModifier);
-        else if (GameManager.gameManager.stats.damageModifier < GameManager.gameManager.maxPossibleStats.damageModifier && !GameManager.gameManager.CanPurchase((int)(10 * GameManager.gameManager.stats.damageModifier)))
-        {
-            weaponButtonText.text = "Buy:   $" + (10 * GameManager.gameManager.stats.damageModifier);
-            weaponButton.image.color = new Color(0, 0, 0, 55);
-        }
+        if (GameManager.gameManager.stats.damageModifier < GameManager.gameManager.maxPossibleStats.damageModifier)
+            weaponButtonText.text = "Damage:   $" + (10 * GameManager.gameManager.stats.damageModifier);
         else
         {
-            weaponButtonText.text = "Max";
+            weaponButtonText.text = "Damage:   Max";
             weaponButton.enabled = false;
         }
 
-        if (GameManager.gameManager.stats.speedModifier < GameManager.gameManager.maxPossibleStats.speedModifier && GameManager.gameManager.CanPurchase((int)(10 * GameManager.gameManager.stats.speedModifier)))
-            shoesButtonText.text = "Buy:   $" + (10 * GameManager.gameManager.stats.speedModifier);
-        else if (GameManager.gameManager.stats.speedModifier < GameManager.gameManager.maxPossibleStats.speedModifier && !GameManager.gameManager.CanPurchase((int)(10 * GameManager.gameManager.stats.speedModifier)))
-        {
-            shoesButtonText.text = "Buy:   $" + (10 * GameManager.gameManager.stats.speedModifier);
-            shoesButton.image.color = new Color(0, 0, 0, 55);
-        }
+        if (GameManager.gameManager.stats.speedModifier < GameManager.gameManager.maxPossibleStats.speedModifier)
+            shoesButtonText.text = "Speed:   $" + (10 * GameManager.gameManager.stats.speedModifier);
         else
         {
-            shoesButtonText.text = "Max";
+            shoesButtonText.text = "Speed:   Max";
             shoesButton.enabled = false;
         }
 
-        if (GameManager.gameManager.stats.maxEnergy < GameManager.gameManager.maxPossibleStats.maxEnergy && GameManager.gameManager.CanPurchase((int)(GameManager.gameManager.stats.maxEnergy)))
-            energyButtonText.text = "Buy:   $" + (1 * GameManager.gameManager.stats.maxEnergy);
-        else if (GameManager.gameManager.stats.maxEnergy < GameManager.gameManager.maxPossibleStats.maxEnergy && !GameManager.gameManager.CanPurchase((int)(GameManager.gameManager.stats.maxEnergy)))
-        {
-            energyButtonText.text = "Buy:   $" + (1 * GameManager.gameManager.stats.maxEnergy);
-            energyButton.image.color = new Color(0, 0, 0, 55);
-        }
+        if (GameManager.gameManager.stats.maxEnergy < GameManager.gameManager.maxPossibleStats.maxEnergy)
+            energyButtonText.text = "Energy:   $" + (1 * GameManager.gameManager.stats.maxEnergy);
         else
         {
-            energyButtonText.text = "Max";
+            energyButtonText.text = "Energy:   Max";
             energyButton.enabled = false;
         }
     }
