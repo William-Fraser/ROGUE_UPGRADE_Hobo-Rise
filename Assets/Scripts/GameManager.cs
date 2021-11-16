@@ -321,12 +321,7 @@ public class GameManager : MonoBehaviour
         collectedMoney += value;
     }
 
-
-    public void ButtonPressed()
-    {
-        audioSource.loop = false;
-        audioSource.PlayOneShot(buttonPress);
-    }
+    
     public void SpawnBronzeCoin(Vector3 position)
     {
         GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
@@ -351,6 +346,12 @@ public class GameManager : MonoBehaviour
         return housePrice;
     }
     #endregion
+
+    
+    public void ButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonPress);
+    }
 }
 
 [Serializable]

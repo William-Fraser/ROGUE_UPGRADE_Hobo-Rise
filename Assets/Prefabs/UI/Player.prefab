@@ -247,8 +247,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0012294134, y: 0.014754169}
-  m_Size: {x: 0.21950544, y: 0.45311368}
+  m_Offset: {x: -0.0012296041, y: -0.03319696}
+  m_Size: {x: 0.20966925, y: 0.4408183}
   m_Direction: 0
 --- !u!114 &225746867039680054
 MonoBehaviour:
@@ -272,7 +272,7 @@ MonoBehaviour:
   animator: {fileID: 4847055528186476781}
   movementDirection: {x: 0, y: 0}
   audioSource: {fileID: 0}
-  footStep: {fileID: 8300000, guid: 69a9a64e0a2c50e4ca23849ee396ac59, type: 3}
+  footStep: {fileID: 0}
 --- !u!114 &225746867039680053
 MonoBehaviour:
   m_ObjectHideFlags: 0
