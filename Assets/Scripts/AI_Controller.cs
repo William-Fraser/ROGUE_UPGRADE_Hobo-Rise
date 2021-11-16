@@ -86,7 +86,7 @@ public class AI_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponentInChildren<Stats>();
         destination = GetComponent<AIDestinationSetter>();
-        returnPoint = new GameObject();
+        returnPoint = new GameObject($"{GetComponentInParent<GameObject>().name} Return Point");
         returnPoint.transform.position = transform.position;
 
         canAttack = true;
