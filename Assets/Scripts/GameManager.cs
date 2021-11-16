@@ -294,6 +294,7 @@ public class GameManager : MonoBehaviour
     {
         collectedMoney += value;
     }
+
     public void ButtonPressed()
     {
         audioSource.loop = false;
