@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             {
                 if (currentScene == GameScenes.InGame)
                 {
-                    if (gameOverTimer >= gameOverTimeRequirement)
+                    if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
                     {
                         runOverObject.SetActive(false);
                         gameOverTimer = 0;
@@ -267,6 +267,30 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Amount of Upgrades Methods
+
+    public float GetSpeedUpgrades()
+    {
+        return stats.speedModifier / maxPossibleStats.speedModifier * 100;
+    }
+    public float GetHealthUpgrades()
+    {
+        return stats.maxHealth / maxPossibleStats.maxHealth * 100;
+    }
+    public float GetEnergyUpgrades()
+    {
+        return stats.maxEnergy / maxPossibleStats.maxEnergy * 100;
+    }
+    public float GetAttackUpgrades()
+    {
+        return stats.damageModifier / maxPossibleStats.damageModifier * 100;
+    }
+    public float GetAttackSpeedUpgrades()
+    {
+        return stats.attackSpeedModifier / maxPossibleStats.attackSpeedModifier * 100;
+    }
+    #endregion
+
     #region Housing Methods
     public void BuyHouse()
     {
@@ -290,16 +314,22 @@ public class GameManager : MonoBehaviour
         distanceTraveled += distance;
     }
     #endregion
+   
+    #region Money Methods
     public void CollectCoins(int value)
     {
         collectedMoney += value;
     }
 
+<<<<<<< HEAD
     public void ButtonPressed()
     {
         audioSource.loop = false;
         audioSource.PlayOneShot(buttonPress);
     }
+=======
+    
+>>>>>>> parent of 566ce4b (Merge branch 'main' into Upgrade-Pip-Icons-and-Layout-Edits)
     public void SpawnBronzeCoin(Vector3 position)
     {
         GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
@@ -323,16 +353,23 @@ public class GameManager : MonoBehaviour
     {
         return housePrice;
     }
+    #endregion
+
+    
+    public void ButtonPressed()
+    {
+        audioSource.PlayOneShot(buttonPress);
+    }
 }
 
 [Serializable]
 public class PlayerData
 {
-    public int maxHealth = 10;
+    public float maxHealth = 10;
     public float speedModifier = 1;
     public float damageModifier = 1;
     public float attackSpeedModifier = 1;
-    public int maxEnergy = 10;
+    public float maxEnergy = 10;
     public float totalMoney = 0;
     public int clout = 0;
 }
