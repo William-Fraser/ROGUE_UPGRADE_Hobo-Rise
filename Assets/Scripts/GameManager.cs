@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             {
                 if (currentScene == GameScenes.InGame)
                 {
-                    if (gameOverTimer >= gameOverTimeRequirement)
+                    if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
                     {
                         runOverObject.SetActive(false);
                         gameOverTimer = 0;
