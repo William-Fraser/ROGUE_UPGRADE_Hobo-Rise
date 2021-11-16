@@ -74,7 +74,7 @@ public class AI_Controller : MonoBehaviour
     private bool attackingCountDown;
     private float attackingTimer;
 
-    Animator animator;
+    private Animator animator;
 
     public bool TargetVisible { set { targetVisible = value; } }
 
@@ -86,7 +86,7 @@ public class AI_Controller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponentInChildren<Stats>();
         destination = GetComponent<AIDestinationSetter>();
-        returnPoint = new GameObject($"{GetComponentInParent<GameObject>().name} Return Point");
+        returnPoint = new GameObject("Return Point");
         returnPoint.transform.position = transform.position;
 
         canAttack = true;

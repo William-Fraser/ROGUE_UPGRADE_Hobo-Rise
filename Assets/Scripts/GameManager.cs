@@ -33,8 +33,6 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip buttonPress;
-    public AudioClip mainMenuSong;
-    public AudioClip upgradeScreenSong;
 
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
@@ -61,8 +59,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        PlayMainMenuMusic();
     }
     private void Update()
     {
@@ -96,7 +92,6 @@ public class GameManager : MonoBehaviour
     public void MainMenu()
     {
         ChangeScene(GameScenes.Main);
-        PlayMainMenuMusic();
         stats = new PlayerData();
     }
     public void NextRound()
@@ -199,11 +194,9 @@ public class GameManager : MonoBehaviour
                 break;
             case GameScenes.Cutscene:
                 SceneManager.LoadScene(cutsceneID);
-                audioSource.clip = null;
                 break;
             case GameScenes.InGame:
                 SceneManager.LoadScene(inGameID);
-                audioSource.clip = null;
                 break;
             case GameScenes.Victory:
                 SceneManager.LoadScene(victoryID);
@@ -213,7 +206,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GameScenes.Upgrade:
                 SceneManager.LoadScene(upgradeID);
-                PlayUpgradeScreenMusic();
                 break;
             case GameScenes.Credits:
                 SceneManager.LoadScene(creditsID);
@@ -307,24 +299,6 @@ public class GameManager : MonoBehaviour
     {
         audioSource.loop = false;
         audioSource.PlayOneShot(buttonPress);
-    }
-    public void PlayMainMenuMusic()
-    {
-        if ((int)currentScene == mainID)
-        {
-            audioSource.loop = true;
-            audioSource.clip = mainMenuSong;
-            audioSource.Play();
-        }
-    }
-    public void PlayUpgradeScreenMusic()
-    {
-        if ((int)currentScene == upgradeID)
-        { 
-            audioSource.loop = true;
-            audioSource.clip = upgradeScreenSong;
-            audioSource.Play();
-        }
     }
     public void SpawnBronzeCoin(Vector3 position)
     {
