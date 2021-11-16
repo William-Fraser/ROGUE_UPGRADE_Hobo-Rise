@@ -321,15 +321,11 @@ public class GameManager : MonoBehaviour
         collectedMoney += value;
     }
 
-<<<<<<< HEAD
     public void ButtonPressed()
     {
         audioSource.loop = false;
         audioSource.PlayOneShot(buttonPress);
     }
-=======
-    
->>>>>>> parent of 566ce4b (Merge branch 'main' into Upgrade-Pip-Icons-and-Layout-Edits)
     public void SpawnBronzeCoin(Vector3 position)
     {
         GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
@@ -354,12 +350,6 @@ public class GameManager : MonoBehaviour
         return housePrice;
     }
     #endregion
-
-    
-    public void ButtonPressed()
-    {
-        audioSource.PlayOneShot(buttonPress);
-    }
 }
 
 [Serializable]
