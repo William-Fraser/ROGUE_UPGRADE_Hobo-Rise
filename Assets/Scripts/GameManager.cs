@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip buttonPress;
 
+    public GameObject valuePopupPrefab;
+
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
 
@@ -319,7 +321,12 @@ public class GameManager : MonoBehaviour
     #endregion
    
     #region Money Methods
-    
+    public void CollectMoney(int value, Vector3 pos)
+    {
+        collectedMoney += value;
+        gameManager.DisplayGUIPopup("+$"+value, pos, Color.yellow);
+    }
+
     public void ButtonPressed()
     {
         audioSource.loop = false;
@@ -383,11 +390,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void CollectMoney(int value, Vector3 pos)
-    {
-        collectedMoney += value;
-        gameManager.DisplayGUIPopup("+$" + value.ToString(), pos, Color.yellow);
-    }
     public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
     {
         Debug.LogError($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
