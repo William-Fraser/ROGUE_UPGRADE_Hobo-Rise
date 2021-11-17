@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     private float gameOverTimeRequirement = 3f;
 
     private bool isKeyDownEndScreen = true;
+    [SerializeField]
+    private GameObject valuePopupPrefab;
+
     public enum GameScenes { 
         Main,
         Cutscene,
@@ -316,11 +319,7 @@ public class GameManager : MonoBehaviour
     #endregion
    
     #region Money Methods
-    public void CollectCoins(int value)
-    {
-        collectedMoney += value;
-    }
-
+    
     public void ButtonPressed()
     {
         audioSource.loop = false;
@@ -349,6 +348,7 @@ public class GameManager : MonoBehaviour
     {
         return housePrice;
     }
+    #endregion
 
     private bool CheckRoundEnd()
     {
@@ -381,6 +381,12 @@ public class GameManager : MonoBehaviour
             runOverObject.SetActive(true);
             gameOverTimer += Time.deltaTime;
         }
+    }
+
+    public void CollectMoney(int value, Vector3 pos)
+    {
+        collectedMoney += value;
+        gameManager.DisplayGUIPopup("+$" + value.ToString(), pos, Color.yellow);
     }
     public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
     {
