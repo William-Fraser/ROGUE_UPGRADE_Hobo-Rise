@@ -37,10 +37,7 @@ public class GameManager : MonoBehaviour
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
 
-    [SerializeField]
-    private GameObject valuePopupPrefab;
-
-
+    private bool isKeyDownEndScreen = true;
     public enum GameScenes { 
         Main,
         Cutscene,
@@ -68,9 +65,25 @@ public class GameManager : MonoBehaviour
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
-        if (CheckRoundEnd())
+        if (player != null)
         {
-            EndRound();
+            if(player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
+            {
+                if (currentScene == GameScenes.InGame)
+                {
+                    if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
+                    {
+                        runOverObject.SetActive(false);
+                        gameOverTimer = 0;
+                        stats.totalMoney += collectedMoney;
+                        ChangeScene(GameScenes.Results);
+                    } else
+                    {
+                        runOverObject.SetActive(true);
+                        gameOverTimer += Time.deltaTime;
+                    }
+                }
+            }
         }
     }
     #endregion
@@ -301,10 +314,11 @@ public class GameManager : MonoBehaviour
         distanceTraveled += distance;
     }
     #endregion
-    public void CollectMoney(int value, Vector3 pos)
+   
+    #region Money Methods
+    public void CollectCoins(int value)
     {
         collectedMoney += value;
-        gameManager.DisplayGUIPopup("+$"+value.ToString(), pos, Color.yellow);
     }
 
     public void ButtonPressed()
@@ -349,12 +363,18 @@ public class GameManager : MonoBehaviour
     }
     private void EndRound()
     {
-        if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
+        if(isKeyDownEndScreen && !Input.anyKey)
+        {
+            isKeyDownEndScreen = false;
+        }
+
+        if (gameOverTimer >= gameOverTimeRequirement || (isKeyDownEndScreen == false && Input.anyKey))
         {
             runOverObject.SetActive(false);
             gameOverTimer = 0;
             stats.totalMoney += collectedMoney;
             ChangeScene(GameScenes.Upgrade);
+            isKeyDownEndScreen = true;
         }
         else
         {
