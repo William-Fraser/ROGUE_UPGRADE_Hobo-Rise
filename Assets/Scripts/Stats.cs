@@ -100,7 +100,12 @@ public class Stats : MonoBehaviour
         }
 
         if (attack)
-        { sprite.color = new Color(100, 0, 0); }
+        { 
+            //sprite.color = Color.red;
+        }
+
+        Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
+        GameManager.gameManager.DisplayGUIPopup("-"+value.ToString(), this.transform.position, Color.red);
 
         if (health < 0)
             health = 0;

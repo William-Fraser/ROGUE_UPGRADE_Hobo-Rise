@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ResultsUI : MonoBehaviour
 {
-    public TextMeshProUGUI coinsCollected;
-    public TextMeshProUGUI healthLeft;
-    public TextMeshProUGUI enemiesKilled;
-    public TextMeshProUGUI distanceTraveled;
-    public TextMeshProUGUI damageDealt;
+    public Text coinsCollected;
+    public Text healthLeft;
+    public Text energyLeft;
 
     private void Update()
     { 
-        coinsCollected.text = "" +GameManager.gameManager.collectedMoney;
-        healthLeft.text = "" + GameManager.gameManager.player.GetComponent<Stats>().health;
-        enemiesKilled.text = "" + GameManager.gameManager.enemiesKilled;
-        distanceTraveled.text = "" + (int)GameManager.gameManager.distanceTraveled + " ft";
-        damageDealt.text = "" + GameManager.gameManager.damageDealt;
+        coinsCollected.text = "Coins Collected: $" +GameManager.gameManager.collectedMoney;
+        healthLeft.text = "Health Remaining: " + GameManager.gameManager.player.GetComponent<Stats>().health;
+        energyLeft.text = "Energy Remaining: " + GameManager.gameManager.player.GetComponent<Stats>().displayedEnergy;
     }
 }

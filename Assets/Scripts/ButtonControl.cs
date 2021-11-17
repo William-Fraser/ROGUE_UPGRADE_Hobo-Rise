@@ -5,24 +5,6 @@ using UnityEngine;
 public class ButtonControl : MonoBehaviour
 {
     private GameObject replacementCanvas;
-    public void Start()
-    {
-        if (GameObject.Find("Upgrades Canvas") != null)
-        {
-            replacementCanvas = GameObject.Find("Upgrades Canvas").gameObject;
-            replacementCanvas.SetActive(false);
-        }
-        else if (GameObject.Find("Instructions Canvas") != null)
-        {
-            replacementCanvas = GameObject.Find("Instructions Canvas").gameObject;
-            replacementCanvas.SetActive(false);
-        }
-
-        if (GameManager.gameManager.isOnUpgrade())
-        {
-            ContinueToUpgrade();
-        }
-    }
     public void NextRound()
     {
         GameManager.gameManager.NextRound();
@@ -45,15 +27,6 @@ public class ButtonControl : MonoBehaviour
         Debug.Log("Exiting Game");
         GameManager.gameManager.ButtonPressed();
         Application.Quit();
-    }
-    public void ContinueToUpgrade()
-    {
-        GameManager.gameManager.ButtonPressed();
-        if (GameObject.Find("Results Canvas") != null)
-        {
-            GameObject.Find("Results Canvas").gameObject.SetActive(false);
-            replacementCanvas.SetActive(true);
-        }
     }
     public void ContinueToInstructions()
     {
