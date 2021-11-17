@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip buttonPress;
 
-    public GameObject valuePopupPrefab;
-
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
 
