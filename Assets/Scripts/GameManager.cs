@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
 
+    [SerializeField]
+    private GameObject valuePopupPrefab;
+
 
     public enum GameScenes { 
         Main,
@@ -298,11 +301,10 @@ public class GameManager : MonoBehaviour
         distanceTraveled += distance;
     }
     #endregion
-   
-    #region Money Methods
-    public void CollectCoins(int value)
+    public void CollectMoney(int value, Vector3 pos)
     {
         collectedMoney += value;
+        gameManager.DisplayGUIPopup("+$"+value.ToString(), pos, Color.yellow);
     }
 
     public void ButtonPressed()
@@ -360,6 +362,11 @@ public class GameManager : MonoBehaviour
             runOverObject.SetActive(true);
             gameOverTimer += Time.deltaTime;
         }
+    public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
+    {
+        Debug.LogError($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
+        GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
+        popup.GetComponent<ValuePopup>().Setup(displayValue, color);
     }
 }
 

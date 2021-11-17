@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - GUI
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GUI
+    uniqueID: 2920284953
     locked: 0

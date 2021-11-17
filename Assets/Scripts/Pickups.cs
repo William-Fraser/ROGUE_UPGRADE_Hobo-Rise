@@ -22,10 +22,10 @@ public class Pickups : MonoBehaviour
     {
         switch (type) {
             case PickupTypes.Coin:
-                GameManager.gameManager.CollectCoins(effectValue);
+                GameManager.gameManager.CollectMoney(effectValue, this.transform.position);
                 break;
             case PickupTypes.Bill:
-                GameManager.gameManager.CollectCoins(effectValue);
+                GameManager.gameManager.CollectMoney(effectValue, this.transform.position);
                 break;
             case PickupTypes.Food:
                 player.GetComponent<Stats>().ObtainEnergy(effectValue);
