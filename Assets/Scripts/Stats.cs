@@ -80,16 +80,22 @@ public class Stats : MonoBehaviour
     #region Set, Obtain, and Lose resources
     public void ObtainEnergy(int value)
     {
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
         energy += value;
     }
     public void LoseEnergy(float value)
     {
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
         energy -= value;
         if (energy < 0)
             energy = 0;
     } 
     public void LoseHealth(int value, bool attack)
     {
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+            return;
         if (health - value < 0)
         {
             health = 0;
