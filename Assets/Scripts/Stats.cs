@@ -30,7 +30,7 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         if (health <= 0)
             Death();
@@ -80,14 +80,14 @@ public class Stats : MonoBehaviour
     #region Set, Obtain, and Lose resources
     public void ObtainEnergy(int value)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         energy += value;
         GameManager.gameManager.DisplayGUIPopup("+"+value+"%", transform.position, Color.green);
     }
     public void LoseEnergy(float value)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         energy -= value;
         if (energy < 0)
@@ -95,7 +95,7 @@ public class Stats : MonoBehaviour
     } 
     public void LoseHealth(int value, bool attack)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         if (health - value < 0)
         {
