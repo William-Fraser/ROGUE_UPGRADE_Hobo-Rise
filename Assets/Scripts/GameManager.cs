@@ -65,25 +65,9 @@ public class GameManager : MonoBehaviour
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        if (CheckRoundEnd())
         {
-            if(player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
-            {
-                if (currentScene == GameScenes.InGame)
-                {
-                    if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
-                    {
-                        runOverObject.SetActive(false);
-                        gameOverTimer = 0;
-                        stats.totalMoney += collectedMoney;
-                        ChangeScene(GameScenes.Results);
-                    } else
-                    {
-                        runOverObject.SetActive(true);
-                        gameOverTimer += Time.deltaTime;
-                    }
-                }
-            }
+            EndRound();
         }
     }
     #endregion
@@ -350,6 +334,33 @@ public class GameManager : MonoBehaviour
         return housePrice;
     }
     #endregion
+
+    private bool CheckRoundEnd()
+    {
+        if (player != null && currentScene == GameScenes.InGame)
+        {
+            if (player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void EndRound()
+    {
+        if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
+        {
+            runOverObject.SetActive(false);
+            gameOverTimer = 0;
+            stats.totalMoney += collectedMoney;
+            ChangeScene(GameScenes.Upgrade);
+        }
+        else
+        {
+            runOverObject.SetActive(true);
+            gameOverTimer += Time.deltaTime;
+        }
+    }
 }
 
 [Serializable]
