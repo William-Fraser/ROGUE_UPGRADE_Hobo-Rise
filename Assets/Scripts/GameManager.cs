@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     private float gameOverTimeRequirement = 3f;
 
     private bool isKeyDownEndScreen = true;
+    [SerializeField]
+    private GameObject valuePopupPrefab;
+
     public enum GameScenes { 
         Main,
         Cutscene,
@@ -350,8 +353,6 @@ public class GameManager : MonoBehaviour
         return housePrice;
     }
     #endregion
-<<<<<<< Updated upstream
-=======
 
     private bool CheckRoundEnd()
     {
@@ -385,7 +386,18 @@ public class GameManager : MonoBehaviour
             gameOverTimer += Time.deltaTime;
         }
     }
->>>>>>> Stashed changes
+
+    public void CollectMoney(int value, Vector3 pos)
+    {
+        collectedMoney += value;
+        gameManager.DisplayGUIPopup("+$" + value.ToString(), pos, Color.yellow);
+    }
+    public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
+    {
+        Debug.LogError($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
+        GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
+        popup.GetComponent<ValuePopup>().Setup(displayValue, color);
+    }
 }
 
 [Serializable]
