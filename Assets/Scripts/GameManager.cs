@@ -335,7 +335,6 @@ public class GameManager : MonoBehaviour
     {
         return housePrice;
     }
-    #endregion
 
     private bool CheckRoundEnd()
     {
@@ -362,6 +361,7 @@ public class GameManager : MonoBehaviour
             runOverObject.SetActive(true);
             gameOverTimer += Time.deltaTime;
         }
+    }
     public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
     {
         Debug.LogError($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");

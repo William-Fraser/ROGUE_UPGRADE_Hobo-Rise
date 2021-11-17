@@ -81,6 +81,7 @@ public class Stats : MonoBehaviour
     public void ObtainEnergy(int value)
     {
         energy += value;
+        GameManager.gameManager.DisplayGUIPopup("+"+value+"%", transform.position, Color.green);
     }
     public void LoseEnergy(float value)
     {
