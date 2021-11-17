@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     private float gameOverTimer = 0f;
     private float gameOverTimeRequirement = 3f;
 
-
+    private bool isKeyDownEndScreen = true;
     public enum GameScenes { 
         Main,
         Cutscene,
@@ -350,6 +350,42 @@ public class GameManager : MonoBehaviour
         return housePrice;
     }
     #endregion
+<<<<<<< Updated upstream
+=======
+
+    private bool CheckRoundEnd()
+    {
+        if (player != null && currentScene == GameScenes.InGame)
+        {
+            if (player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void EndRound()
+    {
+        if(isKeyDownEndScreen && !Input.anyKey)
+        {
+            isKeyDownEndScreen = false;
+        }
+
+        if (gameOverTimer >= gameOverTimeRequirement || (isKeyDownEndScreen == false && Input.anyKey))
+        {
+            runOverObject.SetActive(false);
+            gameOverTimer = 0;
+            stats.totalMoney += collectedMoney;
+            ChangeScene(GameScenes.Upgrade);
+            isKeyDownEndScreen = true;
+        }
+        else
+        {
+            runOverObject.SetActive(true);
+            gameOverTimer += Time.deltaTime;
+        }
+    }
+>>>>>>> Stashed changes
 }
 
 [Serializable]
