@@ -390,7 +390,7 @@ public class GameManager : MonoBehaviour
 
     public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
     {
-        Debug.LogError($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
+        Debug.Log($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
         GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
         popup.GetComponent<ValuePopup>().Setup(displayValue, color);
     }

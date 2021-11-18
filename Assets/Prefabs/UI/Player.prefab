@@ -233,12 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c478210ba4ed745b579be365401518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topParent: {fileID: 225746867039680052}
   alive: 1
   type: 0
   maxHealth: 200
   health: 200
   speedModifier: 10
-  damageModifier: 0
+  damageModifier: 1
   attackSpeedModifier: 0
   maxEnergy: 10
   energy: 10

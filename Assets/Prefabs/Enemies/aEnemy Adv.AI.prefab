@@ -177,7 +177,7 @@ MonoBehaviour:
   nextWaypointDistance: 3
   jumpNodeHeightReqirement: 0.8
   jumpPower: 0.1
-  jumpCheckOffset: 0.7
+  jumpCheckOffset: 1
   patrolling: 1
   chasing: 1
   hostile: 1
@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 715597931700760488}
   - component: {fileID: 3406969168858181995}
   - component: {fileID: 2346767010709270160}
+  - component: {fileID: 1906580666778279930}
   m_Layer: 0
   m_Name: Enemy Stats/Sprite
   m_TagString: Untagged
@@ -306,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c478210ba4ed745b579be365401518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topParent: {fileID: 2558519522511200020}
   alive: 1
   type: 1
   maxHealth: 1
@@ -388,6 +390,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &1906580666778279930
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558519522662399376}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0036476105, y: -0.08487919}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33614984, y: 0.41836768}
+  m_EdgeRadius: 0
 --- !u!1 &2558519523189558011
 GameObject:
   m_ObjectHideFlags: 0
