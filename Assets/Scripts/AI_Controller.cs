@@ -49,8 +49,7 @@ public class AI_Controller : MonoBehaviour
 
 
     //private fields
-    private GameObject targetCheckObject;
-    private STATE state;
+    public STATE state;
     private Stats stats;
     private GameObject targetObject;
     private AIDestinationSetter destination;
@@ -79,7 +78,6 @@ public class AI_Controller : MonoBehaviour
     public bool TargetVisible { set { targetVisible = value; } }
 
     #region Unity Messages
-    // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -117,13 +115,10 @@ public class AI_Controller : MonoBehaviour
             PathFollow();
         }
     }
-    // Update is called once per frame
     void Update()
     {
         if (!stats.alive)
             return;
-
-        Animate();
         
         switch (state)
         {
@@ -157,6 +152,8 @@ public class AI_Controller : MonoBehaviour
                 }
                 break;       
         }
+
+        Animate();
     }
 #endregion
 

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
+    public GameObject topParent;
+
     public bool alive = true;
     public CharacterType type;
     public float maxHealth;
@@ -19,7 +21,6 @@ public class Stats : MonoBehaviour
     public float collectedMoney; // money collected in a single run
     public float totalMoney; // total collected money in game
 
-    private SpriteRenderer sprite;
 
     public enum CharacterType { 
         Player,
@@ -30,18 +31,21 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
-        if (health <= 0)
+
+        if (health == 0)
+        { 
             Death();
+        }
 
         /*if (sprite.color.r < 255)
         {
             sprite.color = new Color(255, 255, 255);
         }*/
 
-        if(this.gameObject.tag == GameManager.gameManager.player.tag)
-        {
+        if (this.gameObject.tag == GameManager.gameManager.player.tag)
+        { // why reference the tag and not the player?
             LoseEnergy(Time.deltaTime);
             displayedEnergy = Convert.ToInt16(energy);
         }
@@ -95,7 +99,7 @@ public class Stats : MonoBehaviour
     } 
     public void LoseHealth(int value, bool attack)
     {
-        Debug.LogWarning("Losing Health");
+        Debug.LogError($"Losing Health, health now {health}");
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0)
             return;
         if (health - value < 0)
@@ -143,13 +147,6 @@ public class Stats : MonoBehaviour
                     break;
             }
         }
-       // Color colour = GetComponent<SpriteRenderer>().color;
-      //  colour.a = 0; 
-       // GetComponent<SpriteRenderer>().color = colour;
-        if (GetComponent<Rigidbody2D>() != null)
-        { transform.gameObject.SetActive(false); }
-        else if (GetComponentInParent<Rigidbody2D>())
-        { transform.parent.gameObject.SetActive(false); }
-        
+        topParent.SetActive(false);
     }
 }
