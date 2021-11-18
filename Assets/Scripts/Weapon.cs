@@ -7,7 +7,12 @@ public class Weapon : MonoBehaviour
     public bool playerWeapon = false;
     public bool attacking = false;
     private float damage = 10;
+    private SpriteRenderer sprite;
 
+    private void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+    }
     public void SetDamage(float value)
     {
         if (value <= 0)
@@ -16,7 +21,9 @@ public class Weapon : MonoBehaviour
             if (playerWeapon)
                 value = 10;
         }
-            damage = value;
+        
+        damage = value;
+        Debug.LogWarning($"Weapon Damage is {damage}");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,15 +32,22 @@ public class Weapon : MonoBehaviour
          Debug.LogWarning(collision.gameObject +", Damage: " + damage);
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
-        if (playerWeapon && !attacking)
+        if (!attacking)
+        {
+            sprite.sortingOrder = -1;
             return;
+        }
 
-        Debug.Log("attack hit");
         if (collision.gameObject.GetComponent<Stats>() != null)
+        {
+            sprite.sortingOrder = 10;
+            Debug.LogWarning(collision.gameObject + " hit with damage of " + damage);
             collision.gameObject.GetComponent<Stats>().LoseHealth((int)damage, true);
+        }
 
         if (playerWeapon == true && this.gameObject == GameManager.gameManager.player.GetComponent<PlayerController>().weapon)
             GameManager.gameManager.DamageAdded(damage, playerWeapon);
+
         
     }
 }

@@ -95,7 +95,8 @@ public class Stats : MonoBehaviour
     } 
     public void LoseHealth(int value, bool attack)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
+        Debug.LogWarning("Losing Health");
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0)
             return;
         if (health - value < 0)
         {
@@ -104,15 +105,14 @@ public class Stats : MonoBehaviour
         else
         {
             health -= value;
+            Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
+            GameManager.gameManager.DisplayGUIPopup("-"+value, this.transform.position, Color.red);
         }
 
         if (attack)
         { 
             //sprite.color = Color.red;
         }
-
-        Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
-        GameManager.gameManager.DisplayGUIPopup("-"+value.ToString(), this.transform.position, Color.red);
 
         if (health < 0)
             health = 0;

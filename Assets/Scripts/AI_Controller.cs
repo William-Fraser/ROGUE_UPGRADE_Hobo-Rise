@@ -123,9 +123,8 @@ public class AI_Controller : MonoBehaviour
         if (!stats.alive)
             return;
 
-        animator.SetFloat("Speed", rb.velocity.magnitude);
-        animator.SetFloat("LastMoveX", rb.velocity.x);
-
+        Animate();
+        
         switch (state)
         {
             case STATE.IDLE:
@@ -322,6 +321,15 @@ public class AI_Controller : MonoBehaviour
         {
             attackingCountDown = false;
             canAttack = true;
+        }
+    }
+    
+    public void Animate()
+    {
+        if (animator.runtimeAnimatorController)
+        {
+            animator.SetFloat("Speed", rb.velocity.magnitude);
+            animator.SetFloat("LastMoveX", rb.velocity.x);
         }
     }
     //public

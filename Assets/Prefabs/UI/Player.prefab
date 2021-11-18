@@ -238,7 +238,7 @@ MonoBehaviour:
   maxHealth: 200
   health: 200
   speedModifier: 10
-  damageModifier: 0
+  damageModifier: 1
   attackSpeedModifier: 0
   maxEnergy: 10
   energy: 10

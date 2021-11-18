@@ -15,6 +15,30 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1906580666778279930, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Size.x
+      value: 0.66988397
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906580666778279930, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Size.y
+      value: 0.81382287
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906580666778279930, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0066816807
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906580666778279930, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.10057002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906580666778279930, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906580666778279930, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2346767010709270160, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Controller
       value: 
@@ -33,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522511200020, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Name
-      value: TaxCollector Variant
+      value: TaxCollector
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522511200021, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_RootOrder
