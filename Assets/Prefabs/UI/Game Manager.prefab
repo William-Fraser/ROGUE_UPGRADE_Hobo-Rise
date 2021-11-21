@@ -572,8 +572,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f334d578285a20c47bc9f555d428ef51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runOverObject: {fileID: 0}
-  saveWarning: {fileID: 0}
+  runOverObject: {fileID: 5504143695905188908}
+  saveWarning: {fileID: 1922373690913569278}
   bronzeCoinPrefab: {fileID: 8711878293820624763, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
   goldCoinPrefab: {fileID: 3110659075769682264, guid: 53aaf55987ab2ba4caf25e336e54f448, type: 3}
   billPrefab: {fileID: 3110659075769682264, guid: 8819761104a625240842327b9f0bbfd4, type: 3}
