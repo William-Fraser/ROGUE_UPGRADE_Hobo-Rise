@@ -87,7 +87,7 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         energy += value;
-        GameManager.gameManager.DisplayGUIPopup("+"+value+"%", transform.position, Color.green);
+        GameManager.gameManager.DisplayGUIPopup("+"+value, transform.position, Color.green);
     }
     public void LoseEnergy(float value)
     {
@@ -131,19 +131,25 @@ public class Stats : MonoBehaviour
         if (this.gameObject.tag == "Player")
         {
             GameManager.gameManager.stats.totalMoney += collectedMoney;
-        } else
+        } 
+        else // drop item on enemy death
         {
+            //calculating drop pos / positioning from world scale
+            float itemDropPosY = transform.position.y - (transform.localPosition.y + transform.localPosition.y / 2);
+            Debug.LogError($" itemDropPosY: {transform.position.y - (transform.localPosition.y / 2)}, topOfSpritePosY: {transform.position.y}, localY {transform.localPosition.y}");
+            Vector3 itemDropPos = new Vector3(transform.position.x, itemDropPosY, transform.position.z);
+
             GameManager.gameManager.EnemyKilled();
             switch (type)
             {
                 case CharacterType.Hobo:
-                    GameManager.gameManager.SpawnBronzeCoin(this.transform.position);
+                    GameManager.gameManager.SpawnBronzeCoin(itemDropPos);
                     break;
                 case CharacterType.TaxCollector:
-                    GameManager.gameManager.SpawnGoldCoin(this.transform.position);
+                    GameManager.gameManager.SpawnGoldCoin(itemDropPos);
                     break;
                 case CharacterType.Police:
-                    GameManager.gameManager.SpawnBill(this.transform.position);
+                    GameManager.gameManager.SpawnBill(itemDropPos);
                     break;
             }
         }

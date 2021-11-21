@@ -1648,15 +1648,23 @@ PrefabInstance:
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: billPrefab
       value: 
-      objectReference: {fileID: 3110659075769682264, guid: 53aaf55987ab2ba4caf25e336e54f448, type: 3}
+      objectReference: {fileID: 3110659075769682264, guid: 8819761104a625240842327b9f0bbfd4, type: 3}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: cutsceneID
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1374038456}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: mainMenuSong
       value: 
       objectReference: {fileID: 8300000, guid: e0eafc4f274128d46a1630d96636f608, type: 3}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: goldCoinPrefab
+      value: 
+      objectReference: {fileID: 3110659075769682264, guid: 53aaf55987ab2ba4caf25e336e54f448, type: 3}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.maxEnergy
       value: 6

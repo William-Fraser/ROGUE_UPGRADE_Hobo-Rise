@@ -163,11 +163,14 @@ public class GameManager : MonoBehaviour
     }
     public bool CanLoad()
     {
+        bool canLoad = false;
+
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
-            return true;
+            canLoad = true;
         }
-        return false;
+
+        return canLoad;
     }
     public void Save()
     {

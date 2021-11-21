@@ -124,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169214, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: effectValue
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6414589305166169215, guid: 5bc7616e9309bc24faaabade4d12b7f3, type: 3}
       propertyPath: m_Name

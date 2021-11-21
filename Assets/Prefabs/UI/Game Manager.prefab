@@ -572,31 +572,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f334d578285a20c47bc9f555d428ef51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runOverObject: {fileID: 5504143695905188908}
-  saveWarning: {fileID: 1922373690913569278}
+  runOverObject: {fileID: 0}
+  saveWarning: {fileID: 0}
   bronzeCoinPrefab: {fileID: 8711878293820624763, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
-  goldCoinPrefab: {fileID: 8711878293820624763, guid: 3f41d8a742fee5f418067ba3ced30b7e, type: 3}
-  billPrefab: {fileID: 1707582592877297921, guid: a21ff9ea2d460244faf5838326b0e850, type: 3}
+  goldCoinPrefab: {fileID: 3110659075769682264, guid: 53aaf55987ab2ba4caf25e336e54f448, type: 3}
+  billPrefab: {fileID: 3110659075769682264, guid: 8819761104a625240842327b9f0bbfd4, type: 3}
   stats:
-    maxHealth: 10
+    maxHealth: 3
     speedModifier: 1
     damageModifier: 1
     attackSpeedModifier: 1
-    maxEnergy: 10
+    maxEnergy: 6
     totalMoney: 0
     clout: 0
   maxPossibleStats:
-    maxHealth: 100
+    maxHealth: 30
     speedModifier: 10
     damageModifier: 10
     attackSpeedModifier: 10
-    maxEnergy: 100
+    maxEnergy: 60
     totalMoney: 999999
     clout: 0
   player: {fileID: 0}
   isNewGame: 1
   mainID: 0
-  cutsceneID: 0
+  cutsceneID: 4
   inGameID: 1
   victoryID: 3
   resultsID: 2
@@ -608,8 +608,9 @@ MonoBehaviour:
   enemiesKilled: 0
   damageDealt: 0
   distanceTraveled: 0
-  audioSource: {fileID: 8705988319207124229}
+  audioSource: {fileID: 0}
   buttonPress: {fileID: 8300000, guid: 4d45eb2304908dc438e32427f5b33fbe, type: 3}
+  valuePopupPrefab: {fileID: 4607667912317302878, guid: 533c001b8d2ba304c8b6bd0aa1ae8994, type: 3}
 --- !u!114 &1922373691153822774
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e72dcfc7b4b5480469eecdc1ae2c5f6d, type: 2}
     - target: {fileID: 2558519522511200020, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Name
-      value: PoliceMan Variant
+      value: PoliceMan
       objectReference: {fileID: 0}
     - target: {fileID: 2558519522511200021, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_RootOrder
@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2961297394788272264, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e72dcfc7b4b5480469eecdc1ae2c5f6d, type: 2}
     - target: {fileID: 3406969168858181995, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -95,6 +99,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8149835121455076294, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3749740228694047907, guid: a324ceacf82752947894436289b2de95, type: 3}
+    - target: {fileID: 8149835121455076294, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149835121455076294, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9133976772638824477, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
       propertyPath: attackDamage
       value: 5
@@ -103,5 +119,6 @@ PrefabInstance:
       propertyPath: attackCoolDown
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3406969168858181995, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f8e3fe9747748f94e9be30fea23a1431, type: 3}
