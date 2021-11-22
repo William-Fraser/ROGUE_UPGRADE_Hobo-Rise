@@ -158,8 +158,17 @@ public class GameManager : MonoBehaviour
         {
             player.GetComponent<PlayerController>().ResetPlayer();
             player.GetComponent<PlayerController>().ResetStats();
+            NewGameSetUp();
             ChangeScene(GameScenes.Cutscene);
         }
+    }
+    public void NewGameSetUp()
+    {
+        stats.speedModifier = maxPossibleStats.speedModifier / 10;
+        stats.damageModifier = maxPossibleStats.damageModifier / 10;
+        stats.attackSpeedModifier = maxPossibleStats.attackSpeedModifier / 10;
+        stats.maxEnergy = maxPossibleStats.maxEnergy / 10;
+        stats.maxHealth = maxPossibleStats.maxHealth / 10;
     }
     public bool CanLoad()
     {

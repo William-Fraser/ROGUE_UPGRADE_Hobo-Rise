@@ -5,6 +5,7 @@ public class SaveWarningControl : MonoBehaviour
     public void ForceSave()
     {
         GameManager.gameManager.ButtonPressed();
+        GameManager.gameManager.NewGameSetUp();
         GameManager.gameManager.player.GetComponent<PlayerController>().ResetPlayer();
         GameManager.gameManager.saveWarning.SetActive(false);
         GameManager.gameManager.ChangeScene(GameManager.GameScenes.Cutscene);
