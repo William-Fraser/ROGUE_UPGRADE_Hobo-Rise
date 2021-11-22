@@ -153,20 +153,21 @@ public class Stats : MonoBehaviour
             {
                 case CharacterType.Hobo:
                     GameManager.gameManager.SpawnBronzeCoin(itemDropPos);
+                    topParent.SetActive(false);
                     break;
                 case CharacterType.TaxCollector:
                     GameManager.gameManager.SpawnGoldCoin(itemDropPos);
+                    topParent.SetActive(false);
                     break;
                 case CharacterType.Police:
                     GameManager.gameManager.SpawnBill(itemDropPos);
+                    topParent.SetActive(false);
                     break;
             }
         }
         // Color colour = GetComponent<SpriteRenderer>().color;
       //  colour.a = 0; 
        // GetComponent<SpriteRenderer>().color = colour;
-        if (GetComponent<Rigidbody2D>() != null && this.tag != GameManager.gameManager.player.tag)
-        { topParent.SetActive(false); }
     }
 
     private float CheckValue(float value, float maxValue)
