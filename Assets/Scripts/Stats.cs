@@ -30,7 +30,7 @@ public class Stats : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         if (health <= 0)
             Death();
@@ -44,6 +44,10 @@ public class Stats : MonoBehaviour
         {
             LoseEnergy(Time.deltaTime);
             displayedEnergy = Convert.ToInt16(energy);
+            if(energy <= 0)
+            {
+                Death();
+            }
         }
     }
     private void Awake()
@@ -121,7 +125,7 @@ public class Stats : MonoBehaviour
 
     private void Death()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
         if (this.gameObject.tag == "Player")
@@ -146,9 +150,9 @@ public class Stats : MonoBehaviour
        // Color colour = GetComponent<SpriteRenderer>().color;
       //  colour.a = 0; 
        // GetComponent<SpriteRenderer>().color = colour;
-        if (GetComponent<Rigidbody2D>() != null)
+        if (GetComponent<Rigidbody2D>() != null && this.tag != GameManager.gameManager.player.tag)
         { transform.gameObject.SetActive(false); }
-        else if (GetComponentInParent<Rigidbody2D>())
+        else if (GetComponentInParent<Rigidbody2D>() && this.tag != GameManager.gameManager.player.tag)
         { transform.parent.gameObject.SetActive(false); }
         
     }
