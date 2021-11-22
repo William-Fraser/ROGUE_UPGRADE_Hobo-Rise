@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         previousPosition = this.transform.position;
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        Animate();
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         if (stats.alive == false)
         { return; }
@@ -66,7 +67,6 @@ public class PlayerController : MonoBehaviour
         }
         CheckTimes();
         GameManager.gameManager.DistanceTraveled(Vector3.Distance(previousPosition, this.transform.position));
-        Animate();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -238,5 +238,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jumping", jumping);
         }
+        animator.SetBool("Alive", stats.alive);
     }
 }

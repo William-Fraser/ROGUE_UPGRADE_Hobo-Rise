@@ -36,7 +36,7 @@ public class Stats : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
 
         
@@ -55,6 +55,10 @@ public class Stats : MonoBehaviour
         { // why reference the tag and not the player?
             LoseEnergy(Time.deltaTime);
             displayedEnergy = Convert.ToInt16(energy);
+            if(energy <= 0)
+            {
+                Death();
+            }
         }
     }
     private void Awake()
@@ -130,7 +134,7 @@ public class Stats : MonoBehaviour
 
     private void Death()
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
         if (this.gameObject.tag == "Player")
@@ -158,7 +162,11 @@ public class Stats : MonoBehaviour
                     break;
             }
         }
-        topParent.SetActive(false);
+        // Color colour = GetComponent<SpriteRenderer>().color;
+      //  colour.a = 0; 
+       // GetComponent<SpriteRenderer>().color = colour;
+        if (GetComponent<Rigidbody2D>() != null && this.tag != GameManager.gameManager.player.tag)
+        { topParent.SetActive(false); }
     }
 
     private float CheckValue(float value, float maxValue)
@@ -167,5 +175,9 @@ public class Stats : MonoBehaviour
             value = maxValue;
 
         return value;
+
+       
+        
+
     }
 }
