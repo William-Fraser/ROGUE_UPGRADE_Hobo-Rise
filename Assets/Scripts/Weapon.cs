@@ -14,10 +14,6 @@ public class Weapon : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
-    {
-        SetDamage(GameManager.gameManager.player.GetComponent<Stats>().damageModifier);
-    }
     public void SetDamage(float value)
     {
         if (value <= 0)
@@ -37,6 +33,9 @@ public class Weapon : MonoBehaviour
          Debug.LogWarning(collision.gameObject +", Damage: " + damage);
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
+
+        //SetDamage(GameManager.gameManager.player.GetComponent<Stats>().damageModifier);
+
         if (!attacking)
         {
             sprite.sortingOrder = -1;

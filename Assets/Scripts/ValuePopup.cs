@@ -14,7 +14,7 @@ public class ValuePopup : MonoBehaviour
 
     public void Setup(string value, Color color)
     {
-        Debug.Log($"SETUP value: {value}, colour: {color}");
+        //Debug.Log($"SETUP value: {value}, colour: {color}");
         Canvas canvas = GetComponentInChildren<Canvas>();
         textMesh = canvas.GetComponentInChildren<TextMeshProUGUI>();
         textColor = color;

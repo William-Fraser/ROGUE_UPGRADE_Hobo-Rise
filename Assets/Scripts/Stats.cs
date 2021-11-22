@@ -118,7 +118,7 @@ public class Stats : MonoBehaviour
         else
         {
             health -= value;
-            Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
+            //Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
             GameManager.gameManager.DisplayGUIPopup("-"+value, this.transform.position, Color.red);
         }
 
@@ -145,7 +145,7 @@ public class Stats : MonoBehaviour
         {
             //calculating drop pos / positioning from world scale
             float itemDropPosY = transform.position.y - (transform.localPosition.y + transform.localPosition.y / 2);
-            Debug.LogError($" itemDropPosY: {transform.position.y - (transform.localPosition.y / 2)}, topOfSpritePosY: {transform.position.y}, localY {transform.localPosition.y}");
+            //Debug.LogError($" itemDropPosY: {transform.position.y - (transform.localPosition.y / 2)}, topOfSpritePosY: {transform.position.y}, localY {transform.localPosition.y}");
             Vector3 itemDropPos = new Vector3(transform.position.x, itemDropPosY, transform.position.z);
 
             GameManager.gameManager.EnemyKilled();

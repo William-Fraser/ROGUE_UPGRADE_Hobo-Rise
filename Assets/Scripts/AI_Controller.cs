@@ -277,7 +277,7 @@ public class AI_Controller : MonoBehaviour
         if (canAttack)
         {
             canAttack = false;
-            Debug.Log("Enemy Attacking");
+            //Debug.Log("Enemy Attacking");
             
             attackingCountDown = true;
             attackingTimer = attackCoolDown;

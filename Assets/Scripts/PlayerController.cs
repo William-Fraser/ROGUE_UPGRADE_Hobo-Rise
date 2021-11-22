@@ -114,7 +114,6 @@ public class PlayerController : MonoBehaviour
         UpdateStats();
         stats.ResetMainStats();
         stats.ResetInGameStats();
-        weapon.GetComponent<Weapon>().SetDamage(modifiedDamage);
         stats.health = stats.maxHealth;
         if (attacking)
         {
@@ -125,6 +124,9 @@ public class PlayerController : MonoBehaviour
             else
                 weapon.transform.Translate(Vector3.right, Space.Self);
         }
+        weapon.SetActive(true);
+        weapon.GetComponent<Weapon>().SetDamage(modifiedDamage);
+        weapon.SetActive(false);
     }
     private void CheckInput()
     {
