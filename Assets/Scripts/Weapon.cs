@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public bool playerWeapon = false;
     public bool attacking = false;
-    private float damage = 10;
+    public float damage = 10;
     private SpriteRenderer sprite;
 
     private void Start()

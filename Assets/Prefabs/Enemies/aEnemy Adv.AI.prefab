@@ -320,6 +320,7 @@ MonoBehaviour:
   displayedEnergy: 0
   collectedMoney: 0
   totalMoney: 0
+  sprite: {fileID: 0}
 --- !u!61 &1906580666778279930
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -533,7 +534,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_Sprite: {fileID: -8144514172678926883, guid: a64c0f9b625be0e4faf6e5f128d571bf, type: 3}
-  m_Color: {r: 1, g: 0.1641509, b: 0.1641509, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

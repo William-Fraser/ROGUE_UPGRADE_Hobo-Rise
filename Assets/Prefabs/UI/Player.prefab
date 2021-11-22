@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.030626515, y: 0.046329185, z: 1}
   m_Children: []
   m_Father: {fileID: 225746867039680050}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &225746866833517760
 SpriteRenderer:
@@ -155,9 +155,9 @@ Transform:
   m_LocalPosition: {x: -1.01, y: -1.84, z: 0}
   m_LocalScale: {x: 7.5, y: 7.5, z: 1}
   m_Children:
+  - {fileID: 4754411960324974885}
   - {fileID: 225746866833517761}
   - {fileID: 9134829238984189984}
-  - {fileID: 4754411960324974885}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -246,6 +246,7 @@ MonoBehaviour:
   displayedEnergy: 0
   collectedMoney: 0
   totalMoney: 0
+  sprite: {fileID: 0}
 --- !u!1 &2092008641271640175
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ GameObject:
   - component: {fileID: 3205528017079178563}
   - component: {fileID: 8275802716316347299}
   m_Layer: 0
-  m_Name: Sprite/animatior
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 225746867039680050}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3205528017079178563
 SpriteRenderer:
@@ -380,7 +381,7 @@ RectTransform:
   m_Children:
   - {fileID: 9134829239221505453}
   m_Father: {fileID: 225746867039680050}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

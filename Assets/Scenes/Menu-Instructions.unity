@@ -590,7 +590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 88}
+  m_AnchoredPosition: {x: 0, y: 84.8}
   m_SizeDelta: {x: 609.2, y: 207.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335501951
@@ -1667,11 +1667,11 @@ PrefabInstance:
       objectReference: {fileID: 3110659075769682264, guid: 53aaf55987ab2ba4caf25e336e54f448, type: 3}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.maxEnergy
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.maxHealth
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: valuePopupPrefab
@@ -1683,15 +1683,27 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7b797a1363902cf4ead668ad86b3beb6, type: 3}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: stats.speedModifier
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: stats.attackSpeedModifier
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: maxPossibleStats.maxEnergy
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: maxPossibleStats.maxHealth
-      value: 30
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.speedModifier
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: maxPossibleStats.attackSpeedModifier
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822777, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_Name
@@ -1740,6 +1752,10 @@ PrefabInstance:
     - target: {fileID: 1922373691206990400, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958340113720224258, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: m_Name
+      value: Sprite
       objectReference: {fileID: 0}
     - target: {fileID: 5504143695905188908, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_IsActive

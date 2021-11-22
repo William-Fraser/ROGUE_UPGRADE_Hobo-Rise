@@ -20,6 +20,7 @@ public class Stats : MonoBehaviour
     public int displayedEnergy; // used to display in place of energy to show better looking scale
     public float collectedMoney; // money collected in a single run
     public float totalMoney; // total collected money in game
+    public SpriteRenderer sprite;
 
 
     public enum CharacterType { 
@@ -28,21 +29,27 @@ public class Stats : MonoBehaviour
         TaxCollector,
         Police
     }
-
+    private void Start()
+    {
+        if (GetComponentInChildren<SpriteRenderer>())
+            sprite = GetComponentInChildren<SpriteRenderer>();
+    }
     private void Update()
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
+
+        
 
         if (health == 0)
         { 
             Death();
         }
 
-        /*if (sprite.color.r < 255)
+        if (sprite.color.r < 255)
         {
-            sprite.color = new Color(255, 255, 255);
-        }*/
+            sprite.color = Color.Lerp(sprite.color, Color.white, 5.0f);
+        }
 
         if (this.gameObject.tag == GameManager.gameManager.player.tag)
         { // why reference the tag and not the player?
@@ -52,12 +59,6 @@ public class Stats : MonoBehaviour
     }
     private void Awake()
     {
-        /*if (GetComponent<SpriteRenderer>())
-            sprite = GetComponent<SpriteRenderer>();
-        else if (GetComponentInChildren<SpriteRenderer>())
-            sprite = GetComponentInChildren<SpriteRenderer>();
-        else if (GetComponentInParent<SpriteRenderer>())
-            sprite = GetComponentInParent<SpriteRenderer>();*/
 
         if (GameManager.gameManager == null)
             return;
@@ -86,8 +87,12 @@ public class Stats : MonoBehaviour
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
+
         energy += value;
-        GameManager.gameManager.DisplayGUIPopup("+"+value, transform.position, Color.green);
+
+        energy = CheckValue(energy, maxEnergy);
+
+        GameManager.gameManager.DisplayGUIPopup("MAX NRG", transform.position, Color.green);
     }
     public void LoseEnergy(float value)
     {
@@ -115,7 +120,7 @@ public class Stats : MonoBehaviour
 
         if (attack)
         { 
-            //sprite.color = Color.red;
+            /*sprite.color = Color.red;*/
         }
 
         if (health < 0)
@@ -154,5 +159,13 @@ public class Stats : MonoBehaviour
             }
         }
         topParent.SetActive(false);
+    }
+
+    private float CheckValue(float value, float maxValue)
+    {
+        if (value > maxValue)
+            value = maxValue;
+
+        return value;
     }
 }

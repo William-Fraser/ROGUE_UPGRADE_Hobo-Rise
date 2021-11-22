@@ -69,10 +69,11 @@ public class AI_Controller : MonoBehaviour
     //attacking
     private bool canAttack = true;
     private bool shouldAttack = false;
-        //timer
+    //timer
     private bool attackingCountDown;
     private float attackingTimer;
-
+    //animation
+    private float direction = 0;
     private Animator animator;
 
     public bool TargetVisible { set { targetVisible = value; } }
@@ -206,12 +207,14 @@ public class AI_Controller : MonoBehaviour
         }
 
         // View Direction Handling
-        if (rb.velocity.x > 0.05f)
+        if (rb.velocity.x > 0.001f)
         {
+            this.direction = 1f;
             targetingView.transform.localPosition = new Vector3(-0.3f, 0, 0);
         }
-        else if (rb.velocity.x < -0.05f)
+        else if (rb.velocity.x < -0.001f)
         {
+            this.direction = -1f;
             targetingView.transform.localPosition = new Vector3(0.3f, 0, 0);
         }
     }
@@ -326,7 +329,7 @@ public class AI_Controller : MonoBehaviour
         if (animator.runtimeAnimatorController)
         {
             animator.SetFloat("Speed", rb.velocity.magnitude);
-            animator.SetFloat("LastMoveX", rb.velocity.x);
+            animator.SetFloat("LastMoveX", direction);
         }
     }
     //public
