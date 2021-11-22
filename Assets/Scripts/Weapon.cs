@@ -13,6 +13,11 @@ public class Weapon : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
     }
+
+    private void Update()
+    {
+        SetDamage(GameManager.gameManager.player.GetComponent<Stats>().damageModifier);
+    }
     public void SetDamage(float value)
     {
         if (value <= 0)
