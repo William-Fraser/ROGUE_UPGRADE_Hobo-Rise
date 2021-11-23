@@ -137,7 +137,7 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
-        if (this.gameObject.tag == "Player")
+        if (this.gameObject.tag == GameManager.gameManager.player.tag)
         {
             GameManager.gameManager.stats.totalMoney += collectedMoney;
         } 
@@ -148,7 +148,6 @@ public class Stats : MonoBehaviour
             //Debug.LogError($" itemDropPosY: {transform.position.y - (transform.localPosition.y / 2)}, topOfSpritePosY: {transform.position.y}, localY {transform.localPosition.y}");
             Vector3 itemDropPos = new Vector3(transform.position.x, itemDropPosY, transform.position.z);
 
-            GameManager.gameManager.EnemyKilled();
             switch (type)
             {
                 case CharacterType.Hobo:
