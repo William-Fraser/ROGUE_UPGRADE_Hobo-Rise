@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class CustomButtonMonoBehaviour : MonoBehaviour
 {
     public ButtonType statType;
@@ -20,6 +16,10 @@ public class CustomButtonMonoBehaviour : MonoBehaviour
         this.button = button;
     }
     private void Update()
+    {
+        SetButtonState();
+    }
+    private void SetButtonState()
     {
         UpgradePrices prices = GameManager.gameManager.GetUpgradePrices();
         if (button == null)
