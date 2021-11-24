@@ -66,15 +66,9 @@ public class GameManager : MonoBehaviour
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        if (CheckRoundEnd())
         {
-            if(player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
-            {
-                if (currentScene == GameScenes.InGame)
-                {
-                    EndRound();
-                }
-            }
+            EndRound();
         }
     }
     #endregion
@@ -255,6 +249,11 @@ public class GameManager : MonoBehaviour
         stats.maxEnergy += maxPossibleStats.maxEnergy / 10;
         UpgradeTrigger();
     }
+
+    public UpgradePrices GetUpgradePrices()
+    {
+        return upgradePrices;
+    }
     #endregion
 
     #region Amount of Upgrades Methods
@@ -385,29 +384,39 @@ public class UpgradePrices {
     public int[] attackSpeed;
     public int[] energy;
 
-    public int GetHealthPrice(float playerStat, float maxStat)
+    public int GetHealthPrice(float percentStat)
     {
-        int i = (int)((playerStat / maxStat * 100) / 10);
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
         return health[i - 1];
     }
-    public int GetSpeedPrice(float playerStat, float maxStat)
+    public int GetSpeedPrice(float percentStat)
     {
-        int i = (int)((playerStat / maxStat * 100) / 10);
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
         return speed[i - 1];
     }
-    public int GetDamagePrice(float playerStat, float maxStat)
+    public int GetDamagePrice(float percentStat)
     {
-        int i = (int)((playerStat / maxStat * 100) / 10);
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
         return damage[i - 1];
     }
-    public int GetAttackSpeedPrice(float playerStat, float maxStat)
+    public int GetAttackSpeedPrice(float percentStat)
     {
-        int i = (int)((playerStat / maxStat * 100) / 10);
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
         return attackSpeed[i - 1];
     }
-    public int GetEnergyPrice(float playerStat, float maxStat)
+    public int GetEnergyPrice(float percentStat)
     {
-        int i = (int)((playerStat / maxStat * 100) / 10);
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
         return energy[i-1];
     }
 }

@@ -51,7 +51,7 @@ public class Stats : MonoBehaviour
             sprite.color = Color.Lerp(sprite.color, Color.white, 5.0f);
         }
 
-        if (this.gameObject.tag == GameManager.gameManager.player.tag)
+        if (gameObject.CompareTag(GameManager.gameManager.player.tag))
         { // why reference the tag and not the player?
             LoseEnergy(Time.deltaTime);
             displayedEnergy = Convert.ToInt16(energy);
@@ -108,7 +108,6 @@ public class Stats : MonoBehaviour
     } 
     public void LoseHealth(int value, bool attack)
     {
-        Debug.LogError($"Losing Health, health now {health}");
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0)
             return;
         if (health - value < 0)
@@ -137,7 +136,7 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
-        if (this.gameObject.tag == GameManager.gameManager.player.tag)
+        if (gameObject.CompareTag(GameManager.gameManager.player.tag))
         {
             GameManager.gameManager.stats.totalMoney += collectedMoney;
         } 
