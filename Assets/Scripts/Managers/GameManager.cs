@@ -7,34 +7,40 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    public GameObject runOverObject;
-    public GameObject saveWarning;
-    public PlayerData stats;
-    public PlayerData maxPossibleStats;
-    public UpgradePrices upgradePrices;
-    public GameObject player;
-    public bool isNewGame = false;
-    public int mainID;
-    public int cutsceneID;
-    public int inGameID;
-    public int victoryID;
-    public int resultsID;
-    public int upgradeID;
-    public int creditsID;
     public GameScenes currentScene;
-    public float housePrice = 500;
-
-    public float collectedMoney;
-
+    public GameObject player;
     public AudioSource audioSource;
     public AudioClip buttonPress;
 
-    private float gameOverTimer = 0f;
-    private readonly float gameOverTimeRequirement = 3f;
-
-    private bool isKeyDownEndScreen = true;
+    [SerializeField]
+    private GameObject runOverObject;
+    [SerializeField]
+    private PlayerData maxPossibleStats;
+    [SerializeField]
+    private UpgradePrices upgradePrices;
+    [SerializeField]
+    private int mainID;
+    [SerializeField]
+    private int cutsceneID;
+    [SerializeField]
+    private int inGameID;
+    [SerializeField]
+    private int victoryID;
+    [SerializeField]
+    private int upgradeID;
+    [SerializeField]
+    private int creditsID;
+    [SerializeField]
+    private float housePrice = 500;
     [SerializeField]
     private GameObject valuePopupPrefab;
+
+    private PlayerData stats;
+    private float collectedMoney;
+    private float gameOverTimer = 0f;
+    private readonly float gameOverTimeRequirement = 3f;
+    private bool isKeyDownEndScreen = true;
+    
 
     public enum GameScenes { 
         Main,
@@ -124,10 +130,9 @@ public class GameManager : MonoBehaviour
     }
     public void AttemptSave()
     {
-        Debug.Log("SAVE ATTEMPT!");
         if (CanLoad())
         {
-            saveWarning.SetActive(true);
+            gameObject.GetComponent<SaveWarningControl>().ActivateWarning();
         } else
         {
             player.GetComponent<PlayerController>().ResetPlayer();
@@ -190,9 +195,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GameScenes.Victory:
                 SceneManager.LoadScene(victoryID);
-                break;
-            case GameScenes.Results:
-                SceneManager.LoadScene(resultsID);
                 break;
             case GameScenes.Upgrade:
                 SceneManager.LoadScene(upgradeID);
@@ -267,6 +269,10 @@ public class GameManager : MonoBehaviour
         collectedMoney += value;
         gameManager.DisplayGUIPopup("+$"+value, pos, Color.yellow);
     }
+    public void AddMoneyToTotal()
+    {
+        stats.totalMoney += collectedMoney;
+    }
 
     public void ButtonPressed()
     {
@@ -277,6 +283,10 @@ public class GameManager : MonoBehaviour
     public float GetMoney()
     {
         return stats.totalMoney;
+    }
+    public float GetCollectedMoney()
+    {
+        return collectedMoney;
     }
     public float GetHousePrice()
     {

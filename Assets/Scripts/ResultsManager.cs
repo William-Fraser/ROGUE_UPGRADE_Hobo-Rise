@@ -9,7 +9,7 @@ public class ResultsManager : MonoBehaviour
 
     private void Update()
     { 
-        coinsCollected.text = "Coins Collected: $" +GameManager.gameManager.collectedMoney;
+        coinsCollected.text = "Coins Collected: $" +GameManager.gameManager.GetCollectedMoney();
         healthLeft.text = "Health Remaining: " + GameManager.gameManager.player.GetComponent<Stats>().health;
         energyLeft.text = "Energy Remaining: " + GameManager.gameManager.player.GetComponent<Stats>().displayedEnergy;
     }

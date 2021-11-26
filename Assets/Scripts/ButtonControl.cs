@@ -39,7 +39,7 @@ public class ButtonControl : MonoBehaviour
     }
     public bool CanAfford(float price)
     {
-        if (GameManager.gameManager.stats.totalMoney >= price)
+        if (GameManager.gameManager.GetMoney() >= price)
             return true;
         else
             return false;

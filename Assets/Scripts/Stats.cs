@@ -78,12 +78,13 @@ public class Stats : MonoBehaviour
     }
     public void ResetMainStats()
     {
-        maxHealth = GameManager.gameManager.stats.maxHealth;
-        speedModifier = GameManager.gameManager.stats.speedModifier;
-        damageModifier = GameManager.gameManager.stats.damageModifier;
-        attackSpeedModifier = GameManager.gameManager.stats.attackSpeedModifier;
-        maxEnergy = GameManager.gameManager.stats.maxEnergy;
-        totalMoney = GameManager.gameManager.stats.totalMoney;
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        maxHealth = stats.maxHealth;
+        speedModifier = stats.speedModifier;
+        damageModifier = stats.damageModifier;
+        attackSpeedModifier = stats.attackSpeedModifier;
+        maxEnergy = stats.maxEnergy;
+        totalMoney = stats.totalMoney;
     }
 
     #region Set, Obtain, and Lose resources
@@ -138,7 +139,7 @@ public class Stats : MonoBehaviour
         alive = false;
         if (gameObject.CompareTag(GameManager.gameManager.player.tag))
         {
-            GameManager.gameManager.stats.totalMoney += collectedMoney;
+            GameManager.gameManager.AddMoneyToTotal();
         } 
         else // drop item on enemy death
         {
