@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     public GameObject runOverObject;
     public GameObject saveWarning;
-    public GameObject bronzeCoinPrefab;
-    public GameObject goldCoinPrefab;
-    public GameObject billPrefab;
     public PlayerData stats;
     public PlayerData maxPossibleStats;
     public UpgradePrices upgradePrices;
@@ -256,30 +253,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Amount of Upgrades Methods
-
-    public float GetSpeedUpgrades()
-    {
-        return stats.speedModifier / maxPossibleStats.speedModifier * 100;
-    }
-    public float GetHealthUpgrades()
-    {
-        return stats.maxHealth / maxPossibleStats.maxHealth * 100;
-    }
-    public float GetEnergyUpgrades()
-    {
-        return stats.maxEnergy / maxPossibleStats.maxEnergy * 100;
-    }
-    public float GetAttackUpgrades()
-    {
-        return stats.damageModifier / maxPossibleStats.damageModifier * 100;
-    }
-    public float GetAttackSpeedUpgrades()
-    {
-        return stats.attackSpeedModifier / maxPossibleStats.attackSpeedModifier * 100;
-    }
-    #endregion
-
     #region Housing Methods
     public void BuyHouse()
     {
@@ -300,21 +273,7 @@ public class GameManager : MonoBehaviour
         audioSource.loop = false;
         audioSource.PlayOneShot(buttonPress);
     }
-    public void SpawnBronzeCoin(Vector3 position)
-    {
-        GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
-        coin.transform.position = position;
-    }
-    public void SpawnGoldCoin(Vector3 position)
-    {
-        GameObject coin = GameObject.Instantiate(goldCoinPrefab);
-        coin.transform.position = position;
-    }
-    public void SpawnBill(Vector3 position)
-    {
-        GameObject bill = GameObject.Instantiate(billPrefab);
-        bill.transform.position = position;
-    }
+    
     public float GetMoney()
     {
         return stats.totalMoney;
@@ -324,6 +283,15 @@ public class GameManager : MonoBehaviour
         return housePrice;
     }
     #endregion
+
+    public PlayerData GetMaxStats()
+    {
+        return maxPossibleStats;
+    }
+    public PlayerData GetPlayerStats()
+    {
+        return stats;
+    }
 
     private bool CheckRoundEnd()
     {
@@ -366,58 +334,6 @@ public class GameManager : MonoBehaviour
     }
 }
 
-[Serializable]
-public class PlayerData
-{
-    public float maxHealth = 10;
-    public float speedModifier = 1;
-    public float damageModifier = 1;
-    public float attackSpeedModifier = 1;
-    public float maxEnergy = 10;
-    public float totalMoney = 0;
-}
-[Serializable]
-public class UpgradePrices {
-    public int[] health;
-    public int[] speed;
-    public int[] damage;
-    public int[] attackSpeed;
-    public int[] energy;
 
-    public int GetHealthPrice(float percentStat)
-    {
-        if (percentStat > 100) percentStat = 100;
-        int i = (int)(percentStat / 10);
-        if (i == 10) i = 9;
-        return health[i - 1];
-    }
-    public int GetSpeedPrice(float percentStat)
-    {
-        if (percentStat > 100) percentStat = 100;
-        int i = (int)(percentStat / 10);
-        if (i == 10) i = 9;
-        return speed[i - 1];
-    }
-    public int GetDamagePrice(float percentStat)
-    {
-        if (percentStat > 100) percentStat = 100;
-        int i = (int)(percentStat / 10);
-        if (i == 10) i = 9;
-        return damage[i - 1];
-    }
-    public int GetAttackSpeedPrice(float percentStat)
-    {
-        if (percentStat > 100) percentStat = 100;
-        int i = (int)(percentStat / 10);
-        if (i == 10) i = 9;
-        return attackSpeed[i - 1];
-    }
-    public int GetEnergyPrice(float percentStat)
-    {
-        if (percentStat > 100) percentStat = 100;
-        int i = (int)(percentStat / 10);
-        if (i == 10) i = 9;
-        return energy[i-1];
-    }
-}
+
 

@@ -60,7 +60,9 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeAttackSpeed()
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
-        float price = upgradePrices.GetAttackSpeedPrice(GameManager.gameManager.GetAttackSpeedUpgrades());
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        PlayerData maxStats = GameManager.gameManager.GetMaxStats();
+        float price = upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxStats.attackSpeedModifier);
         GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
@@ -76,7 +78,9 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeHealth()
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
-        float price = upgradePrices.GetHealthPrice(GameManager.gameManager.GetHealthUpgrades());
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        PlayerData maxStats = GameManager.gameManager.GetMaxStats();
+        float price = upgradePrices.GetHealthPrice(stats.maxHealth, maxStats.maxHealth);
         GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
@@ -92,7 +96,9 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeSpeed()
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
-        float price = upgradePrices.GetSpeedPrice(GameManager.gameManager.GetSpeedUpgrades());
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        PlayerData maxStats = GameManager.gameManager.GetMaxStats();
+        float price = upgradePrices.GetSpeedPrice(stats.speedModifier, maxStats.speedModifier);
         GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
@@ -108,7 +114,9 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeDamage()
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
-        float price = upgradePrices.GetDamagePrice(GameManager.gameManager.GetAttackUpgrades());
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        PlayerData maxStats = GameManager.gameManager.GetMaxStats();
+        float price = upgradePrices.GetDamagePrice(stats.damageModifier, maxStats.damageModifier);
         GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {
@@ -124,7 +132,9 @@ public class ButtonControl : MonoBehaviour
     public void UpgradeEnergy()
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
-        float price = upgradePrices.GetEnergyPrice(GameManager.gameManager.GetEnergyUpgrades());
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        PlayerData maxStats = GameManager.gameManager.GetMaxStats();
+        float price = upgradePrices.GetEnergyPrice(stats.maxEnergy, maxStats.maxEnergy);
         GameManager.gameManager.ButtonPressed();
         if (CanAfford(price))
         {

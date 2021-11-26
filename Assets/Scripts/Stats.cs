@@ -150,15 +150,15 @@ public class Stats : MonoBehaviour
             switch (type)
             {
                 case CharacterType.Hobo:
-                    GameManager.gameManager.SpawnBronzeCoin(itemDropPos);
+                    CoinManager.coinManager.SpawnBronzeCoin(itemDropPos);
                     topParent.SetActive(false);
                     break;
                 case CharacterType.TaxCollector:
-                    GameManager.gameManager.SpawnGoldCoin(itemDropPos);
+                    CoinManager.coinManager.SpawnGoldCoin(itemDropPos);
                     topParent.SetActive(false);
                     break;
                 case CharacterType.Police:
-                    GameManager.gameManager.SpawnBill(itemDropPos);
+                    CoinManager.coinManager.SpawnBill(itemDropPos);
                     topParent.SetActive(false);
                     break;
             }

@@ -11,7 +11,7 @@ public class UpgradePips : MonoBehaviour
     public Pips healthPips;
     public Pips energyPips;
 
-    public float testVariable;
+    private GameManager gameManager;
     [Serializable]
     public struct Pips
     {
@@ -19,11 +19,17 @@ public class UpgradePips : MonoBehaviour
         public Sprite unObtained;
         public Sprite obtained;
     }
+    private void Awake()
+    {
+        gameManager = GameManager.gameManager;
+    }
     void Update()
     {
+        PlayerData stats = gameManager.GetPlayerStats();
+        PlayerData maxStats = gameManager.GetPlayerStats();
         for (int i = 0; i < 100; i += 10)
         {
-            if(i < GameManager.gameManager.GetSpeedUpgrades())
+            if(i < stats.speedModifier/maxStats.speedModifier*100)
             {
                 speedPips.pips[i/10].sprite = speedPips.obtained;
             } else
@@ -34,7 +40,7 @@ public class UpgradePips : MonoBehaviour
 
         for (int i = 0; i < 100; i += 10)
         {
-            if (i < GameManager.gameManager.GetAttackSpeedUpgrades())
+            if (i < stats.attackSpeedModifier / maxStats.attackSpeedModifier * 100)
             {
                 attackPips.pips[i / 10].sprite = attackPips.obtained;
             }
@@ -46,7 +52,7 @@ public class UpgradePips : MonoBehaviour
 
         for (int i = 0; i < 100; i += 10)
         {
-            if (i < GameManager.gameManager.GetAttackUpgrades())
+            if (i < stats.damageModifier / maxStats.damageModifier * 100)
             {
                 damagePips.pips[i / 10].sprite = damagePips.obtained;
             }
@@ -58,7 +64,7 @@ public class UpgradePips : MonoBehaviour
 
         for (int i = 0; i < 100; i += 10)
         {
-            if (i < GameManager.gameManager.GetEnergyUpgrades())
+            if (i < stats.maxEnergy / maxStats.maxEnergy * 100)
             {
                 energyPips.pips[i / 10].sprite = energyPips.obtained;
             }
@@ -70,7 +76,7 @@ public class UpgradePips : MonoBehaviour
 
         for (int i = 0; i < 100; i += 10)
         {
-            if (i < GameManager.gameManager.GetHealthUpgrades())
+            if (i < stats.maxHealth / maxStats.maxHealth * 100)
             {
                 healthPips.pips[i / 10].sprite = healthPips.obtained;
             }

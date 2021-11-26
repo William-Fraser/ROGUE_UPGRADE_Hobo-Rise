@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResultsUI : MonoBehaviour
+public class ResultsManager : MonoBehaviour
 {
     public Text coinsCollected;
     public Text healthLeft;

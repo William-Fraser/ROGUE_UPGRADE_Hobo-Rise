@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
     private bool attacking = false;
     private float timeSpentInAttack = 0f;
 
-    private Vector3 previousPosition;
-
     private Vector3 originalWeaponScaling;
 
     public enum PlayerDirection
@@ -43,7 +41,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        previousPosition = this.transform.position;
         Animate();
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
