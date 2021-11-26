@@ -47,11 +47,6 @@ public class Weapon : MonoBehaviour
             sprite.sortingOrder = 10;
             Debug.LogWarning(collision.gameObject + " hit with damage of " + damage);
             collision.gameObject.GetComponent<Stats>().LoseHealth((int)damage, true);
-        }
-
-        if (playerWeapon == true && this.gameObject == GameManager.gameManager.player.GetComponent<PlayerController>().weapon)
-            GameManager.gameManager.DamageAdded(damage, playerWeapon);
-
-        
+        }        
     }
 }

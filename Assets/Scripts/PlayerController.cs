@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
             CheckInput();
         }
         CheckTimes();
-        GameManager.gameManager.DistanceTraveled(Vector3.Distance(previousPosition, this.transform.position));
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

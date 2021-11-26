@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject billPrefab;
     public PlayerData stats;
     public PlayerData maxPossibleStats;
+    public UpgradePrices upgradePrices;
     public GameObject player;
     public bool isNewGame = false;
     public int mainID;
@@ -27,15 +28,12 @@ public class GameManager : MonoBehaviour
     public float housePrice = 500;
 
     public float collectedMoney;
-    public int enemiesKilled;
-    public float damageDealt;
-    public float distanceTraveled;
 
     public AudioSource audioSource;
     public AudioClip buttonPress;
 
     private float gameOverTimer = 0f;
-    private float gameOverTimeRequirement = 3f;
+    private readonly float gameOverTimeRequirement = 3f;
 
     private bool isKeyDownEndScreen = true;
     [SerializeField]
@@ -68,25 +66,9 @@ public class GameManager : MonoBehaviour
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        if (CheckRoundEnd())
         {
-            if(player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
-            {
-                if (currentScene == GameScenes.InGame)
-                {
-                    if (gameOverTimer >= gameOverTimeRequirement || Input.anyKeyDown)
-                    {
-                        runOverObject.SetActive(false);
-                        gameOverTimer = 0;
-                        stats.totalMoney += collectedMoney;
-                        ChangeScene(GameScenes.Results);
-                    } else
-                    {
-                        runOverObject.SetActive(true);
-                        gameOverTimer += Time.deltaTime;
-                    }
-                }
-            }
+            EndRound();
         }
     }
     #endregion
@@ -103,10 +85,6 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerController>().ResetPlayer();
         ChangeScene(GameScenes.InGame);
         collectedMoney = 0;
-
-        damageDealt = 0;
-        enemiesKilled = 0;
-        distanceTraveled = 0;
     }
     #endregion
 
@@ -115,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         AttemptSave();
     }
-    public bool isOnUpgrade()
+    public bool IsOnUpgrade()
     {
         if(currentScene == GameScenes.Upgrade)
         {
@@ -139,7 +117,6 @@ public class GameManager : MonoBehaviour
                 stats.attackSpeedModifier = loadData.attackSpeedModifier;
                 stats.maxEnergy = loadData.maxEnergy;
                 stats.totalMoney = loadData.totalMoney;
-                stats.clout = loadData.clout;
                 ChangeScene(GameScenes.Upgrade);
             }
         }
@@ -185,14 +162,15 @@ public class GameManager : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-        PlayerData saveData = new PlayerData();
-        saveData.attackSpeedModifier = stats.attackSpeedModifier;
-        saveData.damageModifier = stats.damageModifier;
-        saveData.maxEnergy = stats.maxEnergy;
-        saveData.maxHealth = stats.maxHealth;
-        saveData.speedModifier = stats.speedModifier;
-        saveData.totalMoney = stats.totalMoney;
-        saveData.clout = stats.clout;
+        PlayerData saveData = new PlayerData
+        {
+            attackSpeedModifier = stats.attackSpeedModifier,
+            damageModifier = stats.damageModifier,
+            maxEnergy = stats.maxEnergy,
+            maxHealth = stats.maxHealth,
+            speedModifier = stats.speedModifier,
+            totalMoney = stats.totalMoney
+        };
         bf.Serialize(file, saveData);
         file.Close();
     }
@@ -237,19 +215,10 @@ public class GameManager : MonoBehaviour
     public void UpgradeTrigger() // Designed to run everytime you upgrade, just so we could add additional logic without editing each method
     {
         Save();
-        AddClout(1);
     }
     public void RemoveMoney(float moneyToRemove)
     {
         stats.totalMoney -= moneyToRemove;
-    }
-    public void AddClout(int amount)
-    {
-        stats.clout += amount;
-    }
-    public bool CheckClout(int amountToCheckAgainst)
-    {
-        return stats.clout >= amountToCheckAgainst;
     }
     public bool CanPurchase(int amountToCheckAgainst)
     {
@@ -279,6 +248,11 @@ public class GameManager : MonoBehaviour
     {
         stats.maxEnergy += maxPossibleStats.maxEnergy / 10;
         UpgradeTrigger();
+    }
+
+    public UpgradePrices GetUpgradePrices()
+    {
+        return upgradePrices;
     }
     #endregion
 
@@ -313,22 +287,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Result Methods
-    public void EnemyKilled()
-    {
-        enemiesKilled += 1;
-    }
-    public void DamageAdded(float damage, bool isPlayer)
-    {
-        if(isPlayer)
-            damageDealt += damage;
-    }
-
-    public void DistanceTraveled(float distance)
-    {
-        distanceTraveled += distance;
-    }
-    #endregion
    
     #region Money Methods
     public void CollectMoney(int value, Vector3 pos)
@@ -417,5 +375,49 @@ public class PlayerData
     public float attackSpeedModifier = 1;
     public float maxEnergy = 10;
     public float totalMoney = 0;
-    public int clout = 0;
 }
+[Serializable]
+public class UpgradePrices {
+    public int[] health;
+    public int[] speed;
+    public int[] damage;
+    public int[] attackSpeed;
+    public int[] energy;
+
+    public int GetHealthPrice(float percentStat)
+    {
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
+        return health[i - 1];
+    }
+    public int GetSpeedPrice(float percentStat)
+    {
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
+        return speed[i - 1];
+    }
+    public int GetDamagePrice(float percentStat)
+    {
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
+        return damage[i - 1];
+    }
+    public int GetAttackSpeedPrice(float percentStat)
+    {
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
+        return attackSpeed[i - 1];
+    }
+    public int GetEnergyPrice(float percentStat)
+    {
+        if (percentStat > 100) percentStat = 100;
+        int i = (int)(percentStat / 10);
+        if (i == 10) i = 9;
+        return energy[i-1];
+    }
+}
+
