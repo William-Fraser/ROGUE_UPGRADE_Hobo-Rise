@@ -6,12 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    
+    #region Public Fields
     public static GameManager gameManager;
     public GameScenes currentScene;
     public GameObject player;
     public AudioSource audioSource;
     public AudioClip buttonPress;
 
+    public enum GameScenes
+    {
+        Main,
+        Cutscene,
+        InGame,
+        Victory,
+        GameOver,
+        Results,
+        Upgrade
+    }
+    #endregion
+
+    #region Serialized Fields
     [SerializeField]
     private GameObject runOverObject;
     [SerializeField]
@@ -32,23 +48,16 @@ public class GameManager : MonoBehaviour
     private float housePrice = 500;
     [SerializeField]
     private GameObject valuePopupPrefab;
+    #endregion
 
+    #region Private Fields
     private PlayerData stats;
     private float collectedMoney;
     private float gameOverTimer = 0f;
     private readonly float gameOverTimeRequirement = 3f;
     private bool isKeyDownEndScreen = true;
+    #endregion
 
-    public enum GameScenes
-    {
-        Main,
-        Cutscene,
-        InGame,
-        Victory,
-        GameOver,
-        Results,
-        Upgrade
-    }
     #region Unity Messages
     private void Start()
     {
@@ -264,29 +273,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Misc
-    public void ButtonPressed()
-    {
-        audioSource.loop = false;
-        audioSource.PlayOneShot(buttonPress);
-    }
-    public PlayerData GetMaxStats()
-    {
-        return maxPossibleStats;
-    }
-    public PlayerData GetPlayerStats()
-    {
-        return stats;
-    }
-
-    public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
-    {
-        //Debug.Log($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
-        GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
-        popup.GetComponent<ValuePopup>().Setup(displayValue, color);
-    }
-    #endregion
-
     #region Round Over
     private bool CheckRoundEnd()
     {
@@ -319,6 +305,29 @@ public class GameManager : MonoBehaviour
             runOverObject.SetActive(true);
             gameOverTimer += Time.deltaTime;
         }
+    }
+    #endregion
+
+    #region Misc
+    public void ButtonPressed()
+    {
+        audioSource.loop = false;
+        audioSource.PlayOneShot(buttonPress);
+    }
+    public PlayerData GetMaxStats()
+    {
+        return maxPossibleStats;
+    }
+    public PlayerData GetPlayerStats()
+    {
+        return stats;
+    }
+
+    public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
+    {
+        //Debug.Log($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
+        GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
+        popup.GetComponent<ValuePopup>().Setup(displayValue, color);
     }
     #endregion
 }
