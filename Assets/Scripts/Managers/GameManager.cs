@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     private float gameOverTimer = 0f;
     private readonly float gameOverTimeRequirement = 3f;
     private bool isKeyDownEndScreen = true;
-    
 
-    public enum GameScenes { 
+    public enum GameScenes
+    {
         Main,
         Cutscene,
         InGame,
@@ -55,18 +55,19 @@ public class GameManager : MonoBehaviour
     #region Unity Messages
     private void Start()
     {
-        if(gameManager == null)
+        if (gameManager == null)
         {
             gameManager = this;
             DontDestroyOnLoad(this.gameObject);
-        } else
+        }
+        else
         {
             Destroy(this.gameObject);
         }
     }
     private void Update()
     {
-        if(player == null)
+        if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
         if (CheckRoundEnd())
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
     }
     public bool IsOnUpgrade()
     {
-        if(currentScene == GameScenes.Upgrade)
+        if (currentScene == GameScenes.Upgrade)
         {
             return true;
         }
@@ -133,7 +134,8 @@ public class GameManager : MonoBehaviour
         if (CanLoad())
         {
             gameObject.GetComponent<SaveWarningControl>().ActivateWarning();
-        } else
+        }
+        else
         {
             player.GetComponent<PlayerController>().ResetPlayer();
             player.GetComponent<PlayerController>().ResetStats();
@@ -183,7 +185,8 @@ public class GameManager : MonoBehaviour
     {
         Save();
         currentScene = targetScene;
-        switch (currentScene) {
+        switch (currentScene)
+        {
             case GameScenes.Main:
                 SceneManager.LoadScene(mainID);
                 break;
@@ -211,48 +214,34 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Stat Upgrades
-    public void UpgradeTrigger() // Designed to run everytime you upgrade, just so we could add additional logic without editing each method
-    {
-        Save();
-    }
-    public void RemoveMoney(float moneyToRemove)
-    {
-        stats.totalMoney -= moneyToRemove;
-    }
-    public bool CanPurchase(int amountToCheckAgainst)
-    {
-        return stats.totalMoney >= amountToCheckAgainst;
-    }
+
     public void UpgradeHealth()
     {
-        stats.maxHealth += maxPossibleStats.maxHealth/10;
-        UpgradeTrigger();
+        stats.maxHealth += maxPossibleStats.maxHealth / 10;
+        Save();
     }
     public void UpgradeSpeed()
     {
         stats.speedModifier += maxPossibleStats.speedModifier / 10;
-        UpgradeTrigger();
+        Save();
     }
     public void UpgradeDamage()
     {
         stats.damageModifier += maxPossibleStats.damageModifier / 10;
-        UpgradeTrigger();
+        Save();
     }
     public void UpgradeAttackSpeed()
     {
         stats.attackSpeedModifier += maxPossibleStats.attackSpeedModifier / 10;
-        UpgradeTrigger();
+        Save();
     }
     public void UpgradeEnergy()
     {
         stats.maxEnergy += maxPossibleStats.maxEnergy / 10;
-        UpgradeTrigger();
+        Save();
     }
 
-    public UpgradePrices GetUpgradePrices()
-    {
-        return upgradePrices;
-    }
+
     #endregion
 
     #region Housing Methods
@@ -262,31 +251,22 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-   
     #region Money Methods
-    public void CollectMoney(int value, Vector3 pos)
+    public UpgradePrices GetUpgradePrices()
     {
-        collectedMoney += value;
-        gameManager.DisplayGUIPopup("+$"+value, pos, Color.yellow);
+        return upgradePrices;
     }
-    public void AddMoneyToTotal()
+    public void RemoveMoney(float moneyToRemove)
     {
-        stats.totalMoney += collectedMoney;
+        stats.totalMoney -= moneyToRemove;
     }
-
-    public void ButtonPressed()
+    public bool CanPurchase(int amountToCheckAgainst)
     {
-        audioSource.loop = false;
-        audioSource.PlayOneShot(buttonPress);
+        return stats.totalMoney >= amountToCheckAgainst;
     }
-    
-    public float GetMoney()
+    public void AddToMoneyTotal(int value)
     {
-        return stats.totalMoney;
-    }
-    public float GetCollectedMoney()
-    {
-        return collectedMoney;
+        stats.totalMoney += value;
     }
     public float GetHousePrice()
     {
@@ -294,6 +274,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Misc
+    public void ButtonPressed()
+    {
+        audioSource.loop = false;
+        audioSource.PlayOneShot(buttonPress);
+    }
     public PlayerData GetMaxStats()
     {
         return maxPossibleStats;
@@ -303,6 +289,15 @@ public class GameManager : MonoBehaviour
         return stats;
     }
 
+    public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
+    {
+        //Debug.Log($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
+        GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
+        popup.GetComponent<ValuePopup>().Setup(displayValue, color);
+    }
+    #endregion
+
+    #region Round Over
     private bool CheckRoundEnd()
     {
         if (player != null && currentScene == GameScenes.InGame)
@@ -316,7 +311,7 @@ public class GameManager : MonoBehaviour
     }
     private void EndRound()
     {
-        if(isKeyDownEndScreen && !Input.anyKey)
+        if (isKeyDownEndScreen && !Input.anyKey)
         {
             isKeyDownEndScreen = false;
         }
@@ -335,13 +330,7 @@ public class GameManager : MonoBehaviour
             gameOverTimer += Time.deltaTime;
         }
     }
-
-    public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
-    {
-        //Debug.Log($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
-        GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
-        popup.GetComponent<ValuePopup>().Setup(displayValue, color);
-    }
+    #endregion
 }
 
 

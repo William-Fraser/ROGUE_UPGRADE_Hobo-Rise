@@ -139,7 +139,7 @@ public class Stats : MonoBehaviour
         alive = false;
         if (gameObject.CompareTag(GameManager.gameManager.player.tag))
         {
-            GameManager.gameManager.AddMoneyToTotal();
+            MoneyManager.moneyManager.AddMoneyToTotal();
         } 
         else // drop item on enemy death
         {

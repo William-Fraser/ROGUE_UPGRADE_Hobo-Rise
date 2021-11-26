@@ -39,7 +39,7 @@ public class ButtonControl : MonoBehaviour
     }
     public bool CanAfford(float price)
     {
-        if (GameManager.gameManager.GetMoney() >= price)
+        if (MoneyManager.moneyManager.GetMoney() >= price)
             return true;
         else
             return false;
@@ -49,7 +49,7 @@ public class ButtonControl : MonoBehaviour
         GameManager.gameManager.ButtonPressed();
         if (CanAfford(GameManager.gameManager.GetHousePrice()))
         {
-            GameManager.gameManager.RemoveMoney(GameManager.gameManager.GetHousePrice());
+            MoneyManager.moneyManager.RemoveMoney(GameManager.gameManager.GetHousePrice());
             GameManager.gameManager.BuyHouse();
         }
         else
@@ -67,7 +67,7 @@ public class ButtonControl : MonoBehaviour
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Hat");
-            GameManager.gameManager.RemoveMoney(price);
+            MoneyManager.moneyManager.RemoveMoney(price);
             GameManager.gameManager.UpgradeAttackSpeed();
         }
         else
@@ -85,7 +85,7 @@ public class ButtonControl : MonoBehaviour
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Clothes");
-            GameManager.gameManager.RemoveMoney(price);
+            MoneyManager.moneyManager.RemoveMoney(price);
             GameManager.gameManager.UpgradeHealth();
         }
         else
@@ -103,7 +103,7 @@ public class ButtonControl : MonoBehaviour
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Shoes");
-            GameManager.gameManager.RemoveMoney(price);
+            MoneyManager.moneyManager.RemoveMoney(price);
             GameManager.gameManager.UpgradeSpeed();
         }
         else
@@ -121,7 +121,7 @@ public class ButtonControl : MonoBehaviour
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Weapon");
-            GameManager.gameManager.RemoveMoney(price);
+            MoneyManager.moneyManager.RemoveMoney(price);
             GameManager.gameManager.UpgradeDamage();
         }
         else
@@ -139,7 +139,7 @@ public class ButtonControl : MonoBehaviour
         if (CanAfford(price))
         {
             Debug.Log("Upgrading Energy");
-            GameManager.gameManager.RemoveMoney(price);
+            MoneyManager.moneyManager.RemoveMoney(price);
             GameManager.gameManager.UpgradeEnergy();
         }
         else
