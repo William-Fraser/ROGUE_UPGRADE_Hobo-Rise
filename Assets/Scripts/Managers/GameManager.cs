@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int upgradeID;
     [SerializeField]
-    private int creditsID;
-    [SerializeField]
     private float housePrice = 500;
     [SerializeField]
     private GameObject valuePopupPrefab;
@@ -49,8 +47,7 @@ public class GameManager : MonoBehaviour
         Victory,
         GameOver,
         Results,
-        Upgrade,
-        Credits
+        Upgrade
     }
     #region Unity Messages
     private void Start()
@@ -201,9 +198,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GameScenes.Upgrade:
                 SceneManager.LoadScene(upgradeID);
-                break;
-            case GameScenes.Credits:
-                SceneManager.LoadScene(creditsID);
                 break;
             default:
                 Debug.LogError("ERR:Loading Scene");
