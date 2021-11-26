@@ -260,10 +260,6 @@ public class GameManager : MonoBehaviour
     {
         stats.totalMoney -= moneyToRemove;
     }
-    public bool CanPurchase(int amountToCheckAgainst)
-    {
-        return stats.totalMoney >= amountToCheckAgainst;
-    }
     public void AddToMoneyTotal(int value)
     {
         stats.totalMoney += value;

@@ -34,42 +34,42 @@ public class CustomButtonMonoBehaviour : MonoBehaviour
         switch (statType)
         {
             case ButtonType.ATKSPD:
-                if (GameManager.gameManager.CanPurchase(prices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxStats.attackSpeedModifier)) && stats.attackSpeedModifier != maxStats.attackSpeedModifier)
+                if (MoneyManager.moneyManager.CanPurchase(prices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxStats.attackSpeedModifier)) && stats.attackSpeedModifier != maxStats.attackSpeedModifier)
                 {
                     button.Enable();
                 }
                 else button.Disable();
                 break;
             case ButtonType.SPD:
-                if (GameManager.gameManager.CanPurchase(prices.GetSpeedPrice(stats.speedModifier, maxStats.speedModifier)) && stats.speedModifier != maxStats.speedModifier)
+                if (MoneyManager.moneyManager.CanPurchase(prices.GetSpeedPrice(stats.speedModifier, maxStats.speedModifier)) && stats.speedModifier != maxStats.speedModifier)
                 {
                     button.Enable();
                 }
                 else button.Disable();
                 break;
             case ButtonType.DMG:
-                if (GameManager.gameManager.CanPurchase(prices.GetDamagePrice(stats.damageModifier, maxStats.damageModifier)) && stats.damageModifier != maxStats.damageModifier)
+                if (MoneyManager.moneyManager.CanPurchase(prices.GetDamagePrice(stats.damageModifier, maxStats.damageModifier)) && stats.damageModifier != maxStats.damageModifier)
                 {
                     button.Enable();
                 }
                 else button.Disable();
                 break;
             case ButtonType.HP:
-                if (GameManager.gameManager.CanPurchase(prices.GetHealthPrice(stats.maxHealth, maxStats.maxHealth)) && stats.maxHealth != maxStats.maxHealth)
+                if (MoneyManager.moneyManager.CanPurchase(prices.GetHealthPrice(stats.maxHealth, maxStats.maxHealth)) && stats.maxHealth != maxStats.maxHealth)
                 {
                     button.Enable();
                 }
                 else button.Disable();
                 break;
             case ButtonType.NRG:
-                if (GameManager.gameManager.CanPurchase(prices.GetEnergyPrice(stats.maxEnergy, maxStats.maxEnergy)) && stats.maxEnergy != maxStats.maxEnergy)
+                if (MoneyManager.moneyManager.CanPurchase(prices.GetEnergyPrice(stats.maxEnergy, maxStats.maxEnergy)) && stats.maxEnergy != maxStats.maxEnergy)
                 {
                     button.Enable();
                 }
                 else button.Disable();
                 break;
             case ButtonType.House:
-                if (GameManager.gameManager.CanPurchase((int)GameManager.gameManager.GetHousePrice()))
+                if (MoneyManager.moneyManager.CanPurchase((int)GameManager.gameManager.GetHousePrice()))
                 {
                     button.Enable();
                 }
