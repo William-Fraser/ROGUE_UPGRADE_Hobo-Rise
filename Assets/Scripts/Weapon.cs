@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public bool playerWeapon = false;
-    public bool attacking = false;
-    public float damage = 10;
+    private bool attacking = false;
+    private float damage = 10;
     private SpriteRenderer sprite;
+    private GameObject attacker;
 
     private void Start()
     {
@@ -19,22 +19,26 @@ public class Weapon : MonoBehaviour
         if (value <= 0)
         {
             Debug.LogWarning("WARNING: Damage is below zero!!");
-            if (playerWeapon)
-                value = 10;
+            value = 0;
         }
         
         damage = value;
-        Debug.LogWarning($"Weapon Damage is {damage}");
     }
 
+    public void StartAttack(GameObject attacker)
+    {
+        this.attacker = attacker;
+        attacking = true;
+    }
+
+    public void StopAttack()
+    {
+        attacking = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(playerWeapon == true)
-         Debug.LogWarning(collision.gameObject +", Damage: " + damage);
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
-
-        //SetDamage(GameManager.gameManager.player.GetComponent<Stats>().damageModifier);
 
         if (!attacking)
         {
@@ -42,10 +46,9 @@ public class Weapon : MonoBehaviour
             return;
         }
 
-        if (collision.gameObject.GetComponent<Stats>() != null)
+        if (collision.gameObject.GetComponent<Stats>() != null && collision.gameObject != attacker)
         {
             sprite.sortingOrder = 10;
-            Debug.LogWarning(collision.gameObject + " hit with damage of " + damage);
             collision.gameObject.GetComponent<Stats>().LoseHealth((int)damage, true);
         }        
     }

@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
             return;
         if (attacking)
         {
-            weapon.GetComponent<Weapon>().attacking = true;
+            weapon.GetComponent<Weapon>().StartAttack(this.gameObject);
             if (timeSpentInAttack >= lengthOfAttack / modifiedAttackSpeed)
             {
                 attacking = false;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
             }
         } else
         {
-            weapon.GetComponent<Weapon>().attacking = false;
+            weapon.GetComponent<Weapon>().StopAttack();
         }
     }
     public void UpdateStats()
