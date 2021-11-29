@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     #region Serialized Fields
     [SerializeField] private GameObject runOverObject;
+    [SerializeField] private GameObject creditsCanvas;
     [SerializeField] private PlayerData maxPossibleStats;
     [SerializeField] private UpgradePrices upgradePrices;
     [SerializeField] private int mainID;
@@ -322,6 +323,27 @@ public class GameManager : MonoBehaviour
             runOverObject.SetActive(true);
             gameOverTimer += Time.deltaTime;
         }
+    }
+    #endregion
+
+    #region Credits
+    public void ManageCredits()
+    {
+        if (creditsCanvas.activeInHierarchy)
+        {
+            CloseCredits();
+        } else
+        {
+            OpenCredits();
+        }
+    }
+    private void OpenCredits()
+    {
+        creditsCanvas.SetActive(true);
+    }
+    private void CloseCredits()
+    {
+        creditsCanvas.SetActive(false);
     }
     #endregion
 

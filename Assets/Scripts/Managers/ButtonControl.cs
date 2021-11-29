@@ -155,4 +155,9 @@ public class ButtonControl : MonoBehaviour
     {
         GameManager.gameManager.Load();
     }
+
+    public void ManageCredits()
+    {
+        GameManager.gameManager.ManageCredits();
+    }
 }
