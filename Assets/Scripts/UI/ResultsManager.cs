@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResultsUI : MonoBehaviour
+public class ResultsManager : MonoBehaviour
 {
     public Text coinsCollected;
     public Text healthLeft;
@@ -11,7 +9,7 @@ public class ResultsUI : MonoBehaviour
 
     private void Update()
     { 
-        coinsCollected.text = "Coins Collected: $" +GameManager.gameManager.collectedMoney;
+        coinsCollected.text = "Coins Collected: $" + MoneyManager.moneyManager.GetCollectedMoney();
         healthLeft.text = "Health Remaining: " + GameManager.gameManager.player.GetComponent<Stats>().health;
         energyLeft.text = "Energy Remaining: " + GameManager.gameManager.player.GetComponent<Stats>().displayedEnergy;
     }

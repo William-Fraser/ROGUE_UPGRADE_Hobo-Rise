@@ -23,10 +23,10 @@ public class CoinUI : MonoBehaviour
     {
         if (inGame)
         {
-            coinText.text = "Coins: " + GameManager.gameManager.collectedMoney;
+            coinText.text = "Coins: " + MoneyManager.moneyManager.GetCollectedMoney();
         } else
         {
-            coinText.text = "Coins: " + GameManager.gameManager.stats.totalMoney;
+            coinText.text = "Coins: " + MoneyManager.moneyManager.GetMoney();
         }
     }
 }

@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
@@ -57,13 +54,6 @@ public class Stats : MonoBehaviour
             }
         }
     }
-    private void Awake()
-    {
-        if (GameManager.gameManager == null)
-            return;
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
-    }
     public void ResetInGameStats()
     {
         health = maxHealth;
@@ -73,12 +63,13 @@ public class Stats : MonoBehaviour
     }
     public void ResetMainStats()
     {
-        maxHealth = GameManager.gameManager.stats.maxHealth;
-        speedModifier = GameManager.gameManager.stats.speedModifier;
-        damageModifier = GameManager.gameManager.stats.damageModifier;
-        attackSpeedModifier = GameManager.gameManager.stats.attackSpeedModifier;
-        maxEnergy = GameManager.gameManager.stats.maxEnergy;
-        totalMoney = GameManager.gameManager.stats.totalMoney;
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        maxHealth = stats.maxHealth;
+        speedModifier = stats.speedModifier;
+        damageModifier = stats.damageModifier;
+        attackSpeedModifier = stats.attackSpeedModifier;
+        maxEnergy = stats.maxEnergy;
+        totalMoney = stats.totalMoney;
     }
 
     #region Set, Obtain, and Lose resources
@@ -134,7 +125,7 @@ public class Stats : MonoBehaviour
         alive = false;
         if (gameObject.CompareTag(GameManager.gameManager.player.tag))
         {
-            GameManager.gameManager.stats.totalMoney += collectedMoney;
+            MoneyManager.moneyManager.AddMoneyToTotal();
         } 
         else // drop item on enemy death
         {
@@ -146,15 +137,15 @@ public class Stats : MonoBehaviour
             switch (type)
             {
                 case CharacterType.Hobo:
-                    GameManager.gameManager.SpawnBronzeCoin(itemDropPos);
+                    CoinManager.coinManager.SpawnBronzeCoin(itemDropPos);
                     topParent.SetActive(false);
                     break;
                 case CharacterType.TaxCollector:
-                    GameManager.gameManager.SpawnGoldCoin(itemDropPos);
+                    CoinManager.coinManager.SpawnGoldCoin(itemDropPos);
                     topParent.SetActive(false);
                     break;
                 case CharacterType.Police:
-                    GameManager.gameManager.SpawnBill(itemDropPos);
+                    CoinManager.coinManager.SpawnBill(itemDropPos);
                     topParent.SetActive(false);
                     break;
             }

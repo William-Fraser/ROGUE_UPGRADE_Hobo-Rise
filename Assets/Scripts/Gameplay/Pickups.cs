@@ -28,11 +28,14 @@ public class Pickups : MonoBehaviour
         switch (type) {
             case PickupTypes.Coin:
                 audioS.clip = collectCoinSound;
-                GameManager.gameManager.CollectMoney(effectValue, this.transform.position);
+                MoneyManager.moneyManager.CollectMoney(effectValue, this.transform.position);
                 break;
             case PickupTypes.Bill:
                 audioS.clip = collectBillSound;
-                GameManager.gameManager.CollectMoney(effectValue, this.transform.position);
+                MoneyManager.moneyManager.CollectMoney(effectValue, this.transform.position);
+                break;
+            case PickupTypes.Bill:
+                MoneyManager.moneyManager.CollectMoney(effectValue, this.transform.position);
                 break;
             case PickupTypes.Food:
                 audioS.clip = CollectFoodSound;

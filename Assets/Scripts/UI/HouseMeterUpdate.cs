@@ -15,9 +15,9 @@ public class HouseMeterUpdate : MonoBehaviour
     private void Update()
     {
         float meterBaseUnit = meterSize.x / 100;
-        if (meterBaseUnit * (GameManager.gameManager.GetMoney() / GameManager.gameManager.GetHousePrice()) * 100 <= meterSize.x)
+        if (meterBaseUnit * (MoneyManager.moneyManager.GetMoney() / GameManager.gameManager.GetHousePrice()) * 100 <= meterSize.x)
         {
-            meter.rectTransform.sizeDelta = new Vector2(meterBaseUnit * (GameManager.gameManager.GetMoney() / GameManager.gameManager.GetHousePrice()) * 100, meterSize.y);
+            meter.rectTransform.sizeDelta = new Vector2(meterBaseUnit * (MoneyManager.moneyManager.GetMoney() / GameManager.gameManager.GetHousePrice()) * 100, meterSize.y);
         } else
         {
             meter.rectTransform.sizeDelta = meterSize;

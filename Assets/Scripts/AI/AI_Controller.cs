@@ -50,7 +50,7 @@ public class AI_Controller : MonoBehaviour
 
     //private fields
     public STATE state;
-    private Stats stats;
+    private EnemyStats stats;
     private GameObject targetObject;
     private AIDestinationSetter destination;
     //patrol
@@ -83,7 +83,7 @@ public class AI_Controller : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        stats = GetComponentInChildren<Stats>();
+        stats = GetComponentInChildren<EnemyStats>();
         destination = GetComponent<AIDestinationSetter>();
         returnPoint = new GameObject("Return Point");
         returnPoint.transform.position = transform.position;
