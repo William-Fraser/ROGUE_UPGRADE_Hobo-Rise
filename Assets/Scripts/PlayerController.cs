@@ -12,9 +12,13 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
     public Animator animator;
     public Vector2 movementDirection; //Used for Blend Tree
-    public AudioSource audioSource;
-    public AudioClip footStep;
+    public AudioClip footStepSound;
+    public AudioClip wetFootStepSound;
+    public AudioClip deathSound;
+    public AudioClip playerAtkSound;
 
+    private AudioSource audioSource;
+    private AudioClip activeStepSound; // step sound holder to be player on step
     private Stats stats;
     private Rigidbody2D rb;
     private float modifiedSpeed;
@@ -48,7 +52,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         if (stats.alive == false)
-        { return; }
+        { audioSource.PlayOneShot(deathSound); return; }
 
         if (attacking)
         {
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        DetectGroundType(collision);
         if (jumping) jumping = false;
     }
     public void ResetPlayer()
@@ -148,7 +153,7 @@ public class PlayerController : MonoBehaviour
             if (rb.velocity.y != 0 && !rb.IsSleeping())
                 return;
             if (audioSource.isPlaying == false)
-                audioSource.PlayOneShot(footStep);
+                audioSource.PlayOneShot(activeStepSound);
         } 
         else if (Input.GetKey(KeyCode.D))
         {
@@ -158,7 +163,7 @@ public class PlayerController : MonoBehaviour
             if (rb.velocity.y != 0 && !rb.IsSleeping())
                 return;
             if (audioSource.isPlaying == false)
-                audioSource.PlayOneShot(footStep);
+                audioSource.PlayOneShot(activeStepSound);
         } else if (Input.GetKey(KeyCode.P))
         {
             stats.energy = 0;
@@ -205,6 +210,16 @@ public class PlayerController : MonoBehaviour
             weapon.transform.Translate(Vector3.left, Space.Self);
             weapon.transform.localScale = new Vector3(-originalWeaponScaling.x, originalWeaponScaling.y, originalWeaponScaling.z);
         }
+        audioSource.PlayOneShot
+            (playerAtkSound);
+    }
+
+    private void DetectGroundType(Collision2D collider)
+    {
+        if (collider.gameObject.tag == "Street")
+        { activeStepSound = footStepSound; }
+        else if (collider.gameObject.tag == "Sewer")
+        { activeStepSound = wetFootStepSound; }
     }
 
     private void Animate()

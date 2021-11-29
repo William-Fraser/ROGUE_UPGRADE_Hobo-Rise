@@ -21,7 +21,8 @@ public class Stats : MonoBehaviour
     public float collectedMoney; // money collected in a single run
     public float totalMoney; // total collected money in game
     public SpriteRenderer sprite;
-
+    public AudioClip takeDamageSound;
+    private AudioSource audioSource;
 
     public enum CharacterType { 
         Player,
@@ -31,6 +32,8 @@ public class Stats : MonoBehaviour
     }
     private void Start()
     {
+        audioSource = GameManager.gameManager.audioSource;
+
         if (GetComponentInChildren<SpriteRenderer>())
             sprite = GetComponentInChildren<SpriteRenderer>();
     }
@@ -39,16 +42,9 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
 
-        
-
         if (health == 0)
         { 
             Death();
-        }
-
-        if (sprite.color.r < 255)
-        {
-            sprite.color = Color.Lerp(sprite.color, Color.white, 5.0f);
         }
 
         if (gameObject.CompareTag(GameManager.gameManager.player.tag))
@@ -63,7 +59,6 @@ public class Stats : MonoBehaviour
     }
     private void Awake()
     {
-
         if (GameManager.gameManager == null)
             return;
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
@@ -114,11 +109,13 @@ public class Stats : MonoBehaviour
         {
             health = 0;
         }
-        else
+        else // take damage 
         {
             health -= value;
-            //Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
+            audioSource.PlayOneShot(
+                takeDamageSound);
             GameManager.gameManager.DisplayGUIPopup("-"+value, this.transform.position, Color.red);
+            //Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
         }
 
         if (attack)

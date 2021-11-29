@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeapon: 1
   attacking: 0
+  damage: 10
 --- !u!1 &225746867039680052
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,8 +220,10 @@ MonoBehaviour:
   weapon: {fileID: 225746866833517765}
   animator: {fileID: 8275802716316347299}
   movementDirection: {x: 0, y: 0}
-  audioSource: {fileID: 0}
-  footStep: {fileID: 8300000, guid: 69a9a64e0a2c50e4ca23849ee396ac59, type: 3}
+  footStepSound: {fileID: 8300000, guid: 69a9a64e0a2c50e4ca23849ee396ac59, type: 3}
+  wetFootStepSound: {fileID: 8300000, guid: c51a26e81919b2c4f8419ff3c31d6f94, type: 3}
+  deathSound: {fileID: 8300000, guid: 805859f6b1b26924fadfe48df062e13b, type: 3}
+  playerAtkSound: {fileID: 8300000, guid: 8611449303eb1544c82f2142003c5fa2, type: 3}
 --- !u!114 &225746867039680053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topParent: {fileID: 225746867039680052}
+  takeDamageSound: {fileID: 8300000, guid: ff6ce5792b18a9e4e9883ceacf13b424, type: 3}
   alive: 1
   type: 0
   maxHealth: 200
@@ -246,7 +250,7 @@ MonoBehaviour:
   displayedEnergy: 0
   collectedMoney: 0
   totalMoney: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 3205528017079178563}
 --- !u!1 &2092008641271640175
 GameObject:
   m_ObjectHideFlags: 0

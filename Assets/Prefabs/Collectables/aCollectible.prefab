@@ -124,3 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   effectValue: 5
+  collectCoinSound: {fileID: 8300000, guid: 55f7ac68c086f414eb986d6b63b4cc91, type: 3}
+  collectBillSound: {fileID: 8300000, guid: 18555d03d3e9b7e4b96b493c1098e833, type: 3}
+  CollectFoodSound: {fileID: 8300000, guid: c1054317b61ba724da96c78810b5d1cd, type: 3}
