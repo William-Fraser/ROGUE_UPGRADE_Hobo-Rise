@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip buttonPress;
+    public AudioClip gameOver;
 
     private float gameOverTimer = 0f;
     private readonly float gameOverTimeRequirement = 3f;
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player");
 
-        if (CheckRoundEnd())
+        if (CheckAndSetGameOver())
         {
             EndRound();
         }
@@ -325,12 +326,13 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    private bool CheckRoundEnd()
+    private bool CheckAndSetGameOver()
     {
         if (player != null && currentScene == GameScenes.InGame)
         {
             if (player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
             {
+                audioSource.PlayOneShot(gameOver);
                 return true;
             }
         }

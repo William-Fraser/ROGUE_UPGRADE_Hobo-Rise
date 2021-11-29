@@ -584,7 +584,6 @@ MonoBehaviour:
     attackSpeedModifier: 1
     maxEnergy: 6
     totalMoney: 0
-    clout: 0
   maxPossibleStats:
     maxHealth: 30
     speedModifier: 10
@@ -592,7 +591,12 @@ MonoBehaviour:
     attackSpeedModifier: 10
     maxEnergy: 60
     totalMoney: 999999
-    clout: 0
+  upgradePrices:
+    health: 
+    speed: 
+    damage: 
+    attackSpeed: 
+    energy: 
   player: {fileID: 0}
   isNewGame: 1
   mainID: 0
@@ -605,10 +609,7 @@ MonoBehaviour:
   currentScene: 0
   housePrice: 500
   collectedMoney: 0
-  enemiesKilled: 0
-  damageDealt: 0
-  distanceTraveled: 0
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 8705988319207124229}
   buttonPress: {fileID: 8300000, guid: 4d45eb2304908dc438e32427f5b33fbe, type: 3}
   valuePopupPrefab: {fileID: 4607667912317302878, guid: 533c001b8d2ba304c8b6bd0aa1ae8994, type: 3}
 --- !u!114 &1922373691153822774
@@ -641,7 +642,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 73
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

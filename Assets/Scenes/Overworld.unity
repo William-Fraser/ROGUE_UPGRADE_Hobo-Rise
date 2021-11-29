@@ -2641,7 +2641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: MaxDistance
@@ -5156,7 +5156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: MaxDistance
@@ -5644,8 +5644,12 @@ PrefabInstance:
       value: Street Performer (0)
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
+      propertyPath: Priority
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: m_Volume
-      value: 0.76
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: MaxDistance
@@ -57550,7 +57554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8450926199290959087, guid: f3923e9bbdd50c94a9ebaf61a4d5dbcd, type: 3}
       propertyPath: MaxDistance
@@ -57686,7 +57690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691206990400, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691206990400, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63691,7 +63695,7 @@ GameObject:
   - component: {fileID: 1673218069}
   m_Layer: 0
   m_Name: Wall(col)
-  m_TagString: Untagged
+  m_TagString: Sewer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109808,7 +109812,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3947134547805089600, guid: dd9c909ac977e9c4d87e4cf1f57feca6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3947134547805089600, guid: dd9c909ac977e9c4d87e4cf1f57feca6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -115852,7 +115856,7 @@ GameObject:
   - component: {fileID: 2092673047}
   m_Layer: 0
   m_Name: Street (col)
-  m_TagString: Untagged
+  m_TagString: Street
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

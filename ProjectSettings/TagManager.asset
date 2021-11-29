@@ -8,6 +8,8 @@ TagManager:
   - Hobo
   - TaxMan
   - Police
+  - Street
+  - Sewer
   layers:
   - Default
   - TransparentFX

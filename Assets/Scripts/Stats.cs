@@ -21,8 +21,10 @@ public class Stats : MonoBehaviour
     public float collectedMoney; // money collected in a single run
     public float totalMoney; // total collected money in game
     public SpriteRenderer sprite;
+    public AudioClip deathSound;
     public AudioClip takeDamageSound;
-    private AudioSource audioSource;
+    
+    public AudioSource audioSource;
 
     public enum CharacterType { 
         Player,
@@ -32,8 +34,6 @@ public class Stats : MonoBehaviour
     }
     private void Start()
     {
-        audioSource = GameManager.gameManager.audioSource;
-
         if (GetComponentInChildren<SpriteRenderer>())
             sprite = GetComponentInChildren<SpriteRenderer>();
     }
@@ -111,10 +111,9 @@ public class Stats : MonoBehaviour
         }
         else // take damage 
         {
-            health -= value;
-            audioSource.PlayOneShot(
-                takeDamageSound);
+            audioSource.PlayOneShot(takeDamageSound);
             GameManager.gameManager.DisplayGUIPopup("-"+value, this.transform.position, Color.red);
+            health -= value;
             //Debug.Log($"STATS: {-value}, pos: {this.transform.position}, colour: {Color.red}");
         }
 
@@ -160,6 +159,8 @@ public class Stats : MonoBehaviour
                     break;
             }
         }
+
+        audioSource.PlayOneShot(deathSound);
         // Color colour = GetComponent<SpriteRenderer>().color;
       //  colour.a = 0; 
        // GetComponent<SpriteRenderer>().color = colour;

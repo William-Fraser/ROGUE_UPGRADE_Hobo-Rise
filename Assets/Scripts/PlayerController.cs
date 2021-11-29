@@ -12,12 +12,11 @@ public class PlayerController : MonoBehaviour
     public GameObject weapon;
     public Animator animator;
     public Vector2 movementDirection; //Used for Blend Tree
+    public AudioSource audioSource;
     public AudioClip footStepSound;
     public AudioClip wetFootStepSound;
-    public AudioClip deathSound;
     public AudioClip playerAtkSound;
 
-    private AudioSource audioSource;
     private AudioClip activeStepSound; // step sound holder to be player on step
     private Stats stats;
     private Rigidbody2D rb;
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         if (stats.alive == false)
-        { audioSource.PlayOneShot(deathSound); return; }
+        { return; }
 
         if (attacking)
         {
