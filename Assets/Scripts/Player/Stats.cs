@@ -58,14 +58,6 @@ public class Stats : MonoBehaviour
             }
         }
     }
-    private void Awake()
-    {
-
-        if (GameManager.gameManager == null)
-            return;
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
-            return;
-    }
     public void ResetInGameStats()
     {
         health = maxHealth;

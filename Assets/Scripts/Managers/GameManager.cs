@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
     }
     public void Load()
     {
+        stats = new PlayerData();
         try
         {
             if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
@@ -131,9 +132,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            NewGameSetUp();
             player.GetComponent<PlayerController>().ResetPlayer();
             player.GetComponent<PlayerController>().ResetStats();
-            NewGameSetUp();
             ChangeScene(GameScenes.Cutscene);
         }
     }
@@ -161,19 +162,25 @@ public class GameManager : MonoBehaviour
     }
     public void Save()
     {
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
-        PlayerData saveData = new PlayerData
+        try
         {
-            attackSpeedModifier = stats.attackSpeedModifier,
-            damageModifier = stats.damageModifier,
-            maxEnergy = stats.maxEnergy,
-            maxHealth = stats.maxHealth,
-            speedModifier = stats.speedModifier,
-            totalMoney = stats.totalMoney
-        };
-        bf.Serialize(file, saveData);
-        file.Close();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+            PlayerData saveData = new PlayerData
+            {
+                attackSpeedModifier = stats.attackSpeedModifier,
+                damageModifier = stats.damageModifier,
+                maxEnergy = stats.maxEnergy,
+                maxHealth = stats.maxHealth,
+                speedModifier = stats.speedModifier,
+                totalMoney = stats.totalMoney
+            };
+            bf.Serialize(file, saveData);
+            file.Close();
+        } catch
+        {
+            Debug.LogError("SAVE FAILED");
+        }
     }
     #endregion
 
