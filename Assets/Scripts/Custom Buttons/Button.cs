@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using System;
+using UnityEngine.UI;
 
 public class Button : UnityEngine.UI.Button
 {
@@ -18,14 +16,16 @@ public class Button : UnityEngine.UI.Button
             this.gameObject.GetComponent<CustomButtonMonoBehaviour>().SetButton(this);
         }
     }
-    public void Disable()
+    public void Disable(Color color)
     {
         if (enabled == false) return;
         this.enabled = false;
+        this.gameObject.GetComponent<Image>().color = color;
     }
-    public void Enable()
+    public void Enable(Color color)
     {
         if (enabled == true) return;
         this.enabled = true;
+        this.gameObject.GetComponent<Image>().color = color;
     }
 }

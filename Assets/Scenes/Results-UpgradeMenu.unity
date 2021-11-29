@@ -1665,6 +1665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e65cef4b5a3ec47bc23ef3205163f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.47843137}
   statType: 4
 --- !u!114 &506891041
 MonoBehaviour:
@@ -3719,6 +3721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e65cef4b5a3ec47bc23ef3205163f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.47843137}
   statType: 5
 --- !u!114 &1067963041
 MonoBehaviour:
@@ -4235,6 +4239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e65cef4b5a3ec47bc23ef3205163f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.47843137}
   statType: 3
 --- !u!114 &1120451232
 MonoBehaviour:
@@ -5407,6 +5413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e65cef4b5a3ec47bc23ef3205163f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.47843137}
   statType: 1
 --- !u!114 &1406731573
 MonoBehaviour:
@@ -6561,6 +6569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e65cef4b5a3ec47bc23ef3205163f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.47843137}
   statType: 0
 --- !u!114 &1632983417
 MonoBehaviour:
@@ -7574,7 +7584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '$500        Purchase Bank House  '
+  m_text: '$1500        Purchase Bank House  '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8309,6 +8319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e65cef4b5a3ec47bc23ef3205163f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledColor: {r: 1, g: 1, b: 1, a: 1}
+  disabledColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.47843137}
   statType: 2
 --- !u!114 &2133588099
 MonoBehaviour:

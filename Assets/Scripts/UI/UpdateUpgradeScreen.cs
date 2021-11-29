@@ -11,12 +11,10 @@ public class UpdateUpgradeScreen : MonoBehaviour
     public Text damageText;
     public Text speedText;
     public Text energyText;
-    List<Action> method = new List<Action>();
     private void Update()
     {
         PlayerData maxPossibleStats = GameManager.gameManager.GetMaxStats();
         PlayerData stats = GameManager.gameManager.GetPlayerStats();
-        UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
 
         PopulateButtonInformation(stats.maxHealth, maxPossibleStats.maxHealth, healthText, UpgradePrices.Stat.health);
         PopulateButtonInformation(stats.maxEnergy, maxPossibleStats.maxEnergy, energyText, UpgradePrices.Stat.energy);
