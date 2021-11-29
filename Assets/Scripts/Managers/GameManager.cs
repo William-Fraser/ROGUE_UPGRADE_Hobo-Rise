@@ -139,7 +139,6 @@ public class GameManager : MonoBehaviour
         {
             NewGameSetUp();
             player.GetComponent<PlayerController>().ResetPlayer();
-            player.GetComponent<PlayerController>().ResetStats();
             ChangeScene(GameScenes.Cutscene);
         }
     }

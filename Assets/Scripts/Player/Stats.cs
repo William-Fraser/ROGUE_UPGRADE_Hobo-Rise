@@ -76,7 +76,7 @@ public class Stats : MonoBehaviour
     }
     public void LoseEnergy(float value)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || (health <= 0 && energy <= 0))
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         energy -= value;
         if (energy < 0)
@@ -84,7 +84,7 @@ public class Stats : MonoBehaviour
     } 
     public void LoseHealth(int value, bool attack)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || (health <= 0 && energy <= 0))
+        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
         if (health - value < 0)
         {

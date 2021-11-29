@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        DetectGroundType(collision);
+        SetFootStepSound(collision);
         if (jumping) jumping = false;
     }
     public void ResetPlayer()
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
             (playerAtkSound);
     }
 
-    private void DetectGroundType(Collision2D collider)
+    private void SetFootStepSound(Collision2D collider)
     {
         if (collider.gameObject.tag == "Street")
         { activeStepSound = footStepSound; }
