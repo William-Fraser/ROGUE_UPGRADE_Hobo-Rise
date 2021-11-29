@@ -3,51 +3,31 @@ using UnityEngine.UI;
 
 public class UpdateUpgradeScreen : MonoBehaviour
 {
-    public Text hatButtonText;
-    public Text clothesButtonText;
-    public Text weaponButtonText;
-    public Text shoesButtonText;
-    public Text energyButtonText;
+    public Text attackSpeedText;
+    public Text healthText;
+    public Text damageText;
+    public Text speedText;
+    public Text energyText;
     private void Update()
     {
-        GameManager gameManager = GameManager.gameManager;
-        UpgradePrices upgradePrices = gameManager.GetUpgradePrices();
-        PlayerData maxPossibleStats = gameManager.GetMaxStats();
-        PlayerData stats = gameManager.GetPlayerStats();
+        PlayerData maxPossibleStats = GameManager.gameManager.GetMaxStats();
+        PlayerData stats = GameManager.gameManager.GetPlayerStats();
 
-        if (stats.attackSpeedModifier < maxPossibleStats.attackSpeedModifier && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier)))
-            hatButtonText.text = "Buy:   $" + upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier);
-        else if (stats.attackSpeedModifier < maxPossibleStats.attackSpeedModifier && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier)))
-            hatButtonText.text = "Buy:   $" + upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier);
-        else
-            hatButtonText.text = "Max";
+        PopulateButtonInformation(stats.maxHealth, maxPossibleStats.maxHealth, healthText);
+        PopulateButtonInformation(stats.maxEnergy, maxPossibleStats.maxEnergy, energyText);
+        PopulateButtonInformation(stats.damageModifier, maxPossibleStats.damageModifier, damageText);
+        PopulateButtonInformation(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier, attackSpeedText);
+        PopulateButtonInformation(stats.speedModifier, maxPossibleStats.speedModifier, speedText);
+    }
 
-        if (stats.maxHealth < maxPossibleStats.maxHealth && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetHealthPrice(stats.maxHealth, maxPossibleStats.maxHealth)))
-            clothesButtonText.text = "Buy:   $" + upgradePrices.GetHealthPrice(stats.attackSpeedModifier, maxPossibleStats.maxHealth);
-        else if (stats.maxHealth < maxPossibleStats.maxHealth && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetHealthPrice(stats.maxHealth, maxPossibleStats.maxHealth)))
-            clothesButtonText.text = "Buy:   $" + upgradePrices.GetHealthPrice(stats.attackSpeedModifier, maxPossibleStats.maxHealth);
+    void PopulateButtonInformation(float playerStat, float maxStat, Text text)
+    {
+        UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
+        if (playerStat < maxStat && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetEnergyPrice(playerStat, maxStat)))
+            text.text = "Buy:   $" + upgradePrices.GetEnergyPrice(playerStat, maxStat);
+        else if (playerStat < maxStat && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetEnergyPrice(playerStat, maxStat)))
+            text.text = "Buy:   $" + upgradePrices.GetEnergyPrice(playerStat, maxStat);
         else
-            clothesButtonText.text = "Max";
-
-        if (stats.damageModifier < maxPossibleStats.damageModifier && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetDamagePrice(stats.damageModifier, maxPossibleStats.damageModifier)))
-            weaponButtonText.text = "Buy:   $" + upgradePrices.GetDamagePrice(stats.attackSpeedModifier, maxPossibleStats.damageModifier);
-        else if (stats.damageModifier < maxPossibleStats.damageModifier && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetDamagePrice(stats.damageModifier, maxPossibleStats.damageModifier)))
-            weaponButtonText.text = "Buy:   $" + upgradePrices.GetDamagePrice(stats.damageModifier, maxPossibleStats.damageModifier);
-        else
-            weaponButtonText.text = "Max";
-
-        if (stats.speedModifier < maxPossibleStats.speedModifier && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetSpeedPrice(stats.speedModifier, maxPossibleStats.speedModifier)))
-            shoesButtonText.text = "Buy:   $" + upgradePrices.GetSpeedPrice(stats.speedModifier, maxPossibleStats.speedModifier);
-        else if (stats.speedModifier < maxPossibleStats.speedModifier && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetSpeedPrice(stats.speedModifier, maxPossibleStats.speedModifier)))
-            shoesButtonText.text = "Buy:   $" + upgradePrices.GetSpeedPrice(stats.speedModifier, maxPossibleStats.speedModifier);
-        else
-            shoesButtonText.text = "Max";
-
-        if (stats.maxEnergy < maxPossibleStats.maxEnergy && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetEnergyPrice(stats.maxEnergy, maxPossibleStats.maxEnergy)))
-            energyButtonText.text = "Buy:   $" + upgradePrices.GetEnergyPrice(stats.maxEnergy, maxPossibleStats.maxEnergy);
-        else if (stats.maxEnergy < maxPossibleStats.maxEnergy && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetEnergyPrice(stats.maxEnergy, maxPossibleStats.maxEnergy)))
-            energyButtonText.text = "Buy:   $" + upgradePrices.GetEnergyPrice(stats.maxEnergy, maxPossibleStats.maxEnergy);
-        else
-            energyButtonText.text = "Max";
+            text.text = "Max";
     }
 }

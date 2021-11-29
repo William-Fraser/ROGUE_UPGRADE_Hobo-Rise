@@ -27,62 +27,26 @@ public class UpgradePips : MonoBehaviour
     {
         PlayerData stats = gameManager.GetPlayerStats();
         PlayerData maxStats = gameManager.GetMaxStats();
-        for (int i = 0; i < speedPips.pips.Length*10; i+=10)
-        {
-            if (i < stats.speedModifier / maxStats.speedModifier * 100)
-            {
-                speedPips.pips[i / 10].sprite = speedPips.obtained;
-            } else
-            {
-                speedPips.pips[i / 10].sprite = speedPips.unObtained;
-            }
-        }
 
+        PopulatePips(healthPips, stats.maxHealth, maxStats.maxHealth);
+        PopulatePips(energyPips, stats.maxEnergy, maxStats.maxEnergy);
+        PopulatePips(damagePips, stats.damageModifier, maxStats.damageModifier);
+        PopulatePips(attackPips, stats.attackSpeedModifier, maxStats.attackSpeedModifier);
+        PopulatePips(speedPips, stats.speedModifier, maxStats.speedModifier);
+
+
+    }
+    private void PopulatePips(Pips targetPips, float playerStat, float maxStat)
+    {
         for (int i = 0; i < 100; i += 10)
         {
-            if (i < stats.attackSpeedModifier / maxStats.attackSpeedModifier * 100)
+            if (i < playerStat / maxStat * 100)
             {
-                attackPips.pips[i / 10].sprite = attackPips.obtained;
+                targetPips.pips[i / 10].sprite = targetPips.obtained;
             }
             else
             {
-                attackPips.pips[i / 10].sprite = attackPips.unObtained;
-            }
-        }
-
-        for (int i = 0; i < 100; i += 10)
-        {
-            if (i < stats.damageModifier / maxStats.damageModifier * 100)
-            {
-                damagePips.pips[i / 10].sprite = damagePips.obtained;
-            }
-            else
-            {
-                damagePips.pips[i / 10].sprite = damagePips.unObtained;
-            }
-        }
-
-        for (int i = 0; i < 100; i += 10)
-        {
-            if (i < stats.maxEnergy / maxStats.maxEnergy * 100)
-            {
-                energyPips.pips[i / 10].sprite = energyPips.obtained;
-            }
-            else
-            {
-                energyPips.pips[i / 10].sprite = energyPips.unObtained;
-            }
-        }
-
-        for (int i = 0; i < 100; i += 10)
-        {
-            if (i < stats.maxHealth / maxStats.maxHealth * 100)
-            {
-                healthPips.pips[i / 10].sprite = healthPips.obtained;
-            }
-            else
-            {
-                healthPips.pips[i / 10].sprite = healthPips.unObtained;
+                targetPips.pips[i / 10].sprite = targetPips.unObtained;
             }
         }
     }

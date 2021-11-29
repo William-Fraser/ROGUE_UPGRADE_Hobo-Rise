@@ -3257,7 +3257,6 @@ MonoBehaviour:
     - {fileID: 2042571330}
     unObtained: {fileID: 21300000, guid: 582f0322293e3824f8062f8372b93dce, type: 3}
     obtained: {fileID: 21300000, guid: de161b428817a994a9c07f11b65a888a, type: 3}
-  testVariable: 0
 --- !u!114 &937283009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3270,11 +3269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3506470dc3d5e4f9bb7d521acb0c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hatButtonText: {fileID: 1128241113}
-  clothesButtonText: {fileID: 825096317}
-  weaponButtonText: {fileID: 1928595969}
-  shoesButtonText: {fileID: 735802122}
-  energyButtonText: {fileID: 185683626}
+  attackSpeedText: {fileID: 1128241113}
+  healthText: {fileID: 825096317}
+  damageText: {fileID: 1928595969}
+  speedText: {fileID: 735802122}
+  energyText: {fileID: 185683626}
 --- !u!114 &937283010
 MonoBehaviour:
   m_ObjectHideFlags: 0
