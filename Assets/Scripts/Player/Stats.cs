@@ -123,33 +123,27 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
-        if (gameObject.CompareTag(GameManager.gameManager.player.tag))
-        {
-            MoneyManager.moneyManager.AddMoneyToTotal();
-        } 
-        else // drop item on enemy death
-        {
-            //calculating drop pos / positioning from world scale
-            float itemDropPosY = transform.position.y - (transform.localPosition.y + transform.localPosition.y / 2);
-            //Debug.LogError($" itemDropPosY: {transform.position.y - (transform.localPosition.y / 2)}, topOfSpritePosY: {transform.position.y}, localY {transform.localPosition.y}");
-            Vector3 itemDropPos = new Vector3(transform.position.x, itemDropPosY, transform.position.z);
+        //calculating drop pos / positioning from world scale
+        float itemDropPosY = transform.position.y - (transform.localPosition.y + transform.localPosition.y / 2);
+        //Debug.LogError($" itemDropPosY: {transform.position.y - (transform.localPosition.y / 2)}, topOfSpritePosY: {transform.position.y}, localY {transform.localPosition.y}");
+        Vector3 itemDropPos = new Vector3(transform.position.x, itemDropPosY, transform.position.z);
 
-            switch (type)
-            {
-                case CharacterType.Hobo:
-                    CoinManager.coinManager.SpawnBronzeCoin(itemDropPos);
-                    topParent.SetActive(false);
-                    break;
-                case CharacterType.TaxCollector:
-                    CoinManager.coinManager.SpawnGoldCoin(itemDropPos);
-                    topParent.SetActive(false);
-                    break;
-                case CharacterType.Police:
-                    CoinManager.coinManager.SpawnBill(itemDropPos);
-                    topParent.SetActive(false);
-                    break;
-            }
+        switch (type)
+        {
+            case CharacterType.Hobo:
+                CoinManager.coinManager.SpawnBronzeCoin(itemDropPos);
+                topParent.SetActive(false);
+                break;
+            case CharacterType.TaxCollector:
+                CoinManager.coinManager.SpawnGoldCoin(itemDropPos);
+                topParent.SetActive(false);
+                break;
+            case CharacterType.Police:
+                CoinManager.coinManager.SpawnBill(itemDropPos);
+                topParent.SetActive(false);
+                break;
         }
+       
 
         audioSource.PlayOneShot(deathSound);
         // Color colour = GetComponent<SpriteRenderer>().color;

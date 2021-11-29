@@ -64,8 +64,11 @@ public class GameManager : MonoBehaviour
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player");
-
-        if (CheckAndSetGameOver())
+        if(currentScene == GameScenes.Upgrade)
+        {
+            MoneyManager.moneyManager.AddMoneyToTotal();
+        }
+        if (CheckRoundEnd())
         {
             EndRound();
         }

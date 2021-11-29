@@ -34,9 +34,6 @@ public class Pickups : MonoBehaviour
                 audioS.clip = collectBillSound;
                 MoneyManager.moneyManager.CollectMoney(effectValue, this.transform.position);
                 break;
-            case PickupTypes.Bill:
-                MoneyManager.moneyManager.CollectMoney(effectValue, this.transform.position);
-                break;
             case PickupTypes.Food:
                 audioS.clip = CollectFoodSound;
                 player.GetComponent<Stats>().ObtainEnergy(effectValue);
