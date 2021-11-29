@@ -15,7 +15,7 @@ MonoBehaviour:
   topParent: {fileID: 1898605998020796191}
   alive: 1
   health: 15
-  type: 0
+  type: 1
 --- !u!1001 &4168252891609038859
 PrefabInstance:
   m_ObjectHideFlags: 0
