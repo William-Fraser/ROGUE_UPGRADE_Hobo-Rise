@@ -1,3 +1,6 @@
+using System.Collections;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,25 +11,27 @@ public class UpdateUpgradeScreen : MonoBehaviour
     public Text damageText;
     public Text speedText;
     public Text energyText;
+    List<Action> method = new List<Action>();
     private void Update()
     {
         PlayerData maxPossibleStats = GameManager.gameManager.GetMaxStats();
         PlayerData stats = GameManager.gameManager.GetPlayerStats();
+        UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
 
-        PopulateButtonInformation(stats.maxHealth, maxPossibleStats.maxHealth, healthText);
-        PopulateButtonInformation(stats.maxEnergy, maxPossibleStats.maxEnergy, energyText);
-        PopulateButtonInformation(stats.damageModifier, maxPossibleStats.damageModifier, damageText);
-        PopulateButtonInformation(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier, attackSpeedText);
-        PopulateButtonInformation(stats.speedModifier, maxPossibleStats.speedModifier, speedText);
+        PopulateButtonInformation(stats.maxHealth, maxPossibleStats.maxHealth, healthText, UpgradePrices.Stat.health);
+        PopulateButtonInformation(stats.maxEnergy, maxPossibleStats.maxEnergy, energyText, UpgradePrices.Stat.energy);
+        PopulateButtonInformation(stats.damageModifier, maxPossibleStats.damageModifier, damageText, UpgradePrices.Stat.damage);
+        PopulateButtonInformation(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier, attackSpeedText, UpgradePrices.Stat.attackSpeed);
+        PopulateButtonInformation(stats.speedModifier, maxPossibleStats.speedModifier, speedText, UpgradePrices.Stat.speed);
     }
 
-    void PopulateButtonInformation(float playerStat, float maxStat, Text text)
+    void PopulateButtonInformation(float playerStat, float maxStat, Text text, UpgradePrices.Stat stat)
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
-        if (playerStat < maxStat && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetEnergyPrice(playerStat, maxStat)))
-            text.text = "Buy:   $" + upgradePrices.GetEnergyPrice(playerStat, maxStat);
-        else if (playerStat < maxStat && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetEnergyPrice(playerStat, maxStat)))
-            text.text = "Buy:   $" + upgradePrices.GetEnergyPrice(playerStat, maxStat);
+        if (playerStat < maxStat && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetPriceFromStat(playerStat, maxStat, stat)))
+            text.text = "Buy:   $" + upgradePrices.GetPriceFromStat(playerStat, maxStat, stat);
+        else if (playerStat < maxStat && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetPriceFromStat(playerStat, maxStat, stat)))
+            text.text = "Buy:   $" + upgradePrices.GetPriceFromStat(playerStat, maxStat, stat);
         else
             text.text = "Max";
     }

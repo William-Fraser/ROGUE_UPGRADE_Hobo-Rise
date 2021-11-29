@@ -11,6 +11,14 @@ public class MoneyManager : MonoBehaviour
         moneyManager = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            collectedMoney = 1;
+            AddMoneyToTotal();
+        }
+    }
     public void CollectMoney(int value, Vector3 pos)
     {
         collectedMoney += value;

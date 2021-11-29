@@ -33,8 +33,6 @@ public class UpgradePips : MonoBehaviour
         PopulatePips(damagePips, stats.damageModifier, maxStats.damageModifier);
         PopulatePips(attackPips, stats.attackSpeedModifier, maxStats.attackSpeedModifier);
         PopulatePips(speedPips, stats.speedModifier, maxStats.speedModifier);
-
-
     }
     private void PopulatePips(Pips targetPips, float playerStat, float maxStat)
     {
