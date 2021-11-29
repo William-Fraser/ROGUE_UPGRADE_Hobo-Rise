@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-    
     #region Public Fields
     public static GameManager gameManager;
     public GameScenes currentScene;
@@ -28,26 +26,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Serialized Fields
-    [SerializeField]
-    private GameObject runOverObject;
-    [SerializeField]
-    private PlayerData maxPossibleStats;
-    [SerializeField]
-    private UpgradePrices upgradePrices;
-    [SerializeField]
-    private int mainID;
-    [SerializeField]
-    private int cutsceneID;
-    [SerializeField]
-    private int inGameID;
-    [SerializeField]
-    private int victoryID;
-    [SerializeField]
-    private int upgradeID;
-    [SerializeField]
-    private float housePrice = 500;
-    [SerializeField]
-    private GameObject valuePopupPrefab;
+    [SerializeField] private GameObject runOverObject;
+    [SerializeField] private PlayerData maxPossibleStats;
+    [SerializeField] private UpgradePrices upgradePrices;
+    [SerializeField] private int mainID;
+    [SerializeField] private int cutsceneID;
+    [SerializeField] private int inGameID;
+    [SerializeField] private int victoryID;
+    [SerializeField] private int upgradeID;
+    [SerializeField] private float housePrice = 500;
+    [SerializeField] private GameObject valuePopupPrefab;
     #endregion
 
     #region Private Fields
@@ -151,11 +139,14 @@ public class GameManager : MonoBehaviour
     }
     public void NewGameSetUp()
     {
-        stats.speedModifier = maxPossibleStats.speedModifier / 10;
-        stats.damageModifier = maxPossibleStats.damageModifier / 10;
-        stats.attackSpeedModifier = maxPossibleStats.attackSpeedModifier / 10;
-        stats.maxEnergy = maxPossibleStats.maxEnergy / 10;
-        stats.maxHealth = maxPossibleStats.maxHealth / 10;
+        stats = new PlayerData
+        {
+            speedModifier = maxPossibleStats.speedModifier / 10,
+            damageModifier = maxPossibleStats.damageModifier / 10,
+            attackSpeedModifier = maxPossibleStats.attackSpeedModifier / 10,
+            maxEnergy = maxPossibleStats.maxEnergy / 10,
+            maxHealth = maxPossibleStats.maxHealth / 10
+        };
     }
     public bool CanLoad()
     {
@@ -209,7 +200,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(upgradeID);
                 break;
             default:
-                Debug.LogError("ERR:Loading Scene");
+                Debug.LogWarning("ERR:Loading Scene");
                 SceneManager.LoadScene(upgradeID);
                 break;
         }
@@ -217,7 +208,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Stat Upgrades
-
     public void UpgradeHealth()
     {
         stats.maxHealth += maxPossibleStats.maxHealth / 10;
@@ -252,6 +242,10 @@ public class GameManager : MonoBehaviour
     {
         ChangeScene(GameScenes.Victory);
     }
+    public float GetHousePrice()
+    {
+        return housePrice;
+    }
     #endregion
 
     #region Money Methods
@@ -266,10 +260,6 @@ public class GameManager : MonoBehaviour
     public void AddToMoneyTotal(int value)
     {
         stats.totalMoney += value;
-    }
-    public float GetHousePrice()
-    {
-        return housePrice;
     }
     #endregion
 
@@ -322,10 +312,8 @@ public class GameManager : MonoBehaviour
     {
         return stats;
     }
-
     public void DisplayGUIPopup(string displayValue, Vector3 pos, Color color)
     {
-        //Debug.Log($"GM DISPLAYGUIPOP value: {displayValue}, pos: {pos}, colour: {color}");
         GameObject popup = Instantiate(valuePopupPrefab, pos, Quaternion.identity);
         popup.GetComponent<ValuePopup>().Setup(displayValue, color);
     }

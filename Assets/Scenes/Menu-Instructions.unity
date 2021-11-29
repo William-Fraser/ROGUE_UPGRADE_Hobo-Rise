@@ -1828,6 +1828,18 @@ MonoBehaviour:
   bronzeCoinPrefab: {fileID: 8711878293820624763, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
   goldCoinPrefab: {fileID: 8711878293820624763, guid: 3f41d8a742fee5f418067ba3ced30b7e, type: 3}
   billPrefab: {fileID: 3110659075769682264, guid: 8819761104a625240842327b9f0bbfd4, type: 3}
+--- !u!114 &2142081987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142081981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeac86d918fdbf648b3f5dc799caccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1922373691288682302
 PrefabInstance:
   m_ObjectHideFlags: 0

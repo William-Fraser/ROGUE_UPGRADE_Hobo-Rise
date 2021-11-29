@@ -26,15 +26,15 @@ public class UpgradePips : MonoBehaviour
     void Update()
     {
         PlayerData stats = gameManager.GetPlayerStats();
-        PlayerData maxStats = gameManager.GetPlayerStats();
-        for (int i = 0; i < 100; i += 10)
+        PlayerData maxStats = gameManager.GetMaxStats();
+        for (int i = 0; i < speedPips.pips.Length*10; i+=10)
         {
-            if(i < stats.speedModifier/maxStats.speedModifier*100)
+            if (i < stats.speedModifier / maxStats.speedModifier * 100)
             {
-                speedPips.pips[i/10].sprite = speedPips.obtained;
+                speedPips.pips[i / 10].sprite = speedPips.obtained;
             } else
             {
-                speedPips.pips[i/10].sprite = speedPips.unObtained;
+                speedPips.pips[i / 10].sprite = speedPips.unObtained;
             }
         }
 

@@ -14,13 +14,13 @@ public class UpdateUpgradeScreen : MonoBehaviour
         UpgradePrices upgradePrices = gameManager.GetUpgradePrices();
         PlayerData maxPossibleStats = gameManager.GetMaxStats();
         PlayerData stats = gameManager.GetPlayerStats();
+
         if (stats.attackSpeedModifier < maxPossibleStats.attackSpeedModifier && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier)))
             hatButtonText.text = "Buy:   $" + upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier);
-        if (stats.attackSpeedModifier < maxPossibleStats.attackSpeedModifier && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier)))
+        else if (stats.attackSpeedModifier < maxPossibleStats.attackSpeedModifier && !MoneyManager.moneyManager.CanPurchase(upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier)))
             hatButtonText.text = "Buy:   $" + upgradePrices.GetAttackSpeedPrice(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier);
         else
             hatButtonText.text = "Max";
-
 
         if (stats.maxHealth < maxPossibleStats.maxHealth && MoneyManager.moneyManager.CanPurchase(upgradePrices.GetHealthPrice(stats.maxHealth, maxPossibleStats.maxHealth)))
             clothesButtonText.text = "Buy:   $" + upgradePrices.GetHealthPrice(stats.attackSpeedModifier, maxPossibleStats.maxHealth);
