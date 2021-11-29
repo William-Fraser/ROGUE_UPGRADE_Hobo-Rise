@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public float baseDamage;
     public float baseAttackSpeed;
     public float lengthOfAttack;
     public float baseSpeed;
@@ -11,14 +10,13 @@ public class PlayerController : MonoBehaviour
     public PlayerDirection direction;
     public GameObject weapon;
     public Animator animator;
-    public Vector2 movementDirection; //Used for Blend Tree
     public AudioSource audioSource;
     public AudioClip footStep;
 
+    private Vector2 movementDirection; //Used for Blend Tree
     private Stats stats;
     private Rigidbody2D rb;
     private float modifiedSpeed;
-    private float modifiedDamage;
     private float modifiedAttackSpeed;
 
     private bool jumping = false;
@@ -37,6 +35,7 @@ public class PlayerController : MonoBehaviour
         stats = this.gameObject.GetComponent<Stats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         originalWeaponScaling = weapon.transform.localScale;
+        movementDirection = new Vector2();
         UpdateStats();
     }
     void Update()
@@ -103,7 +102,6 @@ public class PlayerController : MonoBehaviour
     {
         modifiedSpeed = baseSpeed * stats.speedModifier;
         modifiedAttackSpeed = baseSpeed * stats.attackSpeedModifier;
-        modifiedDamage = baseDamage * stats.damageModifier;
     }
     public void ResetStats()
     {
@@ -120,8 +118,6 @@ public class PlayerController : MonoBehaviour
             else
                 weapon.transform.Translate(Vector3.right, Space.Self);
         }
-        weapon.SetActive(true);
-        weapon.GetComponent<Weapon>().SetDamage(modifiedDamage);
         weapon.SetActive(false);
     }
     private void CheckInput()
@@ -164,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.L)) // attack
         {
-            if (attacking)
+            if (attacking || jumping)
                 return;
             Attack();
         }

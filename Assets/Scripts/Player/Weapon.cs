@@ -5,7 +5,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     private bool attacking = false;
-    private float damage = 10;
     private SpriteRenderer sprite;
     private GameObject attacker;
 
@@ -13,18 +12,6 @@ public class Weapon : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
     }
-
-    public void SetDamage(float value)
-    {
-        if (value <= 0)
-        {
-            Debug.LogWarning("WARNING: Damage is below zero!!");
-            value = 0;
-        }
-        
-        damage = value;
-    }
-
     public void StartAttack(GameObject attacker)
     {
         this.attacker = attacker;
@@ -39,13 +26,13 @@ public class Weapon : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
+        if (!attacking)
             return;
 
-        if (collision.gameObject.GetComponent<Stats>() != null && collision.gameObject != attacker)
+        if (collision.gameObject.GetComponent<EnemyStats>() != null && collision.gameObject != attacker)
         {
             PlayerData stats = GameManager.gameManager.GetPlayerStats();
-            collision.gameObject.GetComponent<Stats>().LoseHealth((int)stats.damageModifier, true);
+            collision.gameObject.GetComponent<EnemyStats>().LoseHealth((int)stats.damageModifier);
         }        
     }
 }

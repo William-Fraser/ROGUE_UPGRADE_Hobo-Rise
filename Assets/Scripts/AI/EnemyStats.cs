@@ -5,7 +5,6 @@ public class EnemyStats : MonoBehaviour
 {
     public GameObject topParent;
     public bool alive = true;
-    public float maxHealth;
     public float health;
     public CharacterType type;
     public enum CharacterType
@@ -35,8 +34,8 @@ public class EnemyStats : MonoBehaviour
         else
         {
             health -= value;
-            GameManager.gameManager.DisplayGUIPopup("-" + value, this.transform.position, Color.red);
         }
+        GameManager.gameManager.DisplayGUIPopup("-" + value, this.transform.position, Color.red);
 
         if (health < 0)
             health = 0;

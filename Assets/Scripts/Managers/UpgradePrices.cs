@@ -13,32 +13,31 @@ public class UpgradePrices
     public int GetHealthPrice(float playerStat, float maxStat)
     {
         int i = (int)(playerStat/maxStat);
-        if (i >= 10) i = 9;
-        Debug.Log(i);
+        if (i >= health.Length) i = health.Length - 1;
         return health[i];
     }
     public int GetSpeedPrice(float playerStat, float maxStat)
     {
         int i = (int)(playerStat / maxStat);
-        if (i >= 10) i = 9;
+        if (i >= speed.Length) i = speed.Length-1;
         return speed[i];
     }
     public int GetDamagePrice(float playerStat, float maxStat)
     {
         int i = (int)(playerStat / maxStat);
-        if (i >= 10) i = 9;
+        if (i >= damage.Length) i = damage.Length - 1;
         return damage[i];
     }
     public int GetAttackSpeedPrice(float playerStat, float maxStat)
     {
         int i = (int)(playerStat / maxStat);
-        if (i >= 10) i = 9;
+        if (i >= attackSpeed.Length) i = attackSpeed.Length - 1;
         return attackSpeed[i];
     }
     public int GetEnergyPrice(float playerStat, float maxStat)
     {
         int i = (int)(playerStat / maxStat);
-        if (i >= 10) i = 9;
+        if (i >= energy.Length) i = energy.Length - 1;
         return energy[i];
     }
 }
