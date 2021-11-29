@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         Animate();
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
-        if (stats.alive == false)
+        if (stats.GetAlive() == false)
         { return; }
 
         if (attacking)
@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         UpdateStats();
         if (Input.anyKey)
         {
-            if (stats.health <= 0 || stats.energy <= 0)
+            if (stats.GetHealth() <= 0 || stats.GetEnergy() <= 0)
                 return;
             CheckInput();
         }
@@ -104,15 +104,14 @@ public class PlayerController : MonoBehaviour
     }
     public void UpdateStats()
     {
-        modifiedSpeed = baseSpeed * stats.speedModifier;
-        modifiedAttackSpeed = baseSpeed * stats.attackSpeedModifier;
+        modifiedSpeed = baseSpeed * stats.GetSpeed();
+        modifiedAttackSpeed = baseSpeed * stats.GetAttackSpeed();
     }
     public void ResetStats()
     {
         UpdateStats();
         stats.ResetMainStats();
         stats.ResetInGameStats();
-        stats.health = stats.maxHealth;
         if (attacking)
         {
             attacking = false;
@@ -158,7 +157,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.PlayOneShot(activeStepSound);
         } else if (Input.GetKey(KeyCode.P))
         {
-            stats.energy = 0;
+            stats.LoseEnergy(999);
             Debug.Log("Pass Out Button Pressed");
         }
 
@@ -246,6 +245,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Jumping", jumping);
         }
-        animator.SetBool("Alive", stats.alive);
+        animator.SetBool("Alive", stats.GetAlive());
     }
 }

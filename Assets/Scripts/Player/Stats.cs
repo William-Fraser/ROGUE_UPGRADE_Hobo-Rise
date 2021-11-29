@@ -3,21 +3,25 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    public GameObject topParent;
-
-    public bool alive = true;
-    public float maxHealth;
-    public float health;
-    public float speedModifier;
-    public float attackSpeedModifier;
-    public float maxEnergy;
-    public float energy;
-    public int displayedEnergy; // used to display in place of energy to show better looking scale
+    #region Public Fields
     public SpriteRenderer sprite;
     public AudioClip deathSound;
     public AudioClip takeDamageSound;
-    
     public AudioSource audioSource;
+    #endregion
+
+    #region Private Fields
+    private bool alive = true;
+    private float maxHealth;
+    private float health;
+    private float speedModifier;
+    private float attackSpeedModifier;
+    private float maxEnergy;
+    private float energy;
+    private int displayedEnergy; // used to display in place of energy to show better looking scale
+    #endregion
+
+    #region Unity Messages
     private void Start()
     {
         if (GetComponentInChildren<SpriteRenderer>())
@@ -39,6 +43,9 @@ public class Stats : MonoBehaviour
             Death();
         }
     }
+    #endregion
+
+    #region Resets
     public void ResetInGameStats()
     {
         health = maxHealth;
@@ -53,8 +60,9 @@ public class Stats : MonoBehaviour
         attackSpeedModifier = stats.attackSpeedModifier;
         maxEnergy = stats.maxEnergy;
     }
+    #endregion
 
-    #region Set, Obtain, and Lose resources
+    #region Obtain and Lose resources
     public void ObtainEnergy(int value)
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
@@ -94,6 +102,18 @@ public class Stats : MonoBehaviour
     }
     #endregion
 
+    #region Get Stats
+    public float GetSpeed() { return speedModifier; }
+    public float GetAttackSpeed() { return attackSpeedModifier; }
+    public float GetMaxHealth() { return maxHealth; }
+    public float GetHealth() { return health; }
+    public float GetMaxEnergy() { return maxEnergy; }
+    public float GetEnergy() { return energy; }
+    public int GetDisplayedEnergy() { return displayedEnergy; }
+    public bool GetAlive() { return alive; }
+    #endregion
+
+    #region Misc
     private void Death()
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
@@ -109,4 +129,5 @@ public class Stats : MonoBehaviour
 
         return value;
     }
+    #endregion
 }

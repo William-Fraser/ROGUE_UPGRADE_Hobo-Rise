@@ -294,7 +294,7 @@ public class GameManager : MonoBehaviour
     {
         if (player != null && currentScene == GameScenes.InGame)
         {
-            if (player.GetComponent<Stats>().health <= 0 || player.GetComponent<Stats>().energy <= 0)
+            if (player.GetComponent<Stats>().GetHealth() <= 0 || player.GetComponent<Stats>().GetEnergy() <= 0)
             {
                 audioSource.PlayOneShot(gameOver);
                 return true;
