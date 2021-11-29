@@ -29,27 +29,23 @@ public class Weapon : MonoBehaviour
     {
         this.attacker = attacker;
         attacking = true;
+        sprite.sortingOrder = 10;
     }
 
     public void StopAttack()
     {
         attacking = false;
+        sprite.sortingOrder = -1;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame)
             return;
 
-        if (!attacking)
-        {
-            sprite.sortingOrder = -1;
-            return;
-        }
-
         if (collision.gameObject.GetComponent<Stats>() != null && collision.gameObject != attacker)
         {
-            sprite.sortingOrder = 10;
-            collision.gameObject.GetComponent<Stats>().LoseHealth((int)damage, true);
+            PlayerData stats = GameManager.gameManager.GetPlayerStats();
+            collision.gameObject.GetComponent<Stats>().LoseHealth((int)stats.damageModifier, true);
         }        
     }
 }
