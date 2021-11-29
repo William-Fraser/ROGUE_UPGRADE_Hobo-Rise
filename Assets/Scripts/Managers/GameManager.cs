@@ -155,7 +155,22 @@ public class GameManager : MonoBehaviour
 
         if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
         {
-            canLoad = true;
+            try
+            {
+                if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+                    PlayerData loadData = (PlayerData)bf.Deserialize(file);
+                    file.Close();
+                    canLoad = true;
+                }
+            }
+            catch
+            {
+                canLoad = false;
+                Debug.LogError("THE LOADED SAVE CANNOT BE PARSED CORRECTLY");
+            }
         }
 
         return canLoad;
