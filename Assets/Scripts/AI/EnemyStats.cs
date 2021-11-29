@@ -7,6 +7,11 @@ public class EnemyStats : MonoBehaviour
     public bool alive = true;
     public float health;
     public CharacterType type;
+
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip takeDamageSound;
+    public AudioClip deathSound;
     public enum CharacterType
     {
         Hobo,
@@ -29,6 +34,7 @@ public class EnemyStats : MonoBehaviour
         }
         if (health - value < 0)
         {
+            audioSource.PlayOneShot(takeDamageSound);
             health = 0;
         }
         else
@@ -47,6 +53,8 @@ public class EnemyStats : MonoBehaviour
         //calculating drop pos / positioning from world scale
         float itemDropPosY = transform.position.y - (transform.localPosition.y + transform.localPosition.y / 2);
         Vector3 itemDropPos = new Vector3(transform.position.x, itemDropPosY, transform.position.z);
+
+        audioSource.PlayOneShot(deathSound);
 
         switch (type)
         {

@@ -36,7 +36,7 @@ public class Pickups : MonoBehaviour
                 break;
             case PickupTypes.Food:
                 audioS.clip = CollectFoodSound;
-                player.GetComponent<Stats>().ObtainEnergy(effectValue);
+                player.GetComponent<PlayerStats>().ObtainEnergy(effectValue);
                 break;
         }
 

@@ -271,10 +271,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2558519522662399377}
-  - component: {fileID: 715597931700760488}
   - component: {fileID: 1906580666778279930}
+  - component: {fileID: 8973155572608178632}
   m_Layer: 0
-  m_Name: Enemy Stats/Sprite
+  m_Name: Enemy Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,35 +296,6 @@ Transform:
   m_Father: {fileID: 2558519522411026419}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &715597931700760488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2558519522662399376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c478210ba4ed745b579be365401518, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topParent: {fileID: 2558519522411026420}
-  alive: 1
-  type: 1
-  maxHealth: 5
-  health: 5
-  speedModifier: 0
-  damageModifier: 0
-  attackSpeedModifier: 0
-  maxEnergy: 0
-  energy: 0
-  displayedEnergy: 0
-  collectedMoney: 0
-  totalMoney: 0
-  sprite: {fileID: 0}
-  deathSound: {fileID: 8300000, guid: 805859f6b1b26924fadfe48df062e13b, type: 3}
-  takeDamageSound: {fileID: 8300000, guid: ff6ce5792b18a9e4e9883ceacf13b424, type: 3}
-  audioSource: {fileID: 3964093848385744122}
 --- !u!61 &1906580666778279930
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -351,6 +322,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26503342, y: 0.60504806}
   m_EdgeRadius: 0
+--- !u!114 &8973155572608178632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558519522662399376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6da44ad47cf0374ea18332337a5d62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topParent: {fileID: 2558519522411026420}
+  alive: 1
+  health: 7
+  type: 0
 --- !u!1 &2558519523189558011
 GameObject:
   m_ObjectHideFlags: 0

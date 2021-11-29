@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public AudioSource audioSource;
     public AudioClip buttonPress;
-    public AudioClip gameOver;
+    public AudioClip gameOverSound;
 
     public enum GameScenes
     {
@@ -294,9 +294,9 @@ public class GameManager : MonoBehaviour
     {
         if (player != null && currentScene == GameScenes.InGame)
         {
-            if (player.GetComponent<Stats>().GetHealth() <= 0 || player.GetComponent<Stats>().GetEnergy() <= 0)
+            if (player.GetComponent<PlayerStats>().GetHealth() <= 0 || player.GetComponent<PlayerStats>().GetEnergy() <= 0)
             {
-                audioSource.PlayOneShot(gameOver);
+                   
                 return true;
             }
         }
@@ -304,6 +304,12 @@ public class GameManager : MonoBehaviour
     }
     private void EndRound()
     {
+        if (audioSource.clip != gameOverSound)
+        { 
+            audioSource.clip = gameOverSound;
+            audioSource.Play();
+        }
+
         if (isKeyDownEndScreen && !Input.anyKey)
         {
             isKeyDownEndScreen = false;

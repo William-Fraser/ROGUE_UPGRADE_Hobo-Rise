@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Stats : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     #region Public Fields
     public SpriteRenderer sprite;
@@ -98,7 +98,10 @@ public class Stats : MonoBehaviour
         GameManager.gameManager.DisplayGUIPopup("-" + value, this.transform.position, Color.red);
 
         if (health < 0)
+        {
+            audioSource.Stop();
             health = 0;
+        }
     }
     #endregion
 
@@ -119,6 +122,8 @@ public class Stats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
+        
+        if (gameObject.tag != "Player")
         audioSource.PlayOneShot(deathSound);
     }
 

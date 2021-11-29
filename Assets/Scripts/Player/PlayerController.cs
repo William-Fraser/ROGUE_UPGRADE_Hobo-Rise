@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private AudioClip activeStepSound; // step sound holder to be player on step
     private Vector2 movementDirection; //Used for Blend Tree
-    private Stats stats;
+    private PlayerStats stats;
     private Rigidbody2D rb;
     private float modifiedSpeed;
     private float modifiedAttackSpeed;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        stats = this.gameObject.GetComponent<Stats>();
+        stats = this.gameObject.GetComponent<PlayerStats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         originalWeaponScaling = weapon.transform.localScale;
         movementDirection = new Vector2();

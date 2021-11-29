@@ -282,9 +282,9 @@ public class AI_Controller : MonoBehaviour
             attackingCountDown = true;
             attackingTimer = attackCoolDown;
 
-            if (target.gameObject.GetComponent<Stats>() != null)
+            if (target.gameObject.GetComponent<PlayerStats>() != null && target.gameObject.GetComponent<PlayerStats>().GetAlive())
             {
-                target.gameObject.GetComponent<Stats>().LoseHealth(attackDamage, true);
+                target.gameObject.GetComponent<PlayerStats>().LoseHealth(attackDamage, true);
             }
 
         }
