@@ -484,7 +484,10 @@ MonoBehaviour:
     Art: William, Jared, Trenton and LPC
     Spritesheet Generator
 
-    Music: William, Jared and Envato Environment'
+    Music: William, Jared and Envato Environment
+
+    Graphical
+    Work: William, Jared and Trenton'
 --- !u!222 &542150034
 CanvasRenderer:
   m_ObjectHideFlags: 0
