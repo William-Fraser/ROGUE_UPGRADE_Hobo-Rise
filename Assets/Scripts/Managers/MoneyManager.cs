@@ -10,7 +10,6 @@ public class MoneyManager : MonoBehaviour
     {
         moneyManager = this;
     }
-
     public void CollectMoney(int value, Vector3 pos)
     {
         collectedMoney += value;

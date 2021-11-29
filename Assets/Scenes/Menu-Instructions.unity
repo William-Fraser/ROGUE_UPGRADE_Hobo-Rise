@@ -1872,6 +1872,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: housePrice
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1374038456}
@@ -1936,8 +1940,148 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[3]
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[4]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[5]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[6]
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[7]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.speed.Array.data[8]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[3]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[4]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[5]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: upgradePrices.damage.Array.data[6]
-      value: 1
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[7]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.damage.Array.data[8]
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[3]
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[4]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[5]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[6]
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[7]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.energy.Array.data[8]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[2]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[3]
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[4]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[5]
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[6]
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[7]
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.health.Array.data[8]
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: maxPossibleStats.attackSpeedModifier
@@ -1946,6 +2090,42 @@ PrefabInstance:
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: upgradePrices.attackSpeed.Array.size
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[2]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[3]
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[4]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[5]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[6]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[7]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: upgradePrices.attackSpeed.Array.data[8]
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1922373691153822777, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_Name
