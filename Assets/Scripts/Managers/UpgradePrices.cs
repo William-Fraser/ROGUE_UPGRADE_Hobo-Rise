@@ -9,7 +9,6 @@ public class UpgradePrices
     public int[] damage;
     public int[] attackSpeed;
     public int[] energy;
-
     public enum Stat
     {
         health,
@@ -18,7 +17,6 @@ public class UpgradePrices
         attackSpeed,
         energy
     }
-
     public int GetPriceFromStat(float playerStat, float maxStat, Stat stat)
     {
         switch (stat)
