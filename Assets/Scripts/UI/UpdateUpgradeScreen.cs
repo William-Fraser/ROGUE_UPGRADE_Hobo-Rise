@@ -22,7 +22,6 @@ public class UpdateUpgradeScreen : MonoBehaviour
         PopulateButtonInformation(stats.attackSpeedModifier, maxPossibleStats.attackSpeedModifier, attackSpeedText, UpgradePrices.Stat.attackSpeed);
         PopulateButtonInformation(stats.speedModifier, maxPossibleStats.speedModifier, speedText, UpgradePrices.Stat.speed);
     }
-
     void PopulateButtonInformation(float playerStat, float maxStat, Text text, UpgradePrices.Stat stat)
     {
         UpgradePrices upgradePrices = GameManager.gameManager.GetUpgradePrices();
