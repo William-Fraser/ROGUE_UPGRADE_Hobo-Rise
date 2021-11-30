@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerAtkSound;
 
     private AudioClip activeStepSound; // step sound holder to be player on step
-    private Vector2 movementDirection; //Used for Blend Tree
+    private float movementDirection; //Used for Blend Tree
     private PlayerStats stats;
     private Rigidbody2D rb;
     private float modifiedSpeed;
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         stats = this.gameObject.GetComponent<PlayerStats>();
         rb = this.gameObject.GetComponent<Rigidbody2D>();
         originalWeaponScaling = weapon.transform.localScale;
-        movementDirection = new Vector2();
         UpdateStats();
     }
     void Update()
@@ -139,21 +138,17 @@ public class PlayerController : MonoBehaviour
         {
             if (direction != PlayerDirection.Left)
                 Turn(PlayerDirection.Left);
-            Move();
-            if (rb.velocity.y != 0 && !rb.IsSleeping())
-                return;
             if (audioSource.isPlaying == false)
                 audioSource.PlayOneShot(activeStepSound);
+            Move();
         } 
         else if (Input.GetKey(KeyCode.D))
         {
             if (direction != PlayerDirection.Right)
                 Turn(PlayerDirection.Right);
-            Move();
-            if (rb.velocity.y != 0 && !rb.IsSleeping())
-                return;
             if (audioSource.isPlaying == false)
                 audioSource.PlayOneShot(activeStepSound);
+            Move();
         } else if (Input.GetKey(KeyCode.P))
         {
             stats.LoseEnergy(999);
@@ -177,14 +172,13 @@ public class PlayerController : MonoBehaviour
         if(direction == PlayerDirection.Left)
         {
             this.transform.Translate(new Vector3(-(modifiedSpeed * Time.deltaTime), 0, 0));
+            movementDirection = -1;
         }
         else if (direction == PlayerDirection.Right)
         {
             this.transform.Translate(new Vector3((modifiedSpeed * Time.deltaTime), 0, 0));
+            movementDirection = 1;
         }
-
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        movementDirection.Normalize();
     }
 
     private void Attack()
@@ -206,15 +200,15 @@ public class PlayerController : MonoBehaviour
 
     private void SetFootStepSound(Collision2D collider)
     {
-        if (collider.gameObject.tag == "Street")
+        if (collider.gameObject.CompareTag("Street"))
         { activeStepSound = footStepSound; }
-        else if (collider.gameObject.tag == "Sewer")
+        else if (collider.gameObject.CompareTag("Sewer"))
         { activeStepSound = wetFootStepSound; }
     }
 
     private void Animate()
     {
-        animator.SetFloat("LastMoveX", movementDirection.x);
+        animator.SetFloat("LastMoveX", movementDirection);
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && attacking == false)
         {
             if (rb.velocity.y != 0 && !rb.IsSleeping())
