@@ -11,19 +11,19 @@ public class EnemyDropManager : MonoBehaviour
         coinManager = this; 
     }
 
-    public void SpawnBronzeCoin(Vector3 position)
+    public void SpawnHoboDrop(Vector3 position)
     {
-        GameObject coin = GameObject.Instantiate(hoboDrop);
-        coin.transform.position = position;
+        GameObject drop = GameObject.Instantiate(hoboDrop);
+        drop.transform.position = position;
     }
-    public void SpawnGoldCoin(Vector3 position)
+    public void SpawnTaxCollectorDrop(Vector3 position)
     {
-        GameObject coin = GameObject.Instantiate(taxCollectorDrop);
-        coin.transform.position = position;
+        GameObject drop = GameObject.Instantiate(taxCollectorDrop);
+        drop.transform.position = position;
     }
-    public void SpawnBill(Vector3 position)
+    public void SpawnPoliceDrop(Vector3 position)
     {
-        GameObject bill = GameObject.Instantiate(policeDrop);
-        bill.transform.position = position;
+        GameObject drop = GameObject.Instantiate(policeDrop);
+        drop.transform.position = position;
     }
 }
