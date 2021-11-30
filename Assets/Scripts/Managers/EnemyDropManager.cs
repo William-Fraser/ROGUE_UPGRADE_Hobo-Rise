@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class CoinManager : MonoBehaviour
+public class EnemyDropManager : MonoBehaviour
 {
-    public static CoinManager coinManager;
-    public GameObject bronzeCoinPrefab;
-    public GameObject goldCoinPrefab;
-    public GameObject billPrefab;
+    public static EnemyDropManager coinManager;
+    public GameObject hoboDrop;
+    public GameObject taxCollectorDrop;
+    public GameObject policeDrop;
     void Start()
     {
         coinManager = this; 
@@ -13,17 +13,17 @@ public class CoinManager : MonoBehaviour
 
     public void SpawnBronzeCoin(Vector3 position)
     {
-        GameObject coin = GameObject.Instantiate(bronzeCoinPrefab);
+        GameObject coin = GameObject.Instantiate(hoboDrop);
         coin.transform.position = position;
     }
     public void SpawnGoldCoin(Vector3 position)
     {
-        GameObject coin = GameObject.Instantiate(goldCoinPrefab);
+        GameObject coin = GameObject.Instantiate(taxCollectorDrop);
         coin.transform.position = position;
     }
     public void SpawnBill(Vector3 position)
     {
-        GameObject bill = GameObject.Instantiate(billPrefab);
+        GameObject bill = GameObject.Instantiate(policeDrop);
         bill.transform.position = position;
     }
 }

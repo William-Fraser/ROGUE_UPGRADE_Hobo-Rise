@@ -466,9 +466,9 @@ RectTransform:
   m_Father: {fileID: 1878933729}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -321.36102, y: -162.95}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 80.20001, y: 62.100006}
   m_SizeDelta: {x: 102.836, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794463479
@@ -601,7 +601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -97.2}
+  m_AnchoredPosition: {x: 0, y: -96.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &992319548
@@ -1507,7 +1507,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e0eafc4f274128d46a1630d96636f608, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2114,9 +2114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b8c1babb0a5ac4dae8da162eb6b79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bronzeCoinPrefab: {fileID: 8711878293820624763, guid: ddd0c9c552ff77c4aa79f6827929caec, type: 3}
-  goldCoinPrefab: {fileID: 8711878293820624763, guid: 3f41d8a742fee5f418067ba3ced30b7e, type: 3}
-  billPrefab: {fileID: 3110659075769682264, guid: 8819761104a625240842327b9f0bbfd4, type: 3}
+  hoboDrop: {fileID: 6353290100726345233, guid: f8a507692783ea74986679c3cafb15c0, type: 3}
+  taxCollectorDrop: {fileID: 3110659075769682264, guid: 53aaf55987ab2ba4caf25e336e54f448, type: 3}
+  policeDrop: {fileID: 3110659075769682264, guid: 8819761104a625240842327b9f0bbfd4, type: 3}
 --- !u!114 &2142081987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,6 +2180,10 @@ PrefabInstance:
       propertyPath: creditsCanvas
       value: 
       objectReference: {fileID: 1922373691288682303}
+    - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
+      propertyPath: gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e29d24bf6a7bc13438b02915ec2c5a33, type: 3}
     - target: {fileID: 1922373691153822775, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: goldCoinPrefab
       value: 

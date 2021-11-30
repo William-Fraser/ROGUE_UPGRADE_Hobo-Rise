@@ -338,6 +338,9 @@ MonoBehaviour:
   alive: 1
   health: 7
   type: 0
+  audioSource: {fileID: 3964093848385744122}
+  takeDamageSound: {fileID: 8300000, guid: ff6ce5792b18a9e4e9883ceacf13b424, type: 3}
+  deathSound: {fileID: 8300000, guid: 805859f6b1b26924fadfe48df062e13b, type: 3}
 --- !u!1 &2558519523189558011
 GameObject:
   m_ObjectHideFlags: 0

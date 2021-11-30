@@ -58,15 +58,15 @@ public class EnemyStats : MonoBehaviour
         switch (type)
         {
             case CharacterType.Hobo:
-                CoinManager.coinManager.SpawnBronzeCoin(itemDropPos);
+                EnemyDropManager.coinManager.SpawnBronzeCoin(itemDropPos);
                 topParent.SetActive(false);
                 break;
             case CharacterType.TaxCollector:
-                CoinManager.coinManager.SpawnGoldCoin(itemDropPos);
+                EnemyDropManager.coinManager.SpawnGoldCoin(itemDropPos);
                 topParent.SetActive(false);
                 break;
             case CharacterType.Police:
-                CoinManager.coinManager.SpawnBill(itemDropPos);
+                EnemyDropManager.coinManager.SpawnBill(itemDropPos);
                 topParent.SetActive(false);
                 break;
         }
