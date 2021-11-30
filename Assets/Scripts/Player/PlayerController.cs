@@ -138,16 +138,14 @@ public class PlayerController : MonoBehaviour
         {
             if (direction != PlayerDirection.Left)
                 Turn(PlayerDirection.Left);
-            if (audioSource.isPlaying == false)
-                audioSource.PlayOneShot(activeStepSound);
+            MovementSound();
             Move();
         } 
         else if (Input.GetKey(KeyCode.D))
         {
             if (direction != PlayerDirection.Right)
                 Turn(PlayerDirection.Right);
-            if (audioSource.isPlaying == false)
-                audioSource.PlayOneShot(activeStepSound);
+            MovementSound();
             Move();
         } else if (Input.GetKey(KeyCode.P))
         {
@@ -162,6 +160,11 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
         
+    }
+    private void MovementSound()
+    {
+        if (audioSource.isPlaying == false)
+            audioSource.PlayOneShot(activeStepSound);
     }
     private void Turn(PlayerDirection directionToFace)
     {
