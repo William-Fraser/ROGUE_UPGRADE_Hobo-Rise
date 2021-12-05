@@ -331,21 +331,11 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Credits
-    public void ManageCredits()
-    {
-        if (creditsCanvas.activeInHierarchy)
-        {
-            CloseCredits();
-        } else
-        {
-            OpenCredits();
-        }
-    }
-    private void OpenCredits()
+    public void OpenCredits()
     {
         creditsCanvas.SetActive(true);
     }
-    private void CloseCredits()
+    public void CloseCredits()
     {
         creditsCanvas.SetActive(false);
     }

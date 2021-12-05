@@ -154,8 +154,13 @@ public class ButtonControl : MonoBehaviour
         GameManager.gameManager.Load();
     }
 
-    public void ManageCredits()
+    public void OpenCredits()
     {
-        GameManager.gameManager.ManageCredits();
+        GameManager.gameManager.OpenCredits();
+    }
+
+    public void CloseCredits()
+    {
+        GameManager.gameManager.CloseCredits();
     }
 }
