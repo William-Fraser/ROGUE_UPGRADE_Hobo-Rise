@@ -151,10 +151,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 140
-        width: 23
-        height: 49
+        x: 0
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,10 +172,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 83
-        y: 140
-        width: 26
-        height: 48
+        x: 64
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 149
-        y: 141
-        width: 24
-        height: 48
+        x: 128
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,10 +214,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 214
-        y: 141
-        width: 23
-        height: 48
+        x: 192
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 278
-        y: 140
-        width: 24
-        height: 49
+        x: 256
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 340
-        y: 140
-        width: 28
-        height: 48
+        x: 320
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,10 +277,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_6
       rect:
         serializedVersion: 2
-        x: 406
-        y: 140
-        width: 24
-        height: 49
+        x: 384
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,10 +298,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_7
       rect:
         serializedVersion: 2
-        x: 470
-        y: 140
-        width: 23
-        height: 49
+        x: 448
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +319,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_8
       rect:
         serializedVersion: 2
-        x: 534
-        y: 140
-        width: 23
-        height: 49
+        x: 512
+        y: 138
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,10 +340,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_9
       rect:
         serializedVersion: 2
-        x: 17
-        y: 76
-        width: 30
-        height: 49
+        x: 0
+        y: 74
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,10 +361,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_10
       rect:
         serializedVersion: 2
-        x: 19
-        y: 12
-        width: 23
-        height: 49
+        x: 0
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,10 +382,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_11
       rect:
         serializedVersion: 2
-        x: 83
-        y: 12
-        width: 26
-        height: 48
+        x: 64
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,10 +403,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_12
       rect:
         serializedVersion: 2
-        x: 147
-        y: 13
-        width: 24
-        height: 48
+        x: 128
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -424,10 +424,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_13
       rect:
         serializedVersion: 2
-        x: 211
-        y: 13
-        width: 23
-        height: 48
+        x: 192
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,10 +445,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_14
       rect:
         serializedVersion: 2
-        x: 274
-        y: 12
-        width: 24
-        height: 49
+        x: 256
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,10 +466,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_15
       rect:
         serializedVersion: 2
-        x: 336
-        y: 12
-        width: 28
-        height: 48
+        x: 320
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -487,10 +487,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_16
       rect:
         serializedVersion: 2
-        x: 402
-        y: 12
-        width: 24
-        height: 49
+        x: 384
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -508,10 +508,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_17
       rect:
         serializedVersion: 2
-        x: 467
-        y: 12
-        width: 23
-        height: 49
+        x: 448
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,10 +529,10 @@ TextureImporter:
       name: Base Hobo Spritesheet_18
       rect:
         serializedVersion: 2
-        x: 531
-        y: 12
-        width: 23
-        height: 49
+        x: 512
+        y: 10
+        width: 64
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
