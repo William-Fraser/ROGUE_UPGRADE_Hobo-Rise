@@ -282,7 +282,7 @@ public class AI_Controller : MonoBehaviour
 
             if (target.gameObject.GetComponent<PlayerStats>() != null && target.gameObject.GetComponent<PlayerStats>().GetAlive())
             {
-                target.gameObject.GetComponent<PlayerStats>().LoseHealth(attackDamage, true);
+                target.gameObject.GetComponent<PlayerStats>().LoseHealth(attackDamage);
             }
 
         }

@@ -5,7 +5,6 @@ public class PlayerStats : MonoBehaviour
 {
     #region Public Fields
     public SpriteRenderer sprite;
-    public AudioClip deathSound;
     public AudioClip takeDamageSound;
     public AudioSource audioSource;
     #endregion
@@ -32,13 +31,9 @@ public class PlayerStats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
 
-        if (health == 0)
-        { 
-            Death();
-        }
         LoseEnergy(Time.deltaTime);
         displayedEnergy = Convert.ToInt16(energy);
-        if(energy <= 0)
+        if(energy <= 0 || health == 0)
         {
             Death();
         }
@@ -82,7 +77,7 @@ public class PlayerStats : MonoBehaviour
         if (energy < 0)
             energy = 0;
     } 
-    public void LoseHealth(int value, bool attack)
+    public void LoseHealth(int value)
     {
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame || health <= 0 || energy <= 0)
             return;
@@ -122,9 +117,6 @@ public class PlayerStats : MonoBehaviour
         if (GameManager.gameManager.currentScene != GameManager.GameScenes.InGame && GameManager.gameManager.currentScene != GameManager.GameScenes.GameOver && GameManager.gameManager.currentScene != GameManager.GameScenes.Results)
             return;
         alive = false;
-        
-        if (gameObject.tag != "Player")
-        audioSource.PlayOneShot(deathSound);
     }
 
     private float CheckValue(float value, float maxValue)
