@@ -1768,11 +1768,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Programming: Jared Trenholm and William Fraser.\n\nArt: William Fraser,
-    Jared Trenholm, Trenton Isenor, \nLPC Spritesheet Generator, \nRecycle items
-    art by Clint Bellanger.\n\nLevel Design: William Fraser.\n\nSound: Jared Trenholm,
-    William Fraser, \nEnvato Environment, Wolfram Tones, FreeSound, \nFesliyan Studios
-    and Bfxr."
+  m_Text: "Programming: Jared Trenholm, William Fraser, \nTrenton Isenor and Astar
+    Pathfinding by Aron Granberg.\n\nArt: William Fraser, Jared Trenholm, Trenton
+    Isenor, \nLPC Spritesheet Generator, UI Pieces by Buch, Pixel Art City by \nWallpaperAccess
+    zand Recycle items art by Clint Bellanger\n\nLevel Design: William Fraser.\n\nSound:
+    William Fraser, Jared Trenholm, Envato Environment, \nWolfram Tones, FreeSound,
+    Fesliyan Studios and Bfxr Mixer."
 --- !u!1 &7609557578078240501
 GameObject:
   m_ObjectHideFlags: 0

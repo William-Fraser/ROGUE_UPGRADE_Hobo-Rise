@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour
     #region Unity Messages
     private void Start()
     {
-        Debug.LogError(Application.persistentDataPath);
-
         if (gameManager == null)
         {
             gameManager = this;
