@@ -589,8 +589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89, y: 7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 2.3437, y: 7}
+  m_SizeDelta: {x: 297.8135, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217882442
 MonoBehaviour:
@@ -622,14 +622,15 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0.75
-  m_Text: "Programming: Jared Trenholm, William Fraser, \nTrenton Isenor and Astar
+  m_Text: "Programming: Jared Trenholm, William Fraser, Trenton Isenor and Astar
     Pathfinding by Aron Granberg.\n\nArt: William Fraser, Jared Trenholm, Trenton
-    Isenor, \nLPC Spritesheet Generator and Recycle items art by \nClint Bellanger\n\nLevel
-    Design: William Fraser.\n\nSound: William Fraser, Jared Trenholm, Envato Environment,
-    \nWolfram Tones, FreeSound, Fesliyan Studios and Bfxr Mixer."
+    Isenor, \nLPC Spritesheet Generator, UI Pieces by Buch, and Recycle items art
+    by Clint Bellanger\n\nLevel Design: William Fraser.\n\nSound: William Fraser,
+    Jared Trenholm, Envato Environment, Wolfram Tones, FreeSound, Fesliyan Studios
+    and Bfxr Mixer."
 --- !u!222 &1217882443
 CanvasRenderer:
   m_ObjectHideFlags: 0

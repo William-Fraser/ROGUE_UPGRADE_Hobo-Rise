@@ -2519,9 +2519,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: "Programming: Jared Trenholm, William Fraser, \nTrenton Isenor and Astar
         Pathfinding by Aron Granberg.\n\nArt: William Fraser, Jared Trenholm, Trenton
-        Isenor, \nLPC Spritesheet Generator and Recycle items art by \nClint Bellanger\n\nLevel
-        Design: William Fraser.\n\nSound: William Fraser, Jared Trenholm, Envato
-        Environment, \nWolfram Tones, FreeSound, Fesliyan Studios and Bfxr Mixer."
+        Isenor, \nLPC Spritesheet Generator, UI Pieces by Buch,  and Recycle items
+        art by \nClint Bellanger\n\nLevel Design: William Fraser.\n\nSound: William
+        Fraser, Jared Trenholm, Envato Environment, \nWolfram Tones, FreeSound, Fesliyan
+        Studios and Bfxr Mixer."
       objectReference: {fileID: 0}
     - target: {fileID: 8658639089665835424, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_FontData.m_MinSize
