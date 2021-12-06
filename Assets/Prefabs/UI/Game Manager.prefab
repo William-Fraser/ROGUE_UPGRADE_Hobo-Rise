@@ -1192,7 +1192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4684590925194017000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1769,9 +1769,10 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "Programming: Jared Trenholm and William Fraser.\n\nArt: William Fraser,
-    Jared Trenholm, Trenton Isenor and \nLPC Spritesheet Generator.\n\nSound: Jared
-    Trenholm, William Fraser, \nEnvato Environment, Wolfram Tones, FreeSound, \nFesliyan
-    Studios and Bfxr.\n\nLevel Design: William Fraser."
+    Jared Trenholm, Trenton Isenor, \nLPC Spritesheet Generator, \nRecycle items
+    art by Clint Bellanger.\n\nSound: Jared Trenholm, William Fraser, \nEnvato Environment,
+    Wolfram Tones, FreeSound, \nFesliyan Studios and Bfxr.\n\nLevel Design: William
+    Fraser."
 --- !u!1 &7609557578078240501
 GameObject:
   m_ObjectHideFlags: 0
