@@ -2425,7 +2425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3157681211909944119, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4583967908503743827, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2461,7 +2461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7231980336228359185, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 12.7
+      value: 15.2
       objectReference: {fileID: 0}
     - target: {fileID: 7442983370674529920, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: footStep
@@ -2517,11 +2517,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658639089665835424, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_Text
-      value: "Programming: Jared, Trenton, William.\n\nAstar Pathfinding by Aron
-        Granberg\n\nLevel Design: William.\n\nArt: William, Jared, Trenton and LPC
-        Spritesheet Generator.\n\nSound: William, Jared, Envato Environment, \nWolfram
-        Tones, FreeSound, Fesliyan Studios and Bfxr.\n\nGraphical Work: William,
-        Jared and Trenton."
+      value: "Programming: Jared Trenholm, William Fraser, \nTrenton Isenor and Astar
+        Pathfinding by Aron Granberg.\n\nArt: William Fraser, Jared Trenholm, Trenton
+        Isenor, \nLPC Spritesheet Generator and Recycle items art by \nClint Bellanger\n\nLevel
+        Design: William Fraser.\n\nSound: William Fraser, Jared Trenholm, Envato
+        Environment, \nWolfram Tones, FreeSound, Fesliyan Studios and Bfxr Mixer."
       objectReference: {fileID: 0}
     - target: {fileID: 8658639089665835424, guid: 08ab1f4a0cefdae4c99ed05ec2e12928, type: 3}
       propertyPath: m_FontData.m_MinSize

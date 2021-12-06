@@ -582,14 +582,14 @@ RectTransform:
   m_GameObject: {fileID: 1217882440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.04, y: 1.04, z: 1.04}
+  m_LocalScale: {x: 1.3256121, y: 1.3256121, z: 1.3256121}
   m_Children: []
   m_Father: {fileID: 1959627032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -113, y: 0.4}
+  m_AnchoredPosition: {x: -89, y: 7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217882442
@@ -625,11 +625,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0.75
-  m_Text: "Programming: Jared, Trenton, William.\n\nAstar Pathfinding by Aron Granberg\n\nLevel
-    Design: William.\n\nArt: William, Jared, Trenton and LPC Spritesheet Generator.\n\nSound:
-    William, Jared, Envato Environment, \nWolfram Tones, FreeSound, Fesliyan Studios
-    and Bfxr.\n\nGraphical Work: William, Jared and Trenton.\n\nLevel Design: William
-    Fraser."
+  m_Text: "Programming: Jared Trenholm, William Fraser, \nTrenton Isenor and Astar
+    Pathfinding by Aron Granberg.\n\nArt: William Fraser, Jared Trenholm, Trenton
+    Isenor, \nLPC Spritesheet Generator and Recycle items art by \nClint Bellanger\n\nLevel
+    Design: William Fraser.\n\nSound: William Fraser, Jared Trenholm, Envato Environment,
+    \nWolfram Tones, FreeSound, Fesliyan Studios and Bfxr Mixer."
 --- !u!222 &1217882443
 CanvasRenderer:
   m_ObjectHideFlags: 0
